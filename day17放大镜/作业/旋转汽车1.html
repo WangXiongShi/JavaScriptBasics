@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+        #wrap{
+            background: url("img/golf0.jpg");
+            width: 780px;
+            height: 520px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+	<div id="wrap"></div>
+
+	<script>
+		var wrap = document.querySelector('#wrap');
+		var loadDiv = document.createElement('div');
+		loadDiv.style.width = '100%';
+		loadDiv.style.height = '100%';
+		loadDiv.style.textAlign = 'center';
+		loadDiv.style.fontSize = '50px';
+		loadDiv.style.background = 'rega(0,0,0,0.7)';
+		loadDiv.style.color = 'white';
+		loadDiv.style.lineHeight = wrap.offsetHeight + 'px';
+		loadDiv.innerHTML = '0%';
+		wrap.appendChild(loadDiv);
+
+		// 计算出一共多少张图片
+		var imgCount = 71;
+		// 计算每一次图片加载完成之后的数量
+		var count = 0;
+		// 存放所有img图片的数组n
+		var imgArr = [];
+		// 获取数组下标
+		var change = 0;
+		// 存储旧的图片
+		var oldImg = null;
+		// 图片预加载
+		for(var i = 0; i < imgCount; i++){
+			// 创建图片对象
+			var img = new Image();
+			// 设置img对象的src
+			img.src = 'img/golf' + i + '.jpg';
+			img.style.display = 'none';
+			// 把所有图片存放到imgArr里面
+			imgArr.push(img);
+			// 图片加载
+			img.onload = function(){
+				// 图片加载完成之后,插入到wrap里面
+				wrap.appendChild(this);
+				// 每次加载一次,记录一张
+				count++;
+				console.log(parseInt(count / imgCount * 100) + '%');
+				loadDiv.innerHTML = parseInt(count / imgCount * 100) + '%';
+
+				if(count == imgCount){
+					loadDiv.style.display = 'none';
+					onLoadFn();
+				}
+			}
+		}
+
+
+		 // 所有图片加载完成之后的方法
+    function onLoadFn(){
+        oldImg = imgArr[0];
+        // 给document添加鼠标按下事件
+        document.onmousedown = function(e){
+            var ev = window.event || e;
+            ev.preventDefault();
+            // 获取当前坐标
+            var startX = ev.clientX;
+            // console.log(startX);
+            // 给document添加鼠标移动事件
+            document.onmousemove = function(e){
+                var ev = window.event || e;
+                // 获取鼠标移动的X值
+                var endX = ev.clientX;
+                // 获取移动的X轴位置离鼠标按下时X轴的位置(当移动超过10个像素点时再去更换下张图片)
+                change += parseInt((endX - startX) / 100);
+                if(change < 0){
+                    change = 71;
+                }else if(change > 71){
+                    change = 0;
+                }
+
+                if(oldImg != imgArr[change]){
+                    oldImg.style.display = "none";
+                    imgArr[change].style.display = "block";
+                    oldImg = imgArr[change];
+                }
+                // 把旧的
+                imgArr[change].style.display = "block";
+                // 更新数组下标
+
+                console.log(change);
+
+            }
+        }
+    }
+
+
+    document.onmouseup = function(){
+        document.onmousemove = null;
+    }
+
+	</script>
+</body>
+</html>

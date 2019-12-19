@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box,#d{
+			width: 50px;
+			height: 50px;
+			border-radius:50%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color:red;
+		}
+		#d{
+			top: 300px;
+			left: 500px;
+			background-color: black;
+			z-index: -1;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<div id="d"></div>
+
+	<script>
+		var box = document.querySelector('#box');
+		var d = document.querySelector('#d');
+		// var x = 300;
+		// var y = 500;
+		// var num = 0;
+		// var timer = null;
+		// timer = setInterval(function(){
+		// 	num++;
+		// 	box.style.left = num * (5 / 3) + 'px';
+		// 	box.style.top = num * 1 + 'px';
+		// 	if(num >= 300){
+		// 		clearInterval(timer);
+		// 	}
+		// },1);
+
+		var deg = 0;
+		timer = setInterval(function(){
+			deg++;
+			var scale = Math.sin(Math.PI / 180 * deg);
+			box.style.top = 300 * scale + 'px';
+			box.style.left = 500 * scale + 'px';
+			if(deg >= 180){
+				clearInterval(timer);
+			}
+		},1);
+	</script>
+</body>
+</html>

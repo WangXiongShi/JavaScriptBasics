@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="txt">
+    <input type="button" name="" value="添加" id="btn">
+
+    <script type="text/javascript">
+        // var arr = [];
+
+        // var btn = document.querySelector('#btn');
+        // var txt = document.querySelector('#txt');
+
+        // btn.onclick = function(){
+        //     arr.push(txt.value);
+        //     console.log(arr);
+        // }
+
+        // 简单来说cookie就是一个文件，用于在本地存储用户信息。包括身份识别号码ID、密码、浏览过的网页、停留的时间、用户在Web站点购物的方式或用户访问该站点的次数等，当用户再次链接Web服务器时，浏览器读取Cookie信息并传递给Web站点，Web快速获取用户信息方便用户行为（账号自动登陆等）。
+
+        // 【注意】:cookie只能在服务器环境下使用
+
+        // console.log(document.cookie);
+
+        // var time = new Date();
+        // time.setDate(time.getDate()+10);
+        // document.cookie = 'name=lishijsssie;expires=' + time;
+
+        // var time2 = new Date();
+        // time2.setDate(time2.getDate() + 3);
+        // document.cookie = 'age=18;expires=' + time2;
+
+        function setCookie(name,val,day){
+            var time = new Date();
+            time.setDate(time.getDate() + day);
+            document.cookie = name + '=' + val + ';expires=' + time;
+            // console.log(document.cookie);
+        }
+// cookie的功能: 在浏览器中进行数据的存储,用户名、密码
+// cookie的容量: 5kb
+// cookie存储的数据类型: 数字,字符串
+// cookie是以名值对的方式存储: userName = aa
+// cookie能存储的条目数为:50条
+// cookie必须运行在服务器的环境下
+        setCookie('sex','man',10);
+        setCookie('a', 'sssss', 3);
+
+
+
+        function getCookie(key){
+            var str = document.cookie;
+            var arr = str.split('; ');
+            for(var i = 0; i < arr.length; i++){
+                var arr2 = arr[i].split('=');
+                if(arr2[0] == key){
+                    return arr2[1];
+                }
+            }
+        }
+        getCookie('age');
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>字符串方法</title>
+	<style>
+		section{
+			width: 500px;
+			height: 500px;
+			background: pink;
+		}
+		.divs{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<div class="divs"></div>
+	</section>
+	<h1><!-- 【吴京回应地震被逼捐1亿:对得起良心】九寨沟地震吴京捐款100万,有网友认为#战狼2#票房大卖,吴京应该捐1亿。近日, @吳京 受访时回应称向李连杰学习:“慈善我会用我的方式进行到底,误会总有澄清时”。坦言李连杰曾鼓励他:“慈善要对得起自己的良心,无论多少你都是最棒的 --></h1>
+	<script type="text/javascript">
+		var str = 'hello world';
+		// length:返回字符串的长度
+		console.log(str.length);//11
+
+		// charAt():返回指定索引位置的字符
+		console.log(str.charAt(1));//e
+
+		// indexOf():返回字符串中检索指定字符串第一次出现的位置
+		console.log(str.indexOf('o'));//4
+
+		// lastIndexOf():返回字符串中检索指定字符最后一次出现的位置
+		console.log(str.lastIndexOf('l'));//9
+
+		// replace():替换匹配字符
+		console.log(str.replace('world','wangxiongshi'));//hello wangxiongshi
+
+		// slice():根据下标提取字符串的片断,返回被提取的部分
+		console.log(str.slice(1,4));//ell(负参数是空的)不包含后面的第四个,只传一个参数从当前位置到最后,只传一个-1是倒着排的d
+
+		// substring():提取字符串中两个指定的索引号之间的字符
+		console.log(str.substring(-1,5));//hello
+		// slice()与substring()不同: substring()负的参数是无效的
+
+		// split():把字符串分割为子字符串数组
+		console.log(str.split('e'));// ["h", "llo world"](填上字符是从这个字符开始的左右分割且不包括填的这个字符,不填字符是直接分割)
+
+		// toString():转换为字符串
+		var arr = [1,2,3,4];
+		console.log(arr.toString());//1,2,3,4
+
+		// toUpperCase():把字母转换为大写
+		console.log(str.toUpperCase());//HELLO WORLD
+
+		// toLowerCase():把字母转换为小写
+		var abc = 'HIUIUN';
+		console.log(abc.toLowerCase());//hiuiun
+
+
+		// 方法一
+		var a = '《战狼2》票房截止到8月24日上午10：40分点总共上映了29天，但是总票房已经达到了52.58亿，这个成绩让所有的导演都是汗颜无声的。　　此前，四川九寨沟发生地震，众明星纷纷向灾区捐款献爱心。其中吴京谢楠夫妇低调为灾区捐出100万。但当时因为《战狼2》票房正在飙升破纪录，有网友表示：吴京应该捐1个亿。　　对此，吴京在参加某采访中回应：“首先我向师哥李连杰学习，第一时间我也有做一些行动。第二，我现在票房还没到手。慈善我还会进行到底，我会用我的方式。我一向习惯于低调，尤其是慈善这种事情。误会总有澄清的时候，我也不愿意去自诩澄清。杰哥(李连杰)也看得到，他也鼓励我。慈善对得起自己的良心，无论多少，你都是最棒的。我还会将慈善进行到底的。”';
+		// var h1 = document.querySelector("h1");
+		// var i = 0;
+		// var timer = setInterval (function(){
+		// 	h1.innerHTML += a[i];
+		// 	i++;
+		// 	if(i>=a.length){
+		// 		clearInterval(timer);
+		// 	}
+		// },100);
+
+
+		// 方法二
+		// var index = 0;
+		// var timer = setInterval (function(){
+		// 	var b = a.charAt(index);
+		// 	index++;
+		// 	document.write(b);
+		// 	if(index > a.length){
+		// 		clearInterval(timer);
+		// 	}
+		// 	// console.log(b);
+		// },10);
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="box"></div>
+
+	<script>
+		var box = document.querySelector('.box');
+		// var className = 'sssss';
+		// box.onclick = function(){
+		// 	console.log(this.className);
+		// 	var that = this; //改变this的指向
+		// 	function fn(){
+		// 		console.log(that.className);
+		// 	}
+		// 	fn();
+		// }
+		var className = 'sssss';
+		box.onclick = function(){
+			console.log(this.className);
+			var that = this; //改变this的指向
+			function fn(){
+				console.log(that.className);
+			}
+			fn.call(this);
+		}
+
+	</script>
+</body>
+</html>

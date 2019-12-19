@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <label for="user">用户名:</label>
+    <input type="text" name="" id="user">
+        </br>
+    <label for="pwd">密码:</label>
+    <input type="password" name="" id="pwd">
+        </br>
+    <button id="btn">登陆</button>
+
+    <script type="text/javascript" src='store.js'></script>
+    <script type="text/javascript">
+        var user = document.querySelector("#user");
+        var pwd = document.querySelector("#pwd");
+        var btn = document.querySelector("#btn");
+        user.value = getCookie('user') || '';
+        pwd.value = getCookie('pwd') || '';
+        btn.onclick = function(){
+            if(user.value == '' && pwd.value == ''){
+                return;
+            }
+            setCookie('user', user.value, 10);
+            setCookie('pwd', pwd.value, 10);
+        }
+    </script>
+
+</body>
+</html>

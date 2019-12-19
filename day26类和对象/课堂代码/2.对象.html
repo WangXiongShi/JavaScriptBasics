@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 对象:对属性和方法的封装
+        // var obj1 = {
+        //     name:'lishijie',//属性
+        //     age:'18',//属性
+        //     hobby:[1,2,3,4,5],
+        //     say: function(){//方法
+        //         // console.log('我的名字叫XXX',this.name);
+        //         // this在对象的方法里,this代表该对象本身
+        //         console.log(this.name);
+        //     }
+        // };
+        // obj1.say();
+        // console.log(obj1.name);
+        // obj1.say();
+
+        // console.log(obj1['name']);
+        // obj1['say']();
+        // obj1.name
+
+        // var obj1 = {
+        //     name:'shiwei',
+        //     age:'18',
+        //     sayHi:function(){
+
+        //     }
+        // }
+        // var obj2 = {
+        //     name:'changdaqu',
+        //     age:'18',
+        //     sayHi:function(){
+
+        //     }
+        // }
+        // var obj3 = {
+        //     name:'lukairui',
+        //     age:'18',
+        //     sayHi:function(){
+
+        //     }
+        // }
+        // var obj4 = {
+        //     name:'danny',
+        //     age:'18',
+        //     sayHi:function(){
+
+        //     }
+        // }
+
+
+        var obj1 = createObj('lishijie','18');
+        var obj2 = createObj('lukairui',20);
+        console.log(obj2);
+
+        function createObj(name,age){
+            return {
+                name:name,
+                age:age,
+                sayHi:function(){
+
+                }
+            }
+        }
+
+
+// 建立一个工厂,用来生产汽车(名字,马力,油耗,run,say)
+
+
+// car1.say()//名字:奥迪,马力:300,油耗:14L
+
+    function createCarFactory(name,mali,youhao){
+        var obj = {
+            name:name,
+            mali:mali,
+            youhao:youhao,
+            say:function(){
+                console.log(this.name,this.mali,this.youhao);
+            },
+            run:function(){
+                console.log('嘟嘟嘟');
+            }
+        }
+        return obj;//最终将对象返回
+    }
+
+    var car1 = createCarFactory('奥迪', '360', '14');
+    car1.say();
+
+
+    </script>
+</body>
+</html>

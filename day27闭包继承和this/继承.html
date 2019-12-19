@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 今天要介绍的是，对象之间的"继承"的五种方法。
+		// 比如，现在有一个"动物"对象的构造函数。
+
+		　　function Animal(){
+		　　　　this.species = "动物";
+		　　}
+		// 还有一个"猫"对象的构造函数。
+
+		　　function Cat(name,color){
+		　　　　this.name = name;
+		　　　　this.color = color;
+		　　}
+		// 怎样才能使"猫"继承"动物"呢？
+
+
+		// 一、 构造函数绑定
+		// 第一种方法也是最简单的方法，使用call或apply方法，将父对象的构造函数绑定在子对象上，即在子对象构造函数中加一行：
+		// 　　function Cat(name,color){
+		// 		console.log(arguments);
+		// 　　　　Animal.call(this, arguments);
+		// 　　　　this.name = name;
+		// 　　　　this.color = color;
+		// 　　}
+		// 　　var cat1 = new Cat("大毛","黄色");
+		// 	console.log(cat1.species); // 动物
+
+
+		// 二、 prototype模式
+		// 第二种方法更常见，使用prototype属性。
+		// 如果"猫"的prototype对象，指向一个Animal的实例，那么所有"猫"的实例，就能继承Animal了。
+		　　Cat.prototype = new Animal();// 代码的第一行，我们将Cat的prototype对象指向一个Animal的实例。它相当于完全删除了prototype对象原先的值，然后赋予一个新值。
+		　　Cat.prototype.constructor = Cat;
+		　　var cat1 = new Cat("大毛","黄色");
+			console.log(cat1.species); // 动物
+		
+		
+		// 原来，任何一个prototype对象都有一个constructor属性，指向它的构造函数。如果没有"Cat.prototype = new Animal();"这一行，Cat.prototype.constructor是指向Cat的；加了这一行以后，Cat.prototype.constructor指向Animal。
+			console.log(Cat.prototype.constructor == Animal); //true
+
+		// 更重要的是，每一个实例也有一个constructor属性，默认调用prototype对象的constructor属性。
+			console.log(cat1.constructor == Cat.prototype.constructor); // true
+
+		// 因此，在运行"Cat.prototype = new Animal();"这一行之后，cat1.constructor也指向Animal！
+			console.log(cat1.constructor == Animal); // true
+		// 这显然会导致继承链的紊乱（cat1明明是用构造函数Cat生成的），因此我们必须手动纠正，将Cat.prototype对象的constructor值改为Cat。这就是第二行的意思。
+
+		
+		// 这是很重要的一点，编程时务必要遵守。下文都遵循这一点，即如果替换了prototype对象，
+		// 　　o.prototype = {};
+		// 那么，下一步必然是为新的prototype对象加上constructor属性，并将这个属性指回原来的构造函数。
+		// 　　o.prototype.constructor = o;
+	</script>
+</body>
+</html>

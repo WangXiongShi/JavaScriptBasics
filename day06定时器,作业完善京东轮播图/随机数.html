@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// 求随机数公式:Math.random() * (最大数 - 最小数 + 1) + 最小数;
+		// parseInt对小数取整
+		function randFn(min,max){
+			return parseInt(Math.random() * (max - min + 1) + min);
+		}
+		// randFn(10,15);
+		// console.log(randFn(10,15));
+		// 10~15的随机数
+		// var num = Math.random() * (15 - 10 + 1) + 10;
+		// console.log(parseInt(num));
+
+
+		var arr = [];
+		for(var i = 0; i < 23; i++){
+			var num = randFn(13,27);
+			arr.push(num);
+		}
+		// console.log(arr);
+
+		// arr.sort();
+		arr.sort(function(a,b){
+		     return a-b;
+		});
+		console.log(arr);
+	</script>
+</body>
+</html>

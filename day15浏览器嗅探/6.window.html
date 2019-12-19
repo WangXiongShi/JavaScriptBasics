@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 全局环境下,this代表window,全局变量属于window
+		a = 100;
+		console.log(window.a);
+		/*
+			其他操作window方法(不常用)
+			window.open() - 打开新窗口
+			window.open('要打开的网页','网页名字','height=400','width=400','top=10','left=20')
+			第三个参数用逗号分割, 不能出现空格
+
+
+			关闭新窗口 window.close() - 关闭窗口的方法
+		*/
+
+		document.onclick = function(){
+			window.open('1.小球运动.html','我的网页','height=100','width=100','top=200','left=200');
+		}
+
+		setTimeout(function(){
+			window.close();
+		},1000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{
+            width: 500px;
+            height: 600px;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <div id="box"></div>
+</div>
+
+    <script type="text/javascript">
+        // onkeydown:按下
+        // onkeyup:抬起
+
+        // keydown/keyup事件对象携带的一个参数是:keyCode,这个参数里的是每个按键的编码,我们可以通 过编码来判断用户按的是哪个按键
+
+        var box = document.querySelector('#box');
+        document.onkeydown = function(e){
+            var ev = window.event || e;
+            switch(ev.keyCode) {
+                case 37:
+                    box.style.left = box.offsetLeft - 10 + 'px';//左键盘
+                    if(box.offsetLeft <= 0){
+                        box.style.left = '0px';
+                    }
+                    break;
+                case 38:
+                    box.style.top = box.offsetTop - 10 + 'px';//上键盘
+                    if(box.offsetTop <= 0){
+                        box.style.top = '0px';
+                    }
+                    break;
+                case 39:
+                    box.style.left = box.offsetLeft + 10 + 'px';//右键盘
+                    if(box.offsetLeft >= 400){
+                        box.style.left = '400px';
+                    }
+                    break;
+                case 40:
+                    box.style.top = box.offsetTop + 10 + 'px';//下键盘
+                    if(box.offsetTop >= 500){
+                        box.style.top = '500px';
+                    }
+                    break;
+            }
+        }
+
+
+
+
+
+    </script>
+</body>
+</html>

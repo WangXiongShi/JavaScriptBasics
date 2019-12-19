@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		var box = document.querySelector('#box');
+		var timer = null;
+		var index = 0;
+		document.onclick = function(){
+			clearInterval(timer);
+			timer = setInterval(function(){
+			index++;
+			box.style.left = index + 'px';
+			if(index >= 300){
+				clearInterval(timer);
+			}
+			},10);
+		}
+	</script>
+</body>
+</html>

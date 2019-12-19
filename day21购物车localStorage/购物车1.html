@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            list-style:none;
+        }
+        p{
+            text-align: center;
+        }
+        li{
+            width: 300px;
+            background-color: #e8e8e8;
+            float: left;
+            width: 20%;
+        }
+        img{
+            width: 180px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <ul id="uls"></ul>
+    <a href="购物车2.html">去结算页面</a>
+
+    <script type="text/javascript">
+        var dataArr = [
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_14966625823457_RclIL.png',title:'红米4X',content:'4100mAh超长续航，8 核处理器',price:'699元起',id:1000,num:0},
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_14894013451119_CiBVP.png',title:'红米Note 4X',content:'4100mAh超长续航，多彩金属',price:'999元起',id:1001,num:0},
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_15030636163238_WTzlt.png',title:'小米Note 2',content:'最高减600元',price:'2499元起',id:1002,num:0},
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_14938805670516_eryYQ.png',title:'小米电视4A 43英寸',content:'全高清HDR，智能语音',price:'1999元',id:1003,num:0},
+            {imgSrc:'https://i1.mifile.cn/a4/073b5ddc-9117-4668-adbe-878c928a79da',title:'小米笔记本',content:'更轻更薄，像杂志一样随身携带',price:'3599元起',id:1004,num:0},
+        ];
+
+
+        var uls = document.querySelector('#uls');
+        var listArr = localStorage.lists ? JSON.parse(localStorage.lists) : [];
+        for (var i = 0; i < dataArr.length; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = '<div><img src="'+dataArr[i].imgSrc+'"></div><p>'+dataArr[i].title+'</p><p>'+dataArr[i].content+'</p><p>'+dataArr[i].price+'</p>';
+            li.index = i;
+            li.onclick = function(){
+                alert('已经加入购物车');
+                // 加入购物车
+                console.log(this.index);
+                // 判断该数据有没有在localStorage里面
+                listArr.push(dataArr[this.index]);
+                var str = JSON.stringify(listArr);
+                localStorage.lists = str;
+            }
+            uls.appendChild(li);
+        }
+
+    </script>
+</body>
+</html>

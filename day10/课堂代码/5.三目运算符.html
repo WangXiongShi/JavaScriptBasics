@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="uls">
+        <li>woshili1</li>
+        <li>woshili2</li>
+        <li>woshili3</li>
+        <li>woshili4</li>
+        <li>woshili5</li>
+        <li>woshili6</li>
+        <li>woshili7</li>
+        <li>woshili8</li>
+        <li>woshili9</li>
+        <li>woshili10</li>
+    </ul>
+    <script type="text/javascript">
+var bol = false;
+if(bol){
+    alert(1);
+}else{
+    alert(2);
+}
+
+bol == true ? alert(1) : alert(2);
+
+        // var a = 10;
+        // var b = 20;
+        // a > b ? alert(a) : alert(b);
+
+        // var a = 11;
+        // a = a < 10 ? '0' + a : a;
+        // alert(a);
+
+
+        var arr = ['a','b','c','d','e','f'];
+
+        arr.forEach(function(val,key){
+            console.log(val);
+        });
+
+        // 封装模拟forEach。。。
+        function forEachFn(obj,fn){
+            for(var i = 0; i < obj.length; i++){
+                fn(obj[i],i);
+            }
+        }
+
+        forEachFn(arr,function(val,key){
+            console.log(val,key);
+        });
+
+
+        Object.prototype.forEach_1 = function(callBack){
+            for(var i = 0; i < this.length; i++){
+                callBack(this[i],i);
+            }
+        }
+
+        // lis.forEach_1(function(val,index){
+        //     console.log(val,index);
+        // });
+
+        // function foo(fn){
+        //     // fn(100,200);
+        //     fn('hello','dongshi');
+        // }
+
+        // foo(function(a,b){
+        //     console.log(a,b);
+        // });
+
+
+    </script>
+</body>
+</html>

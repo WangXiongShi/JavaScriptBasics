@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form name="frm" METHOD="get" ACTION="b.html" onsubmit="return foo()"> 
+	  <INPUT type="text" id="hid" name="hid"> 
+	  <INPUT type="submit" value="提交"> 
+	 </form>
+	<script language="javascript" >
+	  	function foo(){
+		    var str = hid.value; 
+		    //document.forms[0].hid.value = str; 
+		    var frm = window.event.srcElement; 
+		    frm.hid.value = str;
+		    return true; 
+		}
+	</script>
+</body>
+</html>

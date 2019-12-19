@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{
+            width: 600px;
+			height: 600px;
+			/*border:1px dotted red;*/
+			position: relative;
+			margin:0px auto;
+            /*transform: translate(-50%,-50%);*/
+        }
+        #wrap div{
+            position: absolute;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            background-size: 100%;
+        }
+        #box{
+            width: 600px;
+            height: 20px;
+            background-color: black;
+            position: absolute;
+            bottom: 50px;
+            left:28%;
+        }
+        #countDown{
+            width: 600px;
+            height: 20px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            background-color: red;
+        }
+        #start{
+        	width: 600px;
+        	height: 600px;
+        	border:1px dotted red;
+        	position: absolute;
+        	left: 380px;
+        	background: url(img/start1.png);
+        	-webkit-background-size: 600px 600px;
+        	background-size: 600px 600px;
+        	z-index:999;
+        }
+        #kai{
+        	width: 290px;
+        	height: 55px;
+        	border:1px solid transparent;
+        	position: absolute;
+        	left: 160px;
+        	bottom: 120px;
+        }
+        #end{
+        	width: 600px;
+        	height: 600px;
+        	border:1px dotted red;
+        	position: absolute;
+        	left: 380px;
+        	background: url(img/end2.png);
+        	-webkit-background-size: 600px 600px;
+        	background-size: 600px 600px;
+        	z-index:999;
+        	display: none;
+        }
+        #jieshu{
+        	width: 258px;
+        	height: 51px;
+        	border:1px solid transparent;
+        	/*border:1px solid black;*/
+        	position: absolute;
+        	left: 183px;
+        	bottom: 161px;
+        	display: none;
+        }
+    </style>
+</head>
+<body>
+	<div id="start">
+		<div id="kai"></div>
+	</div>
+	<div id="end">
+		<div id="jieshu"></div>
+	</div>
+    <div id='wrap'>
+
+    </div>
+    <section id='box'>
+        <section id="countDown"></section>
+    </section>
+
+    <script type="text/javascript">
+        // 动态创建4个div
+        // 每一个div的面积平分
+
+        // 需要用到知识点,双层for循环
+        // for(){
+        //     for(){
+
+        //     }
+        // }
+        var wrap = document.querySelector('#wrap');
+        var kai = document.querySelector('#kai');
+        var start = document.querySelector('#start');
+        var end = document.querySelector('#end');
+        var jieshu = document.querySelector('#jieshu');
+        var index = 2;
+        var timer = null;
+        var countDown = document.querySelector("#countDown");
+        var w = parseInt(window.getComputedStyle(countDown,null).width);
+        // var w = countDiv.offsetWidth;
+        
+        kai.onclick = function(){
+        	this.style.display = 'none';
+        	start.style.display = 'none';
+        	end.style.display = 'none';
+        	jieshu.style.display = 'none';
+        	foo();
+        }
+        function creatFn(num){
+            for(var i = 0; i < num; i++){
+                for(var j = 0; j < num; j++){
+                    // 创建div
+                    var divs = document.createElement('div');
+                    // 设置宽高
+                    divs.style.width = 600 / num + 'px';
+                    divs.style.height = 600 / num + 'px';
+                    // 设置位置(top,left)
+                    divs.style.top = j * 600 / num + 'px';
+                    divs.style.left = i * 600 / num + 'px';
+
+                    // 插入背景图片
+                    divs.style.backgroundImage = 'url(img/1.png)';
+
+                    // 插入wrap
+                    wrap.appendChild(divs);
+                }
+            }
+            // 获取所有的图片
+            var divImg = document.querySelectorAll("#wrap div");
+            var rand = randFn(0, divImg.length - 1);
+
+            divImg[rand].style.backgroundImage = 'url(img/2.png)';
+                divImg[rand].onclick = function(){
+                    // 删除所有的图片
+                    while (wrap.children.length != 0) {
+                        wrap.removeChild(wrap.children[0]);
+                    }
+                    index++;
+                    creatFn(index);
+                }
+        }
+        creatFn(2);
+
+        // 随机函数
+        function randFn(min,max){
+            return parseInt(Math.random() * (max - min + 1) + min);
+        }
+
+       
+        function foo(){
+        	timer = setInterval(function(){
+	            w--;
+	            countDown.style.width = w + 'px';
+	            if(w <= 0){
+	                clearInterval(timer);
+	                // alert('game over');
+	                end.style.display = 'block';
+        			jieshu.style.display = 'block';
+        			jieshu.onclick = function(){
+			        	kai.style.display = 'block';
+			        	start.style.display = 'block';
+			        	end.style.display = 'none';
+			        	jieshu.style.display = 'none';
+			        	while(wrap.children.length != 0){
+							wrap.removeChild(wrap.children[0]);
+						}
+			        }
+	            }
+	        },5);
+        }
+
+
+
+
+    </script>
+</body>
+</html>

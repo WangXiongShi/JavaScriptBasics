@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #wrap{
+            width: 790px;
+            height: 340px;
+            margin: 100px auto;
+            overflow: hidden;
+            /*border: 1px solid red;*/
+            position: relative;
+            cursor: pointer;
+        }
+        #leftBtn,#rightBtn{
+            width: 40px;
+            height: 80px;
+            background-color: rgba(0,0,0,0.1);
+            position: absolute;
+            top: 130px;
+            border: none;
+            border-radius: 0;
+            font-size: 30px;
+            color: white;
+            font-weight: 100;
+            display: none;
+        }
+        #rightBtn{
+            right: 0px;
+        }
+        #leftBtn:hover,#rightBtn:hover{
+            background-color: rgba(0,0,0,0.4);
+        }
+        #wrap div{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transition: rotateY 1s;
+            opacity: 0;
+            transform: rotateY(0deg);
+        }
+        #wrap div:first-child{
+            opacity: 1;
+            transform: rotateY(360deg);
+
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrap">
+        <div><img src="img/1.jpg" alt=""></div>
+        <div><img src="img/2.jpg" alt=""></div>
+        <div><img src="img/3.jpg" alt=""></div>
+        <div><img src="img/4.jpg" alt=""></div>
+        <div><img src="img/5.jpg" alt=""></div>
+        <button id="leftBtn"><</button>
+        <button id="rightBtn">></button>
+    </div>
+    <script type="text/javascript">
+        // 获取wrap
+        var wrap = document.getElementById('wrap');
+
+        // 获取左边按钮
+        var leftBtn = document.getElementById('leftBtn');
+
+        // 获取右边按钮
+        var rightBtn = document.getElementById('rightBtn');
+
+        // 获取所有包含img标签的div
+        var divs = wrap.getElementsByTagName('div');
+
+        // 定义一个下标
+        var index = 0;
+
+        // 定时器
+        var timer = null;
+
+        // 自动轮播
+        autoPlay();
+
+        // 给wrap添加鼠标移入事件
+        wrap.onmouseenter = function(){
+            leftBtn.style.display = 'block';
+            rightBtn.style.display = 'block';
+            // 清除定时器
+            clearInterval(timer);
+        }
+
+        // 给wrap添加鼠标移出事件
+        wrap.onmouseleave = function(){
+            leftBtn.style.display = 'none';
+            rightBtn.style.display = 'none';
+            // 鼠标移出开启自动轮播
+            autoPlay();
+        }
+
+        // 给右边按钮添加点击事件
+        rightBtn.onclick = function(){
+            index++;
+            for(var i = 0 ; i < divs.length; i++){
+                divs[i].style.opacity = '0';
+                divs[i].style.transform = 'rotateY(0deg)';
+            }
+            if(index >= 5){
+                index = 0;
+            }
+            divs[index].style.opacity = '1';
+            divs[index].style.transform = 'rotateY(360deg)';
+        }
+
+        // 给左按钮添加点击事件
+        leftBtn.onclick = function(){
+            index--;
+            for(var i = 0 ; i < divs.length; i++){
+                divs[i].style.opacity = '0';
+                divs[i].style.transform = 'rotateY(0deg)';
+            }
+            if(index < 0){
+                index = 4;
+            }
+            divs[index].style.opacity = '1';
+            divs[index].style.transform = 'rotateY(360deg)';
+        }
+
+        // 循环定时器,1s更换一次index值
+        function autoPlay(){
+            timer = setInterval(function(){
+                index++;
+                for(var i = 0 ; i < divs.length; i++){
+                    divs[i].style.opacity = '0';
+                    divs[i].style.transform = 'rotateY(0deg)';
+                }
+                if(index >= 5){
+                    index = 0;
+                }
+                divs[index].style.opacity = '1';
+                divs[index].style.transform = 'rotateY(360deg)';
+
+            },2000);
+        }
+
+
+    </script>
+
+</body>
+</html>

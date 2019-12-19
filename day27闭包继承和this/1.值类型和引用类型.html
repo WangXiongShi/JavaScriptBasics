@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 数据类型分为: 值类型和引用类型
+		// 值类型: String, Number, Boolean
+		// 引用类型: Array, Object
+
+		var arr = [];
+		// 什么是值类型: 在内存中存的是数值
+		// var str = 'hello';
+		// arr.push(str);
+		// var str = 'world';
+		// arr.push(str);
+		// console.log(arr); //["hello", "world"]
+
+		// 什么是引用类型: 在内存中的是地址(指针)
+		// var obj = {name:'a'};
+		// arr.push(obj);
+		// var obj = {name:'b'};
+		// arr.push(obj);
+		// console.log(arr); //{name: "a"},{name: "b"}
+
+		var obj = {name:'a'};
+		arr.push(obj);
+		obj.name = 'b';
+		arr.push(obj);
+		console.log(arr); //{name: "b"},{name: "b"} 
+		///如果obj.age = 'b'; 打印两个{name: "a",age:'b'},{name: "a",age:'b'}
+
+	</script>
+</body>
+</html>

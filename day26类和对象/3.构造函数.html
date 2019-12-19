@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 构造函数用来创建对象
+		// 在面向对象语言中是使用类来创建对象
+
+		// javaScript中没有类, 有类的概念, 它的类是用构造函数来模拟的.
+
+		// [注意]区分构造函数与普通函数, 构造函数的首写字母为大写		规范
+
+		// function Person(name,age){
+		// 	// this在构造函数里面,this代表构造出来的对象实例
+		// 	this.name = name;
+		// 	this.age = age;
+		// }
+		// var abc = new Person('lishijie','18'); 用new的方式构造一个对象
+		// console.log(abc);
+
+		/*
+		function Person(a,b,c){
+			// this在构造函数里面,this代表构造出来的对象实例
+			this.name = a;
+			this.age = b;
+			this.hobby = c;
+			this.sayHi = function(){
+				console.log(this.name,this.age,this.hobby);
+			}
+		}
+		var abc = new Person('lishijie','18','code');
+		var def = new Person('lukairui','30','game');
+		abc.sayHi();
+		def.sayHi();
+		console.log(abc);
+		console.log(def);
+		*/
+
+
+		// 构造函数写一个手机类
+		// 在JavaScript(ES5)没有类,只有类的概念
+		// 在JavaScript中类是由构造函数模拟出来的
+		function Phone(a,b,c,d,e){
+			this.xingwei1 = a;
+			this.xingwei2 = b;
+			this.xingwei3 = c;
+			this.name = d;
+			this.xinghao = e;
+			this.sayHi = function(){
+				console.log(this.xingwei1,this.xingwei2,this.xingwei3,this.name,this.xinghao);
+			}
+		}
+		var abc = new Phone('打电话','发短信','拍照','魅族','pro7');
+		var abc2 = new Phone('打电话','发短信','拍照','苹果','iphone X');
+		console.log(abc);
+		console.log(abc.name);
+		console.log(abc.xingwei2);
+		abc2.sayHi();
+		console.log(abc2);
+		console.log(abc2.name);
+		console.log(abc2.xingwei2);
+		abc2.sayHi();
+	</script>
+</body>
+</html>

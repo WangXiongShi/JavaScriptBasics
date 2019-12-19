@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		/*
+			节点类型
+				1:标签nodeType --> 1
+				2:文本nodeType --> 3
+				3:注释nodeType --> 8
+		*/
+		// 创建节点
+		// 查看节点类型:nodeType
+		// 查看节点名字:nodeName
+// 	1:创建标签节点(节点名字H1,节点类型-->1)
+var h = document.createElement('h1');
+console.log(h.nodeName,h.nodeType);
+
+// 	2:创建文本节点(节点名字#comment,节点类型-->3)
+var txt = document.createTextNode('hello 东时');
+console.log(txt.nodeName,txt.nodeType);
+
+// 	3:创建注释节点(节点名字#comment,节点类型-->8)
+var com = document.createComment('这是注释');
+console.log(com.nodeName,com.nodeType);
+		
+		 
+	</script>
+</body>
+</html>

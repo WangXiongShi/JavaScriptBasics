@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    // ajax_get('http://gitnano.com/shuju/getTest.php',function(obj){
+    //     console.log(obj);
+    // });
+
+    // 封装ajax中get请求
+    function ajax_get(url,callBack){
+        var ajax = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        ajax.open('GET',url,true);
+        ajax.send();
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState == 4){
+                if(ajax.status >= 200 && ajax.status <= 207){
+                    var data = ajax.responseText;
+                    console.log(data);
+                    // var a = JSON.parse(data);
+                    // callBack(a);
+                }else{
+                    console.log('失败');
+                }
+            }
+        }
+    }
+    ajax_get('http://gitnano.com/shuju/getParma.php?comID=hainan',function(data){
+        console.log(data);
+    });
+
+
+
+
+    </script>
+</body>
+</html>

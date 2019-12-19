@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		#wrap{
+			width: 400px;
+			height: 600px;
+			border: 1px solid black;
+			position: relative;
+			overflow:hidden;
+		}
+		img{
+			position: absolute;
+			top:0px;
+			left: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<img src="img/bird0.png" alt="">
+	</div>
+	<script>
+		// var img = document.querySelector('img');
+		// var speed = 0;
+		// setInterval(function(){
+		// 	speed++;
+		// 	img.style.top = speed + img.offsetTop + 'px';
+		// },30)
+		// wrap.onclick = function(){
+		// 	speed = -10;
+		// }
+		// preDef();
+		// function preDef(ev){
+		//     var ev = ev || window.event;
+		//     if(ev.preventDefault){
+		//         ev.preventDefault();
+		//     }else {
+		//         ev.returnValue = false;
+		//     }
+		// }
+
+		// 取消浏览器默认事件
+		// document.oncontextmenu = function(e){
+		// 	var ev = window.event || e;
+		// 	return false;
+		// 	ev.preventDefault();
+		// }
+		 // document.oncontextmenu = function(e){
+   //          var ev = window.event || e;
+   //          return false;
+   //          ev.preventDefault();
+ 		// }
+ 		document.onkeydown = function(e){
+ 			var ev = window.event || e;
+ 			console.log(keyCode);
+ 		}
+	</script>
+</body>
+</html>

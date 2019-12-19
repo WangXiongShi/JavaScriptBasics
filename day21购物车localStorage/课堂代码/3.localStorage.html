@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+// Cookies容量较小,只有5KB,而且在IE6中只支持每个域名20个cookies。优势就是没有兼容各个浏览器都支持。
+// 到H5时代,localStorage称为本地存储的新宠,它可以存储5M的资源,并且适用方便,缺点不兼容IE8以下浏览器,并且localstorage不用再服务器环境下运行
+
+
+// 要使用localStorage,首先自然是检测浏览器是否支持本地存储。在HTML5中,本地存 储是一个window的属性,包括localStorage和sessionStorage,从名字应该可以很清楚 的辨认二者的区别,前者是一直存在本地的,后者只是伴随着session,窗口一旦关闭数据清空。二者用法完全相同
+
+
+    // localStorage.name = 'lishijie';
+    // localStorage.age = 18;
+
+    // alert(localStorage.name);
+    // alert(localStorage.age);
+
+
+
+    // var obj = {
+    //     name:'lishijie',
+    //     age:18,
+    //     hobby:'nv'
+    // }
+    // 对象获取值使用方式分为两种
+    // 1:对象使用点语法 eg:  obj.name
+    // 2:对象使用[]语法 eg: obj['name'];
+    // 中括号方式取值,中括号里面的值必须是字符串,或者字符串变量
+
+    // for (var key in obj) {
+    //     // console.log(obj[key]);
+    //     var key = 'name';
+    //     var key = 'age';
+    //     var key = 'hobby';
+    //     console.log(obj[key]);
+    // }
+
+
+    // var obj = {
+    //     name:'shiwei',
+    //     age:18,
+    //     wife:['xiaohua','xiaohong',{name:'hanmeimei',age:18,hobby:'shopping'},'xiaoxiao','cuihua'],
+    //     son:{
+    //         name:'jack石',
+    //         age:'3'
+    //     }
+    // }
+
+    // console.log(obj.wife[2].hobby);
+    // console.log(obj.son.name);
+
+
+
+
+    for(var key in localStorage){
+        console.log(localStorage[key]);
+    }
+
+
+    // 设置localStroage（想象成一个对象存储过程）
+
+    // 第一种方式
+    // localStorage.name = 'lishijie';
+
+    // 第二种方式
+    // localStorage['name'] = 'lishijie';
+
+    // 第三种方式
+    // localStorage.setItem('name','lishijie');
+
+    // 获取localStroage中的值
+    // 第一种方式
+    // localStorage.name
+
+    // 第二种方式
+    // localStorage['name']
+
+    // 第三种方式
+    // localStorage.getItem('name');
+
+    // 删除localStroage中的值
+    // localStorage.removeItem('name');
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

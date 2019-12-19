@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+	//随机出来不重复的10个数字
+	var arr = [];
+	var i = 10;
+	while ( arr.length < i) {//这里判断数组的长度
+		var a = randFn(11, 25);
+		//indexOf()如果要检索的字符串值没有出现，则该方法返回 -1。
+		if (arr.indexOf(a) == -1) {
+			arr.push(a);
+		}
+	}
+	document.write(arr);
+
+
+	function randFn(min,max){
+		return parseInt(Math.random() * (max - min + 1) + min);
+	}
+	</script>
+</body>
+</html>

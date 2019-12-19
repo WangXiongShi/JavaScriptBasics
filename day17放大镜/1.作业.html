@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #uls{
+            display: none;
+        }
+        li:hover{
+            background: red;
+        }
+        li>span:nth-child(2){
+            background: #ccc;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" name="" id="inp">
+    <ul id="uls">
+        <li>
+            <span>小米</span>
+            <span>约30件</span>
+        </li>
+        <li>
+            <span>三星</span>
+            <span>约120件</span>
+        </li>
+        <li>
+            <span>苹果</span>
+            <span>约110件</span>
+        </li>
+        <li>
+            <span>oppo</span>
+            <span>约170件</span>
+        </li>
+        <li>
+            <span>huawei</span>
+            <span>约310件</span>
+        </li>
+
+    </ul>
+
+    <script type="text/javascript">
+        var inp = document.querySelector("#inp");
+        var uls = document.querySelector("#uls");
+        inp.onclick = function(e){
+            var ev = window.event || e;
+            ev.stopPropagation();
+            // ev.cancelBubble = true;
+            uls.style.display = 'block';
+        }
+
+        for(var i = 0; i < uls.children.length; i++){
+            uls.children[i].onclick = function(){
+                inp.value = this.children[0].innerHTML;
+                uls.style.display = 'none';
+            }
+        }
+
+        document.onclick = function(){
+            uls.style.display = 'none';
+        }
+
+
+
+
+        // var arr = [];
+        // for(var i = 1; i <= 6; i++){
+        //     arr.push(i * (i + 1));
+        // }
+        // // console.log(arr);
+        // // [2, 6, 12, 20, 30, 42]
+        // while (val = arr.shift()) {
+        //     console.log(val);
+        // }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" src='jsonp.js'></script>
+    <script type="text/javascript">
+        jsonpFn({
+            url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+            data:{
+                wd:'sss',
+            },
+            jsonp:'cb',
+            successFn:function(data){
+                console.log(data);
+            }
+        });
+
+    </script>
+</body>
+</html>

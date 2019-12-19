@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #redDiv{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="redDiv"></div>
+    <script type="text/javascript" src='tween.js'></script>
+    <script type="text/javascript">
+        // 运动方式(运动轨迹)
+
+        // 开始的位置
+        // 结束的位置
+        // 变化量 = 结束的位置 - 开始的位置
+        // 开始的步数
+        // 结束的步数
+        // var timer = setInterval(function(){
+        //      开始的步数++
+        //      if(开始的步数 >= 结束的步数){
+        //          clearInterval(timer);
+        //      }
+        //       Tween.Bounce.easeOut(开始的步数,开始的距离,变化量,结束的步数);
+        // },30)
+
+        var redDiv = document.querySelector("#redDiv");
+
+        var startL = 0;
+        var endL = 500;
+        var changeL = endL - startL;
+        var startStep = 0;
+        var endStep = 50;
+        var timer = setInterval(function(){
+            startStep++;
+            if(startStep >= endStep){
+                clearInterval(timer);
+            }
+            redDiv.style.left = Tween.Bounce.easeIn(startStep,startL,changeL,endStep) + 'px';
+        },30);
+
+    </script>
+</body>
+</html>

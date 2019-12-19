@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		.wrap{
+			width: 1000px;
+			margin:100px auto;
+			text-align: center;
+			font-size: 50px;
+			font-family: '楷体';
+		}
+		span{
+			color:red;
+		}
+		#tim{
+			width: 1000px;
+			margin:50px auto;
+			text-align: center;
+			font-size: 50px;
+			font-family: '楷体';
+		}
+	</style>
+</head>
+<body>
+	<div id="tim"></div>
+	<div class="wrap">
+		<span id="day">天</span>
+		<span id="hour">时</span>
+		<span id="minute">分</span>
+		<span id="second">秒</span>
+	</div>
+	<script type="text/javascript">
+		fm();
+		setInterval(fm,1000);
+		function fm(){
+			var tim = document.querySelector('#tim');
+			var date = new Date();
+			// 年
+			var year = date.getFullYear();
+			// 月
+			var month = date.getMonth() + 1;
+			// 日
+			var dates = date.getDate();
+			// 时
+			var hour = date.getHours();
+			// 分
+			var minute = date.getMinutes();
+			// 秒
+			var second = date.getSeconds();
+			second < 10 ? (second ='0' + date.getSeconds()) :second = date.getSeconds();
+			// 周
+			var day = date.getDay();
+			tim.innerHTML = '<span>现在是:</span>' + year + '年' + month + '月' + dates + '日' + hour + '时' + minute + '分' + second + '秒' + '星期' + day;
+		};
+	</script>
+	<script type="text/javascript">
+		var wrap = document.querySelector('.wrap');
+		var day = document.querySelector('#day');
+		var hour = document.querySelector('#hour');
+		var minute = document.querySelector('#minute');
+		var second = document.querySelector('#second');
+		
+		fn();
+		setInterval(fn,1000);
+
+		function fn(){
+			var date = new Date();//当前时间
+			var n = date.getTime();//时间戳到当前时间的毫秒数
+			var newDate = new Date('2017/11/11 00:00:00');//到期时间
+			var nd = newDate.getTime();//时间戳到到期时间的毫秒数
+			var m = nd - n;//总共经历的毫秒数
+
+			var dayss = m / 1000 / 60 / 60 /24;//带小数点的天数
+			var days = parseInt(dayss);//取整的天数
+			day.innerHTML = days;
+
+			var hourss = (dayss - days) * 24;//带小数点的小时值
+			var hours = parseInt(hourss);//取整的小时值
+			hour.innerHTML = hours;
+
+			var minutess = (hourss - hours) * 60;//带小数点的分数值
+			var minutes = parseInt(minutess);//取整的分数值
+			minute.innerHTML = minutes;
+
+			var secondss = (minutess - minutes) * 60;//带小数点的秒数
+			var seconds = parseInt(secondss);//取整的秒数
+			second.innerHTML = seconds;
+			
+			if(m <= 0) {
+				clearInterval(timer);
+			}
+
+			wrap.innerHTML = '<span>距离回家还有:</span>' + days + '日' + hours + '时' + minutes + '分' + seconds + '秒';
+		};
+	</script>
+</body>
+</html>

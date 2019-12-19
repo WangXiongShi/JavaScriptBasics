@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <script type="text/javascript">
+    HTMLElement.prototype.css = function(obj){
+
+        for(var key in obj){
+            this.style[key] = obj[key];
+        }
+    }
+    var div1 = document.querySelector('#div1');
+    div1.css({
+        width:'100px',
+        height:'200px',
+        background:'red',
+        borderRadius:'50px'
+    });
+
+    // div1.css('','');
+    // div1.css({});
+
+
+
+
+
+
+    </script>
+</body>
+</html>

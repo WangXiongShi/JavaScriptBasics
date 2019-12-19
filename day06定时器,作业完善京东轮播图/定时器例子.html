@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#wrap{
+			width: 96px;
+			height: 120px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			transition:.5s all;
+			cursor:pointer;
+			text-align: center;
+		}
+		#wrap:hover{
+			box-shadow: 0px 0px 60px #000;
+			border-radius:20px;
+			width: 110px;
+			height: 135px;
+		}
+		#startBtn{
+			cursor:pointer;
+		}
+		#endBtn{
+			cursor:pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<h1 id="xm">李士杰</h1>
+		<button id="startBtn">开始</button>
+		<!-- <button id="endBtn">结束</button> -->
+	</div>
+
+	<script type="text/javascript">
+		var arr = ['陈润泽','贾福玲','石威','卢楷锐','杨丹妮','赵育博','老柴','周丹','朱创伟','王雄师','冯文越','常达衢','樊腾飞','王凯文','赵栋','曾旭','李元','孙凯旋','张浩楠','贾雨林','白隐杰','逯珍妮','周恩德','杨光','武小强','温斌','张宇','李嵩','祁庆伟','李国韬','李宁泽','牛秀峰','宋文辉','侯帅博'];
+		var startBtn = document.getElementById('startBtn');
+		var endBtn = document.getElementById('endBtn');
+		var xm = document.getElementById('xm');
+		var index = 0;
+		var timer = null;
+		var bol = true;
+
+		startBtn.onclick = function(){
+			if(bol){
+				clearInterval(timer);	//清除上一个定时器
+				timer = setInterval(function(){
+					xm.innerHTML = arr[index];
+					index++;
+					if(index >= arr.length){
+						index = 0;
+					}
+				},100);
+				this.innerHTML = '结束';
+			}else{
+				clearInterval(timer);
+				this.innerHTML = '开始';
+			}
+			bol = !bol;
+		}
+			
+		// startBtn.onclick = function(){
+		// 	clearInterval(timer);	//清除上一个定时器
+		// 	timer = setInterval(function(){
+		// 		xm.innerHTML = arr[index];
+		// 		index++;
+		// 		if(index >= arr.length){
+		// 			index = 0;
+		// 		}
+		// 	},100);
+		// }
+		// endBtn.onclick = function(){
+		// 	clearInterval(timer);
+		// }
+	</script>
+</body>
+</html>

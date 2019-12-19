@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            position: relative;
+        }
+        ul{
+            list-style:none;
+        }
+        p{
+            text-align: center;
+        }
+        li{
+            width: 100px;
+            width: 20%;
+            border-bottom: 1px solid pink;
+        }
+        img{
+            width: 80%;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>购物车空空如也</h1> -->
+    <ul id="uls"></ul>
+    <script type="text/javascript">
+        // 从localStorage中获取数据
+        // var dataArr = JSON.parse(localStorage.lists);
+        // var uls = document.querySelector("#uls");
+        // for(var i = 0; i < dataArr.length; i++){
+        //     var li = document.createElement('li');
+        //     li.innerHTML = '<div><img src="'+dataArr[i].imgSrc+'"></div><p>'+dataArr[i].title+'</p><p>'+dataArr[i].content+'</p><p>'+dataArr[i].price+'</p>';
+        //     uls.appendChild(li);
+        // }
+
+        // 从localStorage中获取数据;
+        var dataArr = localStorage.lists? JSON.parse(localStorage.lists) : [];
+        var uls = document.querySelector('#uls');
+        for(var i = 0; i < dataArr.length; i++){
+            var li = document.createElement('li');
+            li.innerHTML = '<div><img src="'+dataArr[i].imgSrc+'"></div><p>'+dataArr[i].title+'</p><p>'+dataArr[i].content+'</p><p>'+dataArr[i].price+'</p>' + '<p>数量:'+dataArr[i].num+'</p>'+'<p>总价 :'+dataArr[i].total+'元</p>';
+           // console.log(dataArr[i].total);
+            uls.appendChild(li);
+        }
+
+        // var p = document.createElement('p');
+        // p.innerHTML = '<span>'++'</span>';
+        // gross.appendChild(p);
+
+
+
+
+
+    </script>
+</body>
+</html>

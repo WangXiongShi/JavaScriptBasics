@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,ol{
+			list-style:none;
+		}
+		li:hover{
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" name="" id="inp">
+	<ul id="list"></ul>
+	<script>
+		var arr = [
+			{name:'小米',price:'188元'},
+			{name:'苹果',price:'3888元'},
+			{name:'iphone4',price:'2888元'},
+			{name:'iphone5',price:'2822元'},
+			{name:'iphone6',price:'1848元'},
+			{name:'魅族',price:'18888元'}
+		];
+		inp.oninput = function(){
+			list.innerHTML = '';
+			for(var i = 0; i < arr.length; i++){
+				if(arr[i].name.indexOf(this.value) != -1 && this.value != ''){
+					var li = document.createElement('li');
+					li.innerHTML = arr[i].name;
+					list.appendChild(li);
+				}
+			}
+			// var that = this;
+			// arr.forEach(function(val,index){
+			// 	if(val.name.indexOf(that.value) != -1 && that.value != ''){
+			// 		var li = document.createElement('li');
+			// 		li.innerHTML = val.name;
+			// 		list.appendChild(li);
+			// 	}
+			// });
+		}
+
+	</script>
+</body>
+</html>

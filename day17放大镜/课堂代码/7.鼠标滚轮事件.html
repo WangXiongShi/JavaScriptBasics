@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 鼠标滚轮事件
+        // 在当我们滚动鼠标滚轮时,就触发了鼠标的滚轮事件,常见的有通过滚轮来移动页面。
+        // 在绑定滚轮事件时,我们需要注意浏览器之间的兼容,主要是处理火狐浏览器和其他 浏览器之间的兼容性。
+        // 在火狐浏览器中,滚轮事件叫做: DOMMouseScroll ,其他浏览 器中,滚轮事件叫做: onmousewheel
+
+        // document.addEventListener('mousewheel',function(e){
+        //     var ev = window.event || e;
+        //     console.log(ev);
+        // });
+
+        // wheelDelta:正数向上滚动,负数是向下滚动
+        // document.onmousewheel = function(e){
+        //     var ev = window.event || e;
+        //     console.log(ev.wheelDelta);
+        //     if(ev.wheelDelta > 0){
+        //         console.log('向上');
+        //     }else{
+        //         console.log('向下');
+        //     }
+        // }
+
+    // DOMMouseScroll
+    // 火狐:detail:正数代表向下,负数代表向上
+    // document.addEventListener('DOMMouseScroll',function(e){
+    //     var ev = e || window.event;
+
+    //     console.log(ev.detail);
+    //     if(ev.detail > 0){
+    //         console.log('向下');
+    //     }else{
+    //         console.log('向上');
+    //     }
+    // });
+
+
+
+    </script>
+</body>
+</html>

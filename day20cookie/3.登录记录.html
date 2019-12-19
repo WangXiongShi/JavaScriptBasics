@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<label for="user">用户名:</label>
+	<input type="text" name="" id="user"><br />
+	<label for="pwd">密　码:</label>
+	<input type="password" name="" id="pwd"><br />
+	<button>登陆</button>
+	<div id="userList"></div>
+	<script src='store.js'></script>
+	<script>
+		// 需求:
+		// 1:每点击一次登陆, 都要将账户名密码以对象的形式插入到数组,并且将数组存放到cookie里面
+		var user = document.querySelector('#user');
+		var pwd = document.querySelector('#pwd');
+		var btn = document.querySelector('button');
+		var userList = document.querySelector('#userList');
+		// 页面加载调用函数, (把cookie里的数据展现到页面上);
+		fn();
+		// var arr = JSON.parse(getCookie('list'));
+		var arr = getCookie('list') ? JSON.parse(getCookie('list')) : [];
+		btn.onclick = function(){
+			if(user.value == '' || pwd.value == ''){
+				return;
+			}
+			var obj = {};
+			// console.log(user.value);
+			// console.log(pwd.value);
+			obj.userName = user.value;
+			obj.password = pwd.value;
+			arr.push(obj);
+			// 将数组转换为json字符串
+			var str = JSON.stringify(arr);
+			setCookie('list',str,10);
+			// console.log(arr);
+			fn();
+		}
+
+		// 假如cookie里面有用户信息,把用户信息添加到
+		function fn(){
+			userList.innerHTML = '';
+			if(getCookie('list')){
+				var str = getCookie('list');
+				var arr = JSON.parse(str);
+				for (var i = 0; i < arr.length; i++) {
+					var p = document.createElement('p');
+					p.innerHTML = '用户名:' + arr[i].userName + '<br>' + '密　码:' + arr[i].password;
+					userList.appendChild(p);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

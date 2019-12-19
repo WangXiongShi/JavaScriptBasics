@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="d1"></div>
+<script>
+//HTML
+function a(){
+    document.getElementById("d1").innerHTML="<img src='http://baike.baidu.com/cms/rc/240x112dierzhou.jpg'>";
+}
+a();
+//方法
+function b(){
+    var d1=document.getElementById("d1");
+    var img=document.createElement("img");
+    img.src="http://baike.baidu.com/cms/rc/240x112dierzhou.jpg";
+    d1.appendChild(img);
+}
+b();
+//对象
+function c(){
+    var cc=new Image();
+    cc.src="http://baike.baidu.com/cms/rc/240x112dierzhou.jpg";
+    document.getElementById("d1").appendChild(cc);
+}
+c();
+</script>
+</body>
+</html>

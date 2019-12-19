@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		ul{list-style: none;}
+		#wrap ul{
+			width: 25%;
+			float: left;
+			transition:.5s all;
+		}
+		#wrap ul:hover{
+			/*box-shadow: 0 0 10px orange;*/
+		}
+		.clearFix::after{
+			content:'';
+			display:block;
+			clear: both;
+		}
+		#wrap ul li{
+			width: 96%;
+			margin: 3% 2%;
+		}
+		#wrap ul li img{display:block;width: 100%;}
+	</style>
+</head>
+<body>
+	<div id="wrap" class="clearFix">
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+	</div>
+	<script>
+		// 创建39个li,并插入图片
+		// 把创建出来的li插入到高度最低的ul里面
+
+
+		var uls = document.querySelectorAll('ul');
+		for(var i = 1; i < 40; i++){
+			var li = document.createElement('li');
+			li.innerHTML = '<img src="imgs/' + i + '.jpg">';
+			// 要等待图片加载完成,才能获取到ul的高度
+			li.children[0].onload = function(){
+				// console.log(this);
+				var ulHeightArr = [];
+				for(var i = 0; i < uls.length; i++){
+					ulHeightArr.push(uls[i].offsetHeight);
+					// console.log(uls[i].offsetHeight);
+					var ulMinHeight = ulHeightArr[0];
+					var index = 0;
+					for(var j = 0; j < ulHeightArr.length; j++){
+						if(ulMinHeight > ulHeightArr[j]){
+							index = j;
+							ulMinHeight = ulHeightArr[j];
+						}
+					}
+				}
+				// 第一步:要拿到所有ul的高度,并且存放到数组中
+				// 第二步:获取存放ul高度数组中的最小值,并获取对应的下标
+				uls[index].appendChild(this.parentNode);
+			}
+		
+		}
+		// var arr = [11,2,3,2421,321,3,21,421,4,214,21,42,1,2]
+		// var index = 0;
+		// var a = arr[0];//假设是最小数
+		// for(var i = 0; i < arr.length; i++){//获取数组中最小值,并返回下标
+		// 	if(a > arr[i]){
+		// 		index = i;
+		// 		a = arr[i];
+		// 	}
+		// }
+		// console.log(a,index);
+
+
+		// var arr = [11,2,3,2421,321,3,21,421,4,214,21,42,1,2];
+
+		// function minItem(arr,fn){
+		// 	var index = 0;
+		// 	var a = arr[0];//假设是最小数
+		// 	for(var i = 0; i < arr.length; i++){//获取数组中最小值,并返回下标
+		// 		if(a > arr[i]){
+		// 			index = i;
+		// 			a = arr[i];
+		// 		}
+		// 	}
+		// 	fn(a,index);
+		// }
+		// minItem(arr, function(a,index){
+		// 	console.log(a,index);
+		// });
+
+	</script>
+</body>
+</html>

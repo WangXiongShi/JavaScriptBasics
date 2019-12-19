@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#h{height: 10000px;}
+		#box{position: fixed; top: 500px;right: 50px;background-color: #000;color:white;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="h"></div>
+	<div id="box">返回顶部</div>
+
+	<script>
+		// scrollTop:滚动条距离元素上边的距离
+		// scrollLeft:滚动条距离元素左边的距离
+
+		
+		// chrome获取scrollTop值
+		// document.body.scrollTop
+
+		// 非chrome获取scrollTop值
+		// document.documentElement.scrollTop
+
+		var h = document.querySelector('#h');
+		var box = document.querySelector('#box');
+		var scrollTop = 0;
+
+	    window.onscroll = function(){
+	        console.log('非chorme------->'+document.documentElement.scrollTop);
+	        console.log('chorme------>'+document.body.scrollTop);
+
+	        if(document.documentElement.scrollTop){
+	            scrollTop = document.documentElement.scrollTop;
+	        }else{
+	            scrollTop = document.body.scrollTop;
+	        }
+
+	        if(scrollTop >= 500){
+	            box.style.display = 'block';
+	        }else{
+	            box.style.display = 'none';
+	        }
+	    }
+	    box.onclick = function(){
+	        // alert(1);
+	        document.documentElement.scrollTop = 0;
+	        document.body.scrollTop = 0;
+	    }
+	</script>
+</body>
+</html>

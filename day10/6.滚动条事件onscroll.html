@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		#box{position: absolute;top: 50%;left: 50%;transform:translate(-50%,-50%); width: 400px;height: 100px;box-shadow:0 0 10px black;overflow: scroll;}
+		#wrap{height: 740px;background-color: #000;text-align: center;}
+		h1{height: 100px;color:white;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="wrap">
+			<h1>我是h1</h1>
+			<h1>我是h2</h1>
+			<h1>我是h3</h1>
+			<h1>我是h4</h1>
+			<h1>我是h5</h1>
+			<h1>我是h6</h1>
+			<h1>我是h7</h1>
+		</div>
+	</div>
+	<script>
+		// onscroll:事件在带有滚动条的元素上滚动时触发 
+		// 在有滚动条出现的元素上添加onscroll才能生效
+		var box = document.querySelector('#box');
+		box.onscroll = function(){
+			console.log(box.scrollTop);
+			if(box.scrollTop >= 550){
+				// wrap.style.background = 'blue';
+				box.scrollTop = 0;
+			}
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function Animal(){
+	　　　　this.aaa = "动物";
+	　　}
+		function Cat(name,color){
+	　　　　this.name = name;
+	　　　　this.color = color;
+	　　}
+		// 继承一定要写在构造对象之前
+		Cat.prototype = new Animal();
+		// 需要改变Cat的构造函数指向,如果不改变(Cat的构造函数指向的是Animal)会造成继承者链紊乱 
+		Cat.prototype.constructor = Cat;
+
+		var cat1 = new Cat('乐乐','黑白');
+		console.log(cat1.aaa);
+	</script>
+</body>
+</html>

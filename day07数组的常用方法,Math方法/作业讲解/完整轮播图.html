@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0px;padding:0px;}
+		ul{list-style: none;}
+		#wrap{
+			width: 790px;
+			height: 340px;
+			margin:100px auto;
+			overflow:hidden;
+			position: relative;
+			cursor:pointer;
+			transition:0.5s;
+		}
+		#wrap:hover{
+			box-shadow:0px 0px 20px #000;
+		}
+		#leftBtn,#rightBtn{
+			width: 40px;
+			height: 80px;
+			background-color: rgba(0,0,0,0.1);
+			position: absolute;
+			top: 130px;
+			border:0;
+			font-size: 30px;
+			color: #fff;
+			font-weight: 100;
+			display: none;
+			cursor:pointer;
+			/*z-index: 100;*/
+		}
+		#rightBtn{right: 0;}
+		#leftBtn:hover,#rightBtn:hover{
+			background-color: rgba(0,0,0,0.4);
+		}
+		#wrap div{
+			position: absolute;
+			top: 0;
+			left: 0;
+			transition:.8s;
+			opacity: 0;
+		}
+		#wrap div:first-child{
+			opacity: 1;
+		}
+		#wrap div~button{	/*波浪线相邻的所有的button*/
+			/*background-color: red;*/
+			outline-style: none;
+		}
+		#slider{
+			width: 182px;
+			height: 20px;
+			background-color: rgba(0,0,0,0.2);
+			position:absolute;
+			left: 50%;
+			bottom: 20px;
+			transform: translateX(-50%);
+			border-radius:12px;
+			/*overflow: hidden;*/
+		}
+		#slider li{
+			width: 12px;
+			height: 12px;
+			border-radius:50%;
+			background-color: #fff;
+			float: left;
+			margin-left: 20px;
+			margin-top: 4px;
+		}
+		#slider li:first-child{
+			background-color: #db192a;
+		}
+		.clearFix::after{
+			content: '';
+			display: block;
+			clear:both;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div><img src="img/1.jpg" alt="" ></div>
+		<div><img src="img/2.jpg" alt="" ></div>
+		<div><img src="img/3.jpg" alt="" ></div>
+		<div><img src="img/4.jpg" alt="" ></div>
+		<div><img src="img/5.jpg" alt="" ></div>
+		<button id="leftBtn"><</button>
+		<button id="rightBtn">></button>
+		<ul id="slider" class="clearFix">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var wrap = document.getElementById('wrap');	//获取wrap
+		var divs = wrap.getElementsByTagName('div');	//通过wrap获取他下面的div
+		var leftBtn = document.getElementById('leftBtn');	//获取左边按钮
+		var rightBtn = document.getElementById('rightBtn');	//获取右边按钮
+		var index = 0;
+		var timer = null;
+
+		var lis = document.getElementsByTagName('li');	// 获取小圆点
+
+		auotPlay();
+
+		wrap.onmouseenter = function(){	//给wrap添加鼠标移入事件
+			leftBtn.style.display = 'block';
+			rightBtn.style.display = 'block';
+			clearInterval(timer);	//鼠标移入清除定时器
+		}
+		wrap.onmouseleave = function(){	//给wrap添加鼠标移出事件
+			leftBtn.style.display = 'none';
+			rightBtn.style.display = 'none';
+			auotPlay();
+		}
+		rightBtn.onclick = function(){	// 给右边按钮添加点击事件
+			index++;
+			for(var i = 0; i < divs.length; i++){
+				divs[i].style.opacity = '0';
+				lis[i].style.background = '#fff';
+			}
+			if(index >= 5){
+				index = 0;
+			}
+			divs[index].style.opacity = '1';
+			lis[index].style.background = '#db192a';
+		}
+		leftBtn.onclick = function(){	// 给右边按钮添加点击事件
+			index--;
+			for(var i = 0; i < divs.length; i++){
+				divs[i].style.opacity = '0';
+				lis[i].style.background = '#fff';
+			}
+			if(index < 0){
+				index = 4;
+			}
+			divs[index].style.opacity = '1';
+			lis[index].style.background = '#db192a';
+		}
+		function auotPlay(){
+			timer = setInterval(function(){
+	            for(var i = 0 ; i < divs.length; i++){
+	                divs[i].style.opacity = '0';
+	                lis[i].style.background = '#fff';
+	            }
+	            if(index >= 5){
+	                index = 0;
+	            }
+	            divs[index].style.opacity = '1';
+	            lis[index].style.background = '#db192a';
+	            index++;
+	        },1000);
+		}
+
+
+		// 给所有的小圆点添加点击事件
+		for(var i = 0; i < lis.length; i++){
+			lis[i].index = i;
+			lis[i].onmouseenter = function(){
+				for(var j = 0; j < lis.length; j++){
+					lis[j].style.background = '#fff';
+	                divs[j].style.opacity = '0';
+				}
+				this.style.background = '#db192a';
+				// 切换图片
+	            divs[this.index].style.opacity = '1';
+	            index = this.index;
+			}
+		}
+	</script>
+</body>
+</html>

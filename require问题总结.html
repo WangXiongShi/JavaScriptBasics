@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>1:`baseUrl`:在require中baseUrl`相对于主目录`</title>
+
+</head>
+<body>
+<center><h1 style='color:tomato'>require问题总结</h1></center>
+
+
+<h4>1:<code>baseUrl</code>:在require中baseUrl<code>相对于主目录</code></h4>
+
+<h4>2:有主的模块，不能使用别名,例如:<code>jquery</code>是有主模块</h4>
+
+<h4>3:在paths中配置模块时不能加后缀.js,例如:<code>'jquery':'jquery.js'</code></h4>
+
+<pre><code>require.config({
+    //在RequireJS中，baseUrl的定义是“相对于主目录”的。
+    baseUrl: './libs',
+    paths: {
+        // 'backbone': 'backbone',
+        // 有主的模块，不能使用别名(例如,jquery是有主模块)
+        'jquery':'jquery',
+        'a':'../common/a',
+        'b11':'../common/b',
+
+    }
+});
+</code></pre>
+
+<pre><code>【重点】
+1:遵守AMD规范的"有主"模块,需要进行路径配置,否则不能使用require加载
+2:遵循AMD规范的"无主"模块,可以require(路径)直接使用路径进行去加载,还可以对无主模块进行paths配置并且自定义paths的key(模块名字)
+3:不遵循AMD规范的模块,如何加载？？？？？？
+
+【config】注意事项
+1:在config里面paths对象值是路径,
+2:该paths路径不能直接使用./
+3:paths路径要严格按照目录路径查找(例如:../../js/)
+4:该路径不能包含后缀名
+5:paths对象key对于有主模块来说是不能修改有主模块的名字
+</code></pre>
+
+<h4>4:配置不遵循AMD规范的模块</h4>
+
+<pre><code>require.config({
+    //在RequireJS中，baseUrl的定义是“相对于主目录”的。
+    baseUrl: './libs',
+    paths: {
+        // 'backbone': 'backbone',
+        // 有主的模块，不能使用别名(例如,jquery是有主模块)
+        'jquery':'https://cdn.bootcss.com/jquery/3.1.0/jquery',
+        'a':'../common/a',
+        'b11':'../common/b',
+        'swiper':'https://cdn.bootcss.com/Swiper/4.0.1/js/swiper',
+        'text':'text'
+    },
+    shim:{
+        "underscore":{
+            // 依赖文件
+            deps:['jquery'],
+            // 导出对象
+            exports:"_"
+        },
+        'jisuan':{
+            deps:['jquery'],
+            // 导出对象(暴露出来的对象)
+            exports:'math'
+        }
+    }
+
+});
+</code></pre>
+
+<h4>5:模块化使用require()加载的时候,路径一定是<code>./</code>不能使用<code>../</code>,在写路径的过程中后缀名在require加载的时候可写可不写</h4>
+
+<pre><code>require(['./libs/toColor.js'],function(a){
+    var box1 = document.querySelector("#box1");
+    a.toColor(box1, 'green');
+});
+</code></pre>
+
+<h4>:text插件是ajax请求所以会存在跨域,一定要在服务端运行</h4>
+</body>
+</html>

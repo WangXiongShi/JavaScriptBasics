@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div name='divs'></div>
+    <script type="text/javascript">
+    var divs = document.querySelector("div");
+
+    // Attribute:适用于元素内置的属性(例如:id,src,class,cheacked...)
+
+    // getAttribute(name)：获取节点上name属性的值
+    console.log(divs.getAttribute('name'));
+
+    // setAttribute(name,value)：设置节点上name属性的值为value
+
+    divs.setAttribute('name','hashdasd');
+
+    // removeAttribute(name)：删除节点上的name属性
+    divs.removeAttribute('name');
+
+    </script>
+</body>
+</html>

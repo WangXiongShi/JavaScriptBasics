@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">div1</div>
+    <div class="box">div2</div>
+    <div class="box">div3</div>
+    <script type="text/javascript">
+    var boxs = document.getElementsByClassName('box');
+    for(var i = 0; i < boxs.length; i++){
+        boxs[i].index = i;
+        boxs[i].onclick = function(){
+            console.log(this.index);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

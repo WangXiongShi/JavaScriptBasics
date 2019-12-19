@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+
+    var str = 'hello world';
+    // length：返回字符串的长度
+    // console.log(str.length);
+
+    // charAt()：返回指定索引位置的字符
+    // console.log(str.charAt(6));
+
+    // indexOf()：返回字符串中检索指定字符第一次出现的位置
+    // console.log(str.indexOf('o'));
+
+    // lastIndexOf()：返回字符串中检索指定字符最后一次出现的位置
+    // console.log(str.lastIndexOf('o'));
+
+    // replace()：替换匹配字符
+    // console.log(str.replace('o','*'));
+
+    // slice()：根据下标提取字符串的片断，返回被提取的部分
+    // console.log(str.slice(-3,-1));
+
+    // substring()：提取字符串中两个指定的索引号之间的字符
+    // console.log(str.substring());
+
+    // slice()与substring()不同：substring()负的参数是无效的
+    // split()：把字符串分割为子字符串数组
+    // console.log(str.split('o'));
+
+    // toString()：转换为字符串
+
+    // var num = 100;
+    // console.log(typeof num.toString());
+
+    // toUpperCase()：把字母转换为大写。
+    // console.log(str.toUpperCase());
+    // console.log(str.charAt(0).toUpperCase() + str.replace('h',''));
+
+
+    // console.log(str3);
+    // toLowerCase()：把字母转换为小写。
+
+    // console.log(str.toLowerCase());
+
+    // 打字机效果
+    // document.write()
+    // charAt()
+    // setInterval
+    var txt = '的萨克的黄金卡是的假爱数据库的哈看技术大恒科技啊方便卡死办法哈上边发生饭吧函数的办法哈回复啊不是的萨克的黄金卡是的假爱数据库的哈看技术大恒科技啊方便卡死办法哈上边发生饭吧函数的办法哈回复啊不是的萨克的黄金卡是的假爱数据库的哈看技术大恒科技啊方便卡死办法哈上边发生饭吧函数的办法哈回复啊不是的萨克的黄金卡是的假爱数据库的哈看技术大恒科技啊方便卡死办法哈上边发生饭吧函数的办法哈回复啊不是';
+
+    // var index = 0;
+    // var timer = setInterval(function(){
+    //     var a = txt.charAt(index);
+    //     index++;
+    //     document.write(a);
+    //     if(index > txt.length){
+    //         clearInterval(timer);
+    //     }
+    // },100);
+
+    // 字符串反转
+    var name = 'shiwei';
+    var s = '';
+    for(var i = 0; i < name.length; i++){
+        s = s + name.charAt(name.length - 1 - i);
+    }
+    console.log(s);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

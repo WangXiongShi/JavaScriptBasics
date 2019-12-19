@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>登陆页面</h1>
+    用户名<input type="text" name="" id="user"></br>
+    密码<input type="password" id="pwd"></br>
+    <button id="btn">登陆</button>
+
+    <script type="text/javascript">
+        var userName = document.querySelector('#user');
+        var pwd = document.querySelector('#pwd');
+
+        var btn = document.querySelector('#btn');
+        btn.addEventListener('click',function(){
+            // http:www.baidu.com?name=shiwei&age=18
+
+            // 跳转到第二个页面,并在地址栏拼接参数
+            window.location.href = '2.detail.html?name=' + userName.value + '&' + 'pwd=' + pwd.value;
+        });
+
+
+
+
+
+    </script>
+</body>
+</html>

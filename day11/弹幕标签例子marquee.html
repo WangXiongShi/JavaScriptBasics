@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- behavior 滚动的方式 alternate scroll slide -->
+	<!-- direction:方向 上up 下down 左left 右right -->
+	<!-- loop 弹幕的循环次数 -1和数值 -->
+	<!-- scrollamount 滚动速度 -->
+	<!-- scrolldelay 延迟 -->
+	<!-- hspace 左右margin -->
+	<!-- vspace 上下margin -->
+	<!-- onmouseout 鼠标移出 -->
+	<!-- onmouseover 鼠标移入 -->
+	
+	<marquee behavior="" direction="right">1111</marquee>
+	<marquee onmouseout='this.start()' onmouseover='this.stop()' >loop 弹幕的循环次数 -1和数值</marquee>
+	<marquee behavior="scroll" bgcolor='blue' direction="up" loop='-1' width="300px" onmouseout='this.start()' onmouseover='this.stop()' scrollamount='10' scrolldelay='1000'>
+		<h1>我是h1</h1>
+		<h1>我是h2</h1>
+		<h1>我是h3</h1>
+		<h1>我是h4</h1>
+		<h1>我是h5</h1>
+		<h1>我是h6</h1>
+	</marquee>
+
+	<marquee scrollamount='10'>延迟='10'</marquee>
+	<marquee scrollamount='100'>延迟='100'</marquee>
+	<!-- <marquee scrollamount='1000'>延迟='1000'</marquee> -->
+</body>
+</html>

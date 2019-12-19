@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="" id="btn">
+	<button>按钮</button>
+	<select>
+		<option>小米</option>
+		<option>苹果</option>
+		<option>魅族</option>
+	</select>
+	<script type="text/javascript">
+		var btn = document.querySelector('#btn');
+		var button = document.querySelector('button');
+		var select = document.querySelector('select');
+		button.onclick = function(){
+			alert(btn.value);
+			alert(select.value);
+		}
+	</script>
+</body>
+</html>

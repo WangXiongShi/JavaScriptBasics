@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // var arr = [9,4,7,3,1,13];
+
+        // 对数组进行排序(从小到大)
+        // 思路
+        // 1:找到原数组中最小的元素的下标
+        // 2:根据下标找到对应的最小值,并且插入到新的数组中
+        // 3:根据下标删除原数组中对应的元素
+
+        var tempArr = [];
+        var len = arr.length;
+        while (tempArr.length < len) {
+            var min = arr[0];
+            var index = 0;
+            for(var i = 0; i < arr.length; i++){
+                if(min > arr[i]){
+                    min = arr[i];
+                    index = i;
+                }
+            }
+            tempArr.push(arr[index]);
+            arr.splice(index,1);
+        }
+        console.log(tempArr);
+
+
+        var arr = [9,4,7,3,1,13];
+        // 交换排序(冒泡)
+
+        //1: 我们需要执行多少轮才能把数组中的数交换完?
+        //2: 两个值如何交换？
+        //3: 每执行一轮需要比较几次?
+        for(var i = 0; i < arr.length -1; i++){
+            for(var j = 0; j < arr.length - 1 - i; j++){
+                if(arr[j] > arr[j+1]){
+                    var temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+        console.log(arr);
+
+
+
+
+        // var num1 = 10;
+        // var num2 = 20;
+        // var temp = 0;
+
+        // temp = num1;
+        // num1 = num2;
+        // num2 = temp;
+        // console.log(num2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

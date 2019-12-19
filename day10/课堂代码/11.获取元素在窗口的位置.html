@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .wrap{
+            width: 600px;
+            height: 600px;
+            background: red;
+            position: relative;
+        }
+        .content{
+            width: 300px;
+            height: 300px;
+            background: pink;
+            position: absolute;
+            top: 100px;
+            left: 150px;
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            position: absolute;
+            top: 90px;
+            left: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="content">
+            <div class="box1"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var box1 = document.querySelector(".box1");
+        // console.log(box1.offsetTop);
+        // console.log(box1.parentNode.offsetTop);
+        // console.log(box1.parentNode.parentNode.offsetTop);
+        // console.log(box1.parentNode.parentNode.parentNode.parentNode.parentNode);
+
+        // offsetParent  获取父级标签
+
+        //
+        function offsetFn(obj){
+            var top = 0;
+            var left = 0;
+            while (obj) {
+                // console.log(obj);
+                top = top + obj.offsetTop;
+                left = left + obj.offsetLeft;
+                obj = obj.offsetParent;
+            }
+            return {
+                top:top,
+                left:left
+            }
+        }
+    console.log(offsetFn(box1));
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

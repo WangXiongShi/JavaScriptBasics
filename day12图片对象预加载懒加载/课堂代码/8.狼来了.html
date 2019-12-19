@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <img src="images/h0.png" id="wolf">
+    </div>
+    <script type="text/javascript">
+        var wolf = document.querySelector("#wolf");
+        var index = 0;
+        var timer = setInterval(function(){
+            index++;
+            wolf.src = 'images/h'+ index + '.png';
+            if(index >= 5){
+                wolf.parentNode.removeChild(wolf);
+                clearInterval(timer);
+            }
+        },300);
+
+        wolf.onclick = function(){
+            index = 5;
+            clearInterval(timer);
+            var t = setInterval(function(){
+                index++;
+                wolf.src = 'images/h'+ index + '.png';
+                if(index >= 9){
+                    clearInterval(t);
+                    wolf.parentNode.removeChild(wolf);
+                }
+        },300);
+        }
+
+
+    </script>
+</body>
+</html>

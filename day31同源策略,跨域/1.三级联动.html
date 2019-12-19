@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <select id="province">
+        <option value="">请选择省份</option>
+    </select>
+    <select id="city">
+        <option value="">请选择城市</option>
+    </select>
+    <select id="area">
+        <option value="">请选择县区</option>
+    </select>
+
+    <script type="text/javascript" src='ajax.js'></script>
+    <script type="text/javascript">
+    var province = document.querySelector('#province');
+    var city = document.querySelector('#city');
+    var area = document.querySelector('#area');
+
+        // 获取城市列表
+        ajaxFn({
+            url:'http://127.0.0.1/day31/data/address.json',
+            successFn:function(data){
+                for(var i = 0; i < data.length; i++){
+                    province.innerHTML += '<option value="'+i+'">'+data[i].Name+'</option>';
+                }
+                // 选择省份,监听改变事件
+                province.onchange = function(){
+                    city.innerHTML = '<option value="">请选择城市</option>';
+                    area.innerHTML = '<option value="">请选择县区</option>';
+                    if(!this.value){
+                        return;
+                    }
+                    // 遍历城市列表
+                    var cityArr = data[this.value].City;
+                    // console.log(cityArr);
+                    for(var i = 0; i < cityArr.length; i++){
+                        // 创建option插入到city里面
+                        city.innerHTML += '<option value="'+i+'">'+cityArr[i].Name+'</option>';
+                    }
+                }
+
+                city.onchange = function(){
+
+                    area.innerHTML = '<option>请选择县区</option>';
+
+                    if(!this.value){
+                        return;
+                    }
+                    if(data[province.value].City[this.value].Region){
+                        var region = data[province.value].City[this.value].Region;
+                        for(var i = 0; i < region.length; i++){
+                            area.innerHTML += '<option>'+region[i].Name+'</option>';
+                        }
+                    }else{
+                        area.innerHTML = '<option>'+data[province.value].City[this.value].Name+'</option>';
+                    }
+
+
+                }
+
+            }
+        });
+
+
+
+
+
+
+    </script>
+</body>
+</html>

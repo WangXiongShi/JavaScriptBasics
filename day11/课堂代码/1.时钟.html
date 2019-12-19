@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background-image: -webkit-linear-gradient(#d3e8ef 0%,#a3adb0 50%,#767674 100%);
+            margin:100px auto;
+            position: relative;
+        }
+        #clock{
+            width: 380px;
+            height: 380px;
+            background-color: white;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            border-radius: 50%;
+        }
+        #clock div{
+            position: absolute;
+            top: 45%;
+            /*background-color: red;*/
+            left: 5px;
+            width: 370px;
+            font-size: 30px;
+        }
+        #clock div span{
+            width: 30px;
+            height: 30px;
+            display: block;
+            text-align: center;
+        }
+        #seconds{
+            width: 2px;
+            height: 190px;
+            background-color: red;
+            position: absolute;
+            top: 10px;
+            left:199px;
+            border-radius:20%;
+            /*transform: rotateZ(60deg);*/
+            transform-origin: bottom center;
+        }
+        #minutes{
+            width: 4px;
+            height: 140px;
+            background-color: blue;
+            position: absolute;
+            bottom: 200px;
+            left:198px;
+            border-radius:20%;
+            transform-origin: bottom center;
+        }
+        #hours{
+            width: 6px;
+            height: 110px;
+            background-color: black;
+            position: absolute;
+            bottom: 200px;
+            left:197px;
+            border-radius:20%;
+            transform-origin: bottom center;
+        }
+        #pendulum{
+            width: 4px;
+            height: 160px;
+            background-color: red;
+            position: absolute;
+            bottom: 40px;
+            left:198px;
+            transform-origin: top center;
+            animation-name: move;
+            animation-duration: 1s;
+            animation-direction: alternate;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        #pendulum::after{
+            display: block;
+            content: '';
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0px;
+            left: -14px;
+        }
+        @keyframes move{
+            0%{
+                transform: rotateZ(45deg);
+            }
+            100%{
+                transform: rotateZ(-45deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="clock">
+            <div><span>9</span></div>
+            <div><span>10</span></div>
+            <div><span>11</span></div>
+            <div><span>12</span></div>
+            <div><span>1</span></div>
+            <div><span>2</span></div>
+            <div><span>3</span></div>
+            <div><span>4</span></div>
+            <div><span>5</span></div>
+            <div><span>6</span></div>
+            <div><span>7</span></div>
+            <div><span>8</span></div>
+        </div>
+
+        <div id="hours"></div>
+        <div id="minutes"></div>
+        <div id="seconds"></div>
+        <div id="pendulum"></div>
+    </div>
+    <script type="text/javascript">
+        // 获取所有的数字
+        var numbers = document.querySelectorAll("#clock div");
+
+        var spans = document.querySelectorAll("#clock div span");
+
+        // 获取秒针
+        var seconds = document.querySelector("#seconds");
+
+        // 获取分针
+        var minutes = document.querySelector("#minutes");
+
+        // 获取时针
+        var hours = document.querySelector('#hours');
+
+        for(var i = 0; i < numbers.length; i++){
+            numbers[i].style.transform = 'rotateZ(' + i * 30 + 'deg)';
+            // console.log(spans[i]);
+            spans[i].style.transform = 'rotateZ(' + i * -30 + 'deg)';
+        }
+        clockInit();
+        function clockInit(){
+            var date = new Date();
+            var sec = date.getSeconds();
+            var min = date.getMinutes();
+            var h = date.getHours();
+
+            seconds.style.transform = 'rotateZ('+ sec * 6 + 'deg)';
+
+            minutes.style.transform = 'rotateZ('+ min * 6 + 'deg)';
+
+            hours.style.transform = 'rotateZ('+ h * 30 + 'deg)';
+        }
+        setInterval(function(){
+            clockInit();
+        },1000);
+
+
+
+/*
+    因为秒针走60格，分针才走1格，所以秒针走1格，分针是走1/60格。又得知秒针走1格倾斜6°，分针则倾斜6°/60
+    得此公式：6*秒针走的格数/60(1/60的格数)/60(1/60的倾斜角度)*6
+    即：6*nowSec/360*6;
+
+    因为分针走60格，时针才走1格，所以分针走1格，时针是走1/60格。又得分针走1格倾斜6°，但时针走一格倾斜30°，所以是30°/60
+    得此公式：6*分针的格数/60/60*30
+    即：6*nowMin/360*30
+*/
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

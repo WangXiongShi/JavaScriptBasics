@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 构造函数继承
+		function Animal(){
+			this.zhonglei = '动物';
+			this.sayHi=function(){
+				console.log(this.name,this.age);
+			}
+		}
+		function Fnnn(a,b){
+			Animal.call(this,arguments);
+			this.name = a;
+			this.age = b;
+		}
+		var fnnn1 = new Fnnn('小月月','2');
+		console.log(fnnn1);
+	</script>
+</body>
+</html>

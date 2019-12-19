@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #wrap ul{
+            width: 25%;
+            background-color: red;
+            float: left;
+        }
+        .clearFix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        #wrap ul li{
+            width: 96%;
+            margin: 3% 2%;
+        }
+        #wrap ul li img{
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap" class="clearFix">
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+    </div>
+    <script type="text/javascript">
+        // 获取所有的ul
+        var uls = document.querySelectorAll('#wrap ul');
+
+        // 创建39个li,并插入图片
+        for(var i = 1; i < 40; i++){
+            var li = document.createElement('li');
+            li.innerHTML = '<img src="imgs/'+i+'.jpg" />';
+            // 要等待图片加载完成,才能获取到img的高度
+            li.children[0].onload = function(){
+                var arrHeight = [];
+                // 第一步:要拿到所有ul的高度,并且存放到数组中
+                for(var j = 0; j < uls.length; j++){
+                    arrHeight.push(uls[j].offsetHeight);
+                }
+
+                // 第二步:获取存放ul高度数组中的最小值,并获取对应的下标
+                var minHeight = arrHeight[0];
+                var minIndex = 0;
+                for(var k = 0; k < arrHeight.length; k++) {
+                    if (minHeight > arrHeight[k]) {
+                        minHeight = arrHeight[k];
+                        minIndex = k;
+                    }
+                }
+                uls[minIndex].appendChild(this.parentNode);
+            }
+
+        }
+
+
+        // 把创建出来的li插入到高度最低的ul里面
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

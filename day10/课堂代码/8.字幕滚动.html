@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{width: 400px;height: 160px;background: pink;margin: 100px auto;overflow: hidden;}
+        *{margin: 0;padding: 0;}
+        #uls{list-style: none;}
+        #uls li{background: skyblue;height: 40px;}
+        #uls li:nth-child(odd){background: orange;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <ul id="uls">
+            <li>我是li1</li>
+            <li>我是li2</li>
+            <li>我是li3</li>
+            <li>我是li4</li>
+            <li>我是li5</li>
+            <li>我是li6</li>
+            <li>我是li7</li>
+            <li>我是li8</li>
+            <li>我是li1</li>
+            <li>我是li2</li>
+            <li>我是li3</li>
+            <li>我是li4</li>
+
+        </ul>
+    </div>
+    <script type="text/javascript">
+    var wrap = document.querySelector('#wrap');
+    var index = 0;
+    var timer = null;
+    function autoPlay(){
+        timer = setInterval(function(){
+            index++;
+            wrap.scrollTop = index;
+            if(wrap.scrollTop >= 320){
+                wrap.scrollTop = 0;
+                index = 0;
+            }
+        },20);
+    }
+    autoPlay();
+    wrap.onmouseenter = function(){
+        clearInterval(timer);
+    }
+    wrap.onmouseleave = function(){
+        autoPlay();
+    }
+
+
+
+
+    </script>
+</body>
+</html>

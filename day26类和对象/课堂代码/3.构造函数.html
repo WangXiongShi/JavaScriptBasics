@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 构造函数用来创建对象
+        // 在面向对象语言是使用类创建对象。
+
+        // JavaScript中没有类,它的类是用构造函数来模拟的。
+
+        // 区分构造函数与普通函数,构造函数首写字母为大写
+        function Person(a,b,c){
+            // this在构造函数里面,this就代表构造出来的对象
+            this.name = a;
+            this.age = b;
+            this.hobby = c;
+            this.sayHi = function(){
+                console.log(this.name,this.hobby,this.age);
+            }
+        }
+
+        // var lishijie = new Person('lishijie','18','code');
+        // var lukairui = new Person('卢楷锐', '30', 'code');
+        // lukairui.sayHi();
+
+        // console.log(lishijie.hobby);
+        // console.log(lishijie);
+
+
+        // 构造函数,用来构造手机
+    // 在JavaScript(ES5)没有类,只有类的概念
+    // 在JavaScript中类是由构造函数模拟出来的
+        function Phone(name,price,createTime,size,color){
+            this.name = name;
+            this.price = price;
+            this.createTime = createTime;
+            this.size = size;
+            this.color = color;
+            this.call = function(){
+                console.log('hello');
+            }
+        }
+        var iphone = new Phone('iphone X', '8999', '2017/9/15', '5.5',
+            'pink');
+
+        var phone2 = new Phone('三星', '999', '2017/1/1', '5.5', 'white');
+        console.log(phone2);
+
+
+    </script>
+</body>
+</html>

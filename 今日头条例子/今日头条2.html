@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pub</title>
+	<style>
+		*{margin:0;padding:0;}
+		#Project{position:relative;width:1000px;margin:0 auto;background:red;}
+	</style>
+</head>
+<body>
+	
+	<div id="Project"></div>
+
+
+<script>
+var MyData=[];
+var pageNum=1;
+    makdom();
+
+function makdom(){  
+    new waterfall({
+	   container:'Project',
+	   data:givedata(),
+	   rowNum:4,
+    })
+}  
+
+  //模拟数据
+ function givedata(){  
+ 	// 每次显示30条数据
+        for(var i=0;i<30;i++){
+           var h=parseInt(Math.random()*100+100);
+           var c='#'+(Math.random()*0xffffff<<0).toString(16);
+          var it={height:h,color:c};
+          MyData.push(it);
+        }  
+        return MyData
+      } 
+
+
+// 滚动加载
+var isc=0;
+var scrollFn= function (event){
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop; 
+
+            if(document.documentElement.scrollHeight == document.documentElement.clientHeight + scrollTop && isc==0) {
+             var loadmsg =document.createElement('div')
+                 loadmsg.innerHTML='加载中';
+                 loadmsg.style.cssText+='position:fixed;bottom:0;background:#fff;color:#666;text-align:center;width:100%;line-height:40px;'
+                 document.body.appendChild(loadmsg);
+                 isc++;
+                
+                 setTimeout(function(){
+                     	document.body.removeChild(loadmsg);
+                     	isc=0
+                     	makdom()
+                 },1000)
+                       return false;
+            }        
+       
+       
+ };
+
+
+ window.onmousewhell = window.onmousewheel = scrollFn;
+ window.addEventListener('DOMMouseScroll', scrollFn, false);
+ window.addEventListener('touchmove',scrollFn, false); 
+
+  
+
+// 数据处理
+function waterfall(){ 
+	console.log('读到'+Number(pageNum++)+'页');
+	 var MainBox=document.getElementById(arguments[0].container);
+     var MyData=arguments[0].data;//要显示的数据
+     var rowNum=arguments[0].rowNum; 
+     var colNum=0;
+     var itw=MainBox.offsetWidth/rowNum;   
+      var itboxs=document.createDocumentFragment();
+       var topVs=[];//存着top值
+       for(var i in MyData){
+           var itbox=document.createElement('div');
+           var kNum=i%rowNum;
+            //算坐标
+           var leftV=kNum*itw;//x轴
+           var topV=0;//y轴
+               if(kNum==0)colNum++;
+              topV=(i<rowNum)?0:MyData[i-rowNum]['height']+topVs[i-rowNum];
+              topVs.push(topV);
+               
+            itbox.style.cssText+='width:'+itw+'px;height:'+MyData[i]['height']+'px;background:;position:absolute;left:'+leftV+'px;top:'+topV+'px;overfllow:hidden;';
+            // 放内容部分
+            itboxC=document.createElement('div');
+            itboxC.style.cssText+='margin:5px;width:'+Number(itw-10)+'px;height:'+Number(MyData[i]['height']-10)+'px;background:'+MyData[i]['color']+';border-radius:4px;color:#fff;border:1px solid #ccc;';
+            
+            itboxC.innerHTML='<h1 style="text-align:center;line-height:'+Number(MyData[i]['height']-10)+'px;">'+i+'</h1>'
+            itbox.appendChild(itboxC)
+            itboxs.appendChild(itbox)    
+       }   
+
+  MainBox.appendChild(itboxs)
+ } 
+
+
+    
+ 
+
+
+</script>
+
+</body>
+</html>

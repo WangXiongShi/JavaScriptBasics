@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 对象: 对属性和方法的封装
+		// 定义对象 var obj = { 属性:name:'lihsijie',属性:age:'18',方法:say: function(){console.log('dasdwda')}};
+		// 值为function 的是方法
+		 var obj = { 
+		 	name:'lihsijie',
+		 	age:'18',
+		 	say: function(){
+		 		// console.log('dasdwda');
+		 		// this在对象的方法里, 该this代表该对象本身
+		 		console.log(this.name);
+		 	}
+		 };
+		 obj.say();
+		 // console.log(obj.name);//调用属性
+		 // console.log(obj['name']);
+		 // var abd = obj.say();
+		 // console.log(abd);//调用方法
+		 // console.log(obj['say']());
+	</script>
+</body>
+</html>

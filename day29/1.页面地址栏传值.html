@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>登录页面</h1>
+	用户名:<input type="text" name="" id="user"><br>
+	密　码:<input type="password" name="" id="pwd"><br>
+	<button id="btn">登录</button>
+	<script>
+		var userName = document.querySelector('#user');
+		var pwd = document.querySelector('#pwd');
+		var btn = document.querySelector('#btn');
+		btn.addEventListener('click',function(){
+			//https://www.baidu.com/?
+			window.location.href = '2.detal.html?name=' + userName.value + '&' + 'pwd=' + pwd.value; //跳转到第二个页面,并在地址栏拼接参数
+		})
+	</script>
+</body>
+</html>

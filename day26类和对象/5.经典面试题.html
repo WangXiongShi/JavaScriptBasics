@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		// 有一个方法, redDiv();
+		// 当dom元素调用redDiv时,该dom元素变为红色 	面试题!
+		HTMLElement.prototype.redDiv = function(){
+			this.style.background = 'red';
+		}
+		
+		var a = document.querySelector('#box');
+		a.redDiv();
+
+		// var arr = [];
+		// arr.redDiv(); //数组不能设置颜色,方法对,所以报错
+
+		
+
+		Object.prototype.sayHi = function(){ //方法
+			console.log('sdjads');
+		}
+		Object.prototype.age = '18'; //属性
+		var arr = [1,2,3];
+		arr.sayHi();
+		console.log(arr.age);
+		// 寻找方法/属性的过程:
+		// 1: --> Array构造函数 (本身找)
+		// 2: --> Array原型(prototype) (本身的原型找)
+		// 3: --> Object原型(prototype) (本身原型的父级找)
+		// 4: null
+		// 5: 报错
+	</script>
+</body>
+</html>

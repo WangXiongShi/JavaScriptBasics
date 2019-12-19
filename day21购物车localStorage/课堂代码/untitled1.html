@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            list-style:none;
+        }
+        p{
+            text-align: center;
+        }
+        li{
+            width: 100px;
+            width: 20%;
+            border-bottom: 1px solid pink;
+        }
+        img{
+            width: 80%;
+            display: block;
+            margin: 0 auto;
+        }
+        #h1{
+            color: red;
+            text-align: right;
+            padding-right: 150px;
+        }
+    </style>
+</head>
+<body>
+    <!-- <h1>购物车空空如也</h1> -->
+    <ul id="uls"></ul>
+    <h1 id="h1">总价格:</h1>
+    <script type="text/javascript">
+        // 从localStorage中获取数据
+        var dataArr = localStorage.lists ? JSON.parse(localStorage.lists) : [];
+        var uls = document.querySelector("#uls");
+        var h1 = document.querySelector('#h1');
+        var sum = 0;
+        for(var i = 0; i < dataArr.length; i++){
+            var li = document.createElement('li');
+            li.innerHTML = '<div><img src="'+dataArr[i].imgSrc+'"></div><p>'+dataArr[i].title+'</p><p>'+dataArr[i].content+'</p><p>'+dataArr[i].price+'</p>' + '<h1>数量:'+dataArr[i].num+'</h1>' + '<h1>总价格:￥'+dataArr[i].num * parseInt(dataArr[i].price)+'</h1>';
+            sum += (dataArr[i].num * parseInt(dataArr[i].price));
+            uls.appendChild(li);
+        }
+        h1.innerHTML = '总价格:￥' + sum;
+        dataArr.length ? h1.removeAttribute('hidden') : h1.setAttribute('hidden','');
+
+
+
+
+
+    </script>
+</body>
+</html>

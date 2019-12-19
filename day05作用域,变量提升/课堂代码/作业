@@ -1,0 +1,19 @@
+1:封装函数
+    getID
+    getClass
+    getTag
+    $() ----->
+        document.querySelector()/document.querySelectorAll()
+
+2:封装一个css方法(有基础的学员)
+    $('#wrap').css({'width':'100px','height':200px});
+
+
+3:定时器:一次性定时器/循环定时器
+
+
+4:倒计时(10s的倒计时)
+
+
+5:轮播图,带自动播放
+

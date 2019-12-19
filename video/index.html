@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1,maximum-scale=1'>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrapzzz{
+            position: relative;
+            width: 600px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+        video{
+            display: block;
+            object-fit: cover;
+            /*object-fit: contain;*/
+        }
+        #playBtn{
+            width: 45px;
+            height: 45px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-image: url(img/big_play_btn.png);
+            background-size: 200%;
+            z-index: 999;
+        }
+        #progressWrapzzz{
+            position: absolute;
+            width: 100%;
+            background-color: #ccc;
+            height: 5px;
+            bottom: 40px;
+            width: 100%;
+            z-index: 1000;
+        }
+        progress{
+            width: 100%;
+            display: inline-block;
+        }
+        #proplayBtn{
+
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url(img/btns.png) no-repeat;
+            vertical-align: top;
+            position: absolute;
+            top: -5px;
+            left: 15px;
+            cursor: pointer;
+        }
+        #ctrWrapzzz{
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            bottom: 0px;
+            z-index: 999;
+        }
+        #range{
+            width: 0px;
+            height: 100%;
+            background-color: #ff6700;
+        }
+        #slider{
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            border-radius: 5px;
+            position: absolute;
+            top: -2.5px;
+        }
+        #fullScreen{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url(img/btns.png) no-repeat -2px -103px;
+            vertical-align: top;
+            position: absolute;
+            bottom: 0px;
+            right: 30px;
+        }
+        #time{
+            font-size: 12px;
+            color: white;
+            position: absolute;
+            left: 60px;
+            top: 0px;
+        }
+        #sound{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: url(img/btns.png) no-repeat -2px -63px;
+            position: absolute;
+            bottom: 0px;
+            right: 180px;
+        }
+        #soundSliderWrapzzz{
+            display: inline-block;
+            width: 110px;
+            height: 5px;
+            background: #ccc;
+            position: absolute;
+            top: 5px;
+            right: 70px;
+            border-radius: 5px;
+        }
+        #sound_range{
+            width: 100%;
+            height: 100%;
+            background: orange;
+            border-radius: 5px;
+        }
+        #sound_slider{
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 10px;
+            position: absolute;
+            top: -2.5px;
+            right: 0px;
+        }
+</style>
+</head>
+<body>
+    <div id="wrapzzz">
+        <div id="playBtn"></div>
+        <div id='progressWrapzzz'>
+            <div id="range"></div>
+            <div id="slider"></div>
+        </div>
+        <div id="ctrWrapzzz">
+            <i id="proplayBtn"></i>
+            <span id="time">00:22</span>
+            <i id="sound"></i>
+            <div id="soundSliderWrapzzz">
+                <div id="sound_range"></div>
+                <div id="sound_slider"></div>
+            </div>
+            <i id="fullScreen"></i>
+        </div>
+
+        <video id="player" src="video.webm"  width="100%" height="100%" poster="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2701408155,2184514200&fm=27&gp=0.jpg" loop="true"></video>
+    </div>
+
+    <script type="text/javascript">
+        var wrapzzz = document.querySelector('#wrapzzz');
+        var player = document.querySelector("video");
+        var playBtn = document.querySelector("#playBtn");
+        var proplayBtn = document.querySelector("#proplayBtn");
+        var progressWrapzzz = document.querySelector("#progressWrapzzz");
+        var slider = document.querySelector("#slider");
+        var range = document.querySelector('#range');
+        var ctrWrapzzz = document.querySelector("#ctrWrapzzz");
+        var fullScreen = document.querySelector("#fullScreen");
+        var time = document.querySelector("#time");
+        var soundSliderWrapzzz = document.querySelector("#soundSliderWrapzzz");
+        var sound_slider = document.querySelector('#sound_slider');
+        var sound_range = document.querySelector('#sound_range');
+
+        playBtn.onclick = playVideo;
+        proplayBtn.onclick = playVideo;
+
+        // 播放时事件监听
+        player.addEventListener('play',function(){
+            playBtn.style.display = 'none';
+            proplayBtn.style.background = 'url("img/btns.png") -4px -22px no-repeat';
+
+        });
+
+        // 暂停时事件监听
+        player.addEventListener('pause',function(){
+            playBtn.style.display = 'block';
+            proplayBtn.style.background = 'url("img/btns.png") no-repeat';
+        });
+
+        // 播放时间改变
+        player.addEventListener('timeupdate',function(){
+            // console.log(this.currentTime);
+            // 总时间 除以 当前时间 = 总长度 除以 当前长度
+            // 求知得当前进度
+            var scale = (progressWrapzzz.offsetWidth - slider.offsetWidth) / player.duration;
+            var sliderLeft = player.currentTime * scale;
+            slider.style.left = sliderLeft + 'px';
+            range.style.width = sliderLeft + 'px';
+            // 实时播放事件传入函数
+            playTime(player.currentTime);
+
+        });
+        // 拖拽slider
+        slider.onmousedown = function(){
+            document.onmousemove = videoProgressChange;
+        }
+
+        document.onmouseup = function(){
+            document.onmousemove = null;
+        }
+
+        // 点击ctrWrapzzz改变视频进度
+        progressWrapzzz.onmousedown = videoProgressChange;
+
+        // 点击全屏
+        fullScreen.onclick = function(){
+            if(window.getComputedStyle(wrapzzz,null).width == '600px'){
+                console.log(document.documentElement.clientWidth);
+                wrapzzz.style.width = document.documentElement.clientWidth + 'px';
+                wrapzzz.style.height = document.documentElement.clientHeight + 'px';
+            }else{
+                wrapzzz.style.width = '600px';
+                wrapzzz.style.height = 'auto';
+            }
+        }
+        // 滑动音量
+        sound_slider.onmousedown = function(){
+            document.onmousemove = soundProgressChange;
+        }
+        soundSliderWrapzzz.onmousedown = soundProgressChange;
+
+        // 改变视频进度
+        function videoProgressChange(e){
+            var ev = window.event || e;
+            ev.preventDefault();
+            var screenLeft = ev.clientX - getLeft(slider.parentNode);
+            // slider不能超出屏幕
+            if(screenLeft <= 0){
+                screenLeft = 0;
+                console.log(screenLeft);
+            }else if(screenLeft >= progressWrapzzz.offsetWidth - slider.offsetWidth){
+                screenLeft = progressWrapzzz.offsetWidth - slider.offsetWidth;
+            }
+            // slider拖拽的位置
+            slider.style.left = screenLeft  + 'px';
+            // 进度条跟随拖拽改变而改变
+            range.style.width = screenLeft + 'px';
+            // 视频进度跟随滚动条改变播放的位置currentTime
+            var scale = (progressWrapzzz.offsetWidth - slider.offsetWidth) / player.duration;
+            player.currentTime = screenLeft / scale;
+            console.log(screenLeft / scale);
+        }
+        // 改变音量
+        function soundProgressChange(){
+                var ev = window.event || e;
+                ev.preventDefault();
+                var screenLeft = ev.clientX - getLeft(sound_slider.parentNode);
+                // sound_slider不能超出屏幕
+                if(screenLeft <= 0){
+                    screenLeft = 0;
+                    console.log(screenLeft);
+                }else if(screenLeft >= soundSliderWrapzzz.offsetWidth - sound_slider.offsetWidth){
+                    screenLeft = soundSliderWrapzzz.offsetWidth - sound_slider.offsetWidth;
+                }
+                // sound_slider拖拽的位置
+                sound_slider.style.left = screenLeft  + 'px';
+                // 进度条跟随拖拽改变而改变
+                sound_range.style.width = screenLeft + 'px';
+
+
+                // 求比例
+                // 最大值 / 1 = change / x
+                player.volume = screenLeft /(soundSliderWrapzzz.offsetWidth - sound_slider.offsetWidth);
+            }
+        // 播放视频
+        function playVideo(){
+            // player.playbackRate = '600';//加快速度用来测试
+            // 判断是否暂停,暂停就播放,反之暂停
+            if(player.paused){
+                player.play();
+            }else{
+                player.pause();
+            }
+
+        }
+
+
+        // 计算当前坐标left值
+        function getLeft(obj,ev){
+            var left = 0;
+            var top = 0;
+            while (obj.parentNode) {
+                left += obj.offsetLeft;
+                top += obj.offsetTop;
+                obj = obj.parentNode;
+            }
+            // return {//若使用多个属性,请把注释打开
+            //     left:left,
+            //     top:top
+            // };
+            return left;
+        }
+        // 视频播放时间
+        playTime(0);
+        function playTime(t){
+            // 获取视频总分钟数
+            var totalTime = player.duration ? player.duration / 60 : 0;
+            // 获取分钟
+            var minutes = addZero(parseInt(totalTime));
+            // 获取秒数
+            var seconds = addZero(parseInt((totalTime - minutes) * 60));
+            // time赋值
+            var m = addZero(parseInt(t / 60));
+            var s = addZero(parseInt(t - m));
+
+            time.innerHTML = m + ':' + s + '/' + minutes + ':' + seconds;
+        }
+        // 时间不足十位数补0
+        function addZero(num){
+            num = num < 10 ? '0' + num : num;
+            return num;
+        }
+
+
+
+
+
+
+
+// **********************细节*********************
+        // wrapzzz.onmouseover = function(){
+        //     progressWrapzzz.style.display = 'block';
+        // }
+        // wrapzzz.onmouseleave = function(){
+        //     progressWrapzzz.style.display = 'none';
+        // }
+        wrapzzz.ondblclick = function(){
+            if(window.getComputedStyle(wrapzzz,null).width == '600px'){
+                console.log(document.documentElement.clientWidth);
+                wrapzzz.style.width = document.documentElement.clientWidth + 'px';
+                wrapzzz.style.height = document.documentElement.clientHeight + 'px';
+            }else{
+                wrapzzz.style.width = '600px';
+                wrapzzz.style.height = 'auto';
+            }
+        }
+
+        document.onkeydown = function(e){
+            var ev = window.event || e;
+            if(ev.keyCode == '32'){
+                if(player.paused){
+                    player.play();
+                }else{
+                    player.pause();
+                }
+            }
+            if(ev.keyCode == '27'){
+                wrapzzz.style.width = '600px';
+                wrapzzz.style.height = 'auto';
+                progressWrapzzz.style.width = '100%';
+            }
+        }
+
+</script>
+</body>
+</html>

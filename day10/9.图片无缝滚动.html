@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{margin: 0px;padding: 0px;}
+        ul{
+            list-style: none;
+            width: 2400px;
+        }
+        li{
+            float: left;
+            width: 300px;
+        }
+        li img{
+            width: 100%;
+            display: block;
+        }
+        .wrap{
+            width: 1200px;
+            overflow: hidden;
+            height: 130px;
+            margin: 100px auto;
+            cursor:pointer;
+        }
+        .clearFix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <ul class="clearFix">
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+            <li><img src="img/1.jpg" alt=""></li>
+            <li><img src="img/2.jpg" alt=""></li>
+            <li><img src="img/3.jpg" alt=""></li>
+            <li><img src="img/4.jpg" alt=""></li>
+        </ul>
+    </div>
+	
+	<script>
+		var wrap = document.querySelector('.wrap');
+		var index = 0;
+		var timer = null;
+		function autoPlay(){
+			timer = setInterval(function(){
+				index++;
+				wrap.scrollLeft = index;
+				if(wrap.scrollLeft >= 1200){
+					wrap.scrollLeft = 0;
+					index = 0;
+				}
+			},1)
+		}
+		autoPlay();
+		wrap.onmouseenter = function(){
+			clearInterval(timer);
+		}
+		wrap.onmouseleave = function(){
+			autoPlay();
+		}
+	</script>
+</body>
+</html>

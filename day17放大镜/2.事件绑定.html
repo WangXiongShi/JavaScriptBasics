@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		// 事件绑定一个方法可以使用 addEventListener 来给标签, 对应的事件添加方法, 使用on的方式绑定, 只能给事件绑定一个方法
+
+		// document.addEventListener('click',function(){
+		// 	alert(1);
+		// })
+		// document.addEventListener('click',function(){
+		// 	alert(2);
+		// })
+
+		// addEventLitener与on的方式区别:
+		// 	1:可以对元素添加多个相同的事件
+		// 	2:可以改变事件传递的方式(冒泡,捕获)也可以说成是(向上传递,向下传递)
+
+		function addEvent(obj,type,callBack){
+			obj.addEventListener(type,function(){
+				callBack();
+			});
+		}
+		addEvent(box,'click',function(){
+			alert(1);
+		});
+
+		function addEvent(obj,type,callBack){
+			obj.addEventListener(type,callBack);
+		}
+		addEvent(box,'click',function(){
+			alert(1);
+		});
+
+		function forEachFn(a,abc){
+			for(var i = 0; i < a.length; i++){
+				abc(a[i],i);
+			}
+		}
+		var arr = [12,3,4,21,53,5223,5];
+		forEachFn(arr,function(a,b){
+			console.log(a,b);
+		})
+	</script>
+</body>
+</html>

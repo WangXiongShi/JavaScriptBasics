@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		//断点调试(break point)
+		
+		// 12.5	该函数用来对传进来的数字乘以10返回
+		
+		// function transFn(a){
+		// 	return a * 10;
+		// }
+		// var res = transFn(12.5);
+		// console.log(res);
+
+		console.log(111);	//1
+		console.log(222);	//2
+
+		function fn(){
+			console.log(333);	//5
+		}
+		for(var i = 0; i < 3 ; i++){	//3
+			fn();	//4		(执行三次打印三个333)
+		}
+		console.log(444444);	//最后一步
+	</script>
+</body>
+</html>

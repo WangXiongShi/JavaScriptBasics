@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script type="text/javascript">
+    function fn(data){
+        console.log(data);
+    }
+</script>
+  <script type="text/javascript" src='http://www.gitnano.com/shuju/jsonp.php?cb=fn'></script>
+
+<!--
+    1:利用script标签不受同源策略的约束,去获取数据
+    2:前端需要传一个和后台协商好的字段名(例如:cb/callBack),cb=函数名
+    3:后端根据前端请求的字段获取前端函数名,并且把数据当成函数参数返回给前端。
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<script type="text/javascript">
+    ajaxFn({
+        url:'http://www.baidu.com?name=lvkairui',
+    })
+</script>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

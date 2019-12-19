@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="uls">
+        <li>1</li>
+        <li id="li2">2</li>
+        <li>3</li>
+    </ul>
+    <script type="text/javascript">
+    //removeChild(node):移除父节点的某个子节点
+    var uls = document.querySelector('#uls');
+
+    uls.removeChild(uls.children[1]);
+
+    </script>
+</body>
+</html>

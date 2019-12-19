@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 1:无参无返回值
+        // 形参,实参
+
+        // 函数声明
+        // function foo(){
+        //     console.log('无参无返回值函数');
+        // }
+
+        // // 函数调用
+        // foo();
+
+
+        // 2:有参无返回值
+        // function foo(a,b,c){
+        //     console.log(a,b,c);
+        // }
+        // foo(10,20,30);
+
+        // 3:有参有返回值
+        // function addFn(a,b){
+        //     return a + b;
+        //     // return:下面的代码将不会执行
+        //     console.log(111111111111);
+        // }
+
+        // var sum = addFn(10,20);
+        // console.log(sum);
+
+
+
+
+
+
+        // 12.5
+        // 该函数用来对传进来的数字乘以10返回
+
+        // function transFn(a){
+        //     return a * 10;
+        // }
+
+        // var res = transFn(10.0);
+
+        // console.log(res);
+
+        // 断点调试(break point)
+
+
+
+
+
+
+        // console.log(11111111);
+
+
+        // console.log(22222222222);
+
+        // function add(){
+        //     console.log(333333333333);
+        // }
+
+        // for(var i = 0; i < 3; i++){
+        //     add();
+        // }
+        // console.log(4444444);
+
+
+
+
+        // // 求数组中所有元素之间的和
+        // var arr = [23,51,34,1,42,5,12,123,1,5,14,1];
+
+        // // for
+        // // 定义一个容器来接收
+        // var sum = 0;
+        // for(var i = 0; i < arr.length; i++){
+        //     console.log(arr[i]);
+        //     sum = sum + arr[i];
+        // }
+        // console.log(sum);
+
+
+        // 需求:
+        // 调用sumFn函数,传入一个数组,返回一个数组元素之间的和
+
+        var arr = [23,51,34,1,42,5,12,123,1,5,14,1];
+
+        function sumFn(a){
+            var sum = 0;
+            for(var i = 0; i < a.length; i++){
+                sum = sum + a[i];
+            }
+            return sum;
+        }
+
+        // var res = sumFn(arr);
+        // console.log(res);
+        var numArr = [12,213,213,12,3,12,4,124,22];
+        sumFn(numArr);
+
+
+
+
+
+
+
+
+
+        // var res = sumFn(arr);
+
+        // console.log(res);//312
+
+
+
+
+
+
+        // var sum = 0;
+        // for(var i = 0; i <= 100; i++){
+        //     sum = sum + i;
+        // }
+        // console.log(sum);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

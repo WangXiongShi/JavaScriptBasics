@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		var arr = [
+                {sales:1200,score:9,name:'小米',pirce:2999},
+                {sales:2000,score:39,name:'苹果',pirce:3999},
+                {sales:1300,score:69,name:'三星',pirce:5999},
+                {sales:1060,score:22,name:'oppo',pirce:1999},
+                {sales:4000,score:41,name:'华为',pirce:999},
+                {sales:1900,score:82,name:'魅族',pirce:15}
+            ];
+
+   			var tempArr = [];
+			var leg = arr.length;
+			while(tempArr.length < leg){
+				var arr1 = arr[0];
+				var index = 0;
+				for (var i = 0; i < arr.length; i++) {
+					// console.log(arr[i]);
+					if(arr1 > arr[i]){
+						arr1 = arr[i];
+						index = i;
+					}
+				}
+				tempArr.push(arr[index]);
+				arr.splice(index,1);
+			}
+			console.log(tempArr);
+
+
+
+
+
+
+			// var xin = [];
+			// var leg = arr.length;
+			// while(xin.length < leg){
+			// 	var arr1 = arr[0];
+			// 	var index = 0;
+			// 	for (var i = 0; i < arr.length; i++) {
+			// 		if(arr1 > arr[i]){
+			// 			arr1 = arr[i];
+			// 			index = i;
+			// 		}
+			// 	}
+			// 	xin.push(arr[index]);
+			// 	arr.splice(index,1);
+			// }
+			// console.log(xin);
+	</script>
+</body>
+</html>

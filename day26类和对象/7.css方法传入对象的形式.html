@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <style>
+		#div1{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+		}
+	</style> -->
+</head>
+<body>
+	<div id="div1"></div>
+	<script>
+
+		// HTMLElement.prototype.css = function(a){
+		// 	for(var i in a){
+		// 		this.style[i] = a[i];
+		// 	}
+		// }
+		// var div1 = document.querySelector('#div1');
+
+		// div1.css({
+		// 	width:'100px',
+		// 	height:'100px',
+		// 	background:'blue'
+		// });
+
+		HTMLElement.prototype.css = function(a,b){
+			this.style[a] = b;
+		}
+		var div1 = document.querySelector('#div1');
+
+		div1.css('width','600px');
+		div1.css('height','600px');
+
+
+
+		// for in 语法:
+		// var obj = {
+		// 	name:'xiaoyueyue',
+		// 	age:'80',
+		// 	ae:'80'
+		// }
+		// for(var i in obj){
+		// 	console.log(i);//拿key值
+		// 	console.log(obg[i]);//拿value值
+		// }
+	</script>
+</body>
+</html>

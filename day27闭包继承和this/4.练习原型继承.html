@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(){
+			this.species = '人类'; 
+		}
+		function Student(name,age){
+			this.name = name;
+			this.age = age;
+			this.SayHi = function(){
+				console.log('hello 我的名字叫做:' ,this.name);
+			}
+		}
+		Student.prototype = new Person();
+		Student.prototype.constructor = Student;
+		var stu1 = new Student('王雄师','18');
+		stu1.SayHi();
+		console.log(stu1.species);
+	</script>
+</body>
+</html>

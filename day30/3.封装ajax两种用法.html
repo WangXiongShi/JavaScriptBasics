@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function ajaxFn(obj){
+			// 创建xhr请求对象
+			var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft,XMLHTTP');
+			// 请求方式,默认get请求
+			var type = obj.type || 'GET';
+			// open
+			if(type.toUpperCase() == 'GET'){
+				var time = new Date();
+				// 解决Ajax缓存问题的方法,在地址栏中拼接参数,值为一个时间
+				xhr.open(type,obj.url + '?' + 'timestamp=' + time.getTime() + toStrFn(obj.data),true);
+				xhr.send();
+			}else if(type.toUpperCase() == 'POST'){
+				xhr.open(type,obj.url,true);
+				// 设置请求头
+				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+				xhr.send(toStrFn(obj.data));
+			}
+			// 检测状态
+			xhr.onreadystatechange = function(){
+				if(xhr.readyState == 4){
+					if(xhr.status >= 200 && xhr.status <= 207){
+						// console.log('检测状态成功');
+						obj.successFn(JSON.parse(xhr.responseText));
+					}else{
+						// console.log('检测状态失败');
+						obj.errorFn(xhr.status);
+					}
+				}
+			}
+		}
+
+		// 调用
+		ajaxFn({
+			url:'http://gitnano.com/shuju/gwc/list.php',
+			type:'get',
+			data:{
+				name:'xxx',
+				comId:'GWM0200120'
+			},
+			successFn:function(data){
+				console.log(data);
+			},
+			errorFn:function(){
+				console.log('请求失败');
+			}
+		})
+
+
+
+
+
+
+		function toStrFn(data){
+		    var arr = [];
+		    for(var key in data){
+		        arr.push(key + "=" + data[key]);
+		    }
+		    return arr.join("&");
+		}
+	</script>
+</body>
+</html>

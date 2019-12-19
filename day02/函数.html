@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		随机函数
+		function randFn(min,max){
+			return parseInt(Math.random() * (max - min + 1) + min);
+		}
+		console.log(randFn(1,10));
+		/*// 1.无参无返回值函数
+		function fn(){	// 声明一个无参无返回值的函数. 作用:包裹相同的代码
+			console.log('hello function');
+		}
+		fn();	//调用函数,执行函数*/
+
+		/*// 2.有参无返回值的函数
+		function foo(a){	// 形参是a
+			console.log(a);	//打印123
+		}
+		foo(123);	//实参*/
+
+		/*// 3.无参有返回值的函数
+		function fn(){
+			return 100;
+		}
+		var a = fn();
+		console.log(a);
+		function fn(){
+			return '100';
+		}
+		var a = fn() + 100;
+		console.log(a); //100100
+		*/
+
+		/*// 4.有参有返回值
+		function fn(a){
+			return
+		}
+
+		function addFn(a,b){
+			return a+b;
+		}
+		var sum = addFn(10,20);
+		console.log(sum);	//求和*/
+		// arguments: 伪数组,arguments存放是一组参数(实参)
+		// function fn(){
+  //                //arguments:      [1,2,3,4,5,6,7,111]
+  //                var sum = 0;
+  //                for(var i = 0; i < arguments.length; i++){
+  //                     sum +=arguments[i];
+
+  //                }
+  //                return sum;
+  //           }
+  //           console.log(fn(1,2,3,4,5,6,7,111));
+
+	</script>
+</body>
+</html>

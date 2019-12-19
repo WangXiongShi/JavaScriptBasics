@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    // 第一种
+    // var arr = [];
+    // while (arr.length < 10) {
+    //     var num = randFn(11, 15);
+    //     var bol = true;
+    //     for(var i = 0; i < arr.length; i++){
+    //         if(arr[i] == num){
+    //             bol = false;
+    //         }
+    //     }
+    //     if(bol){
+    //         arr.push(num);
+    //     }
+    // }
+    // console.log(arr);
+
+    // 第二种
+    // var arr = [];
+    // while(arr.length < 10){
+    //     var num = randFn(1, 10);
+    //     var bol = true;
+    //     if(arr.indexOf(num) != -1){
+    //         bol = false;
+    //     }
+    //     if(bol || arr.length == 0){
+    //         arr.push(num);
+    //     }
+    // }
+    // console.log(arr);
+
+    // 第三种
+    // var arr = [];
+    // while(arr.length < 10){
+    //     var num = randFn(1, 10);
+    //     if(arr.indexOf(num) == -1){
+    //         arr.push(num);
+    //     }
+    // }
+    // console.log(arr);
+
+    // 第四种
+    // var arr = [];
+    // for(var i = 0; i < 10; i++){
+    //     var num = randFn(1, 10);
+    //     if(arr.indexOf(num) != -1){
+    //         i--;
+    //         continue;
+    //     }
+    //     arr.push(num);
+    // }
+    // console.log(arr);
+
+
+    function randFn(min,max){
+        return parseInt(Math.random() * (max - min + 1) + min);
+    }
+
+
+
+
+
+    </script>
+</body>
+</html>

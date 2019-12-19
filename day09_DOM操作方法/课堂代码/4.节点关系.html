@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<ul id="uls">
+    <li>我是li1</li>
+    <li>我是li2</li>
+    <li>我是li3</li>
+    <li>我是li4</li>
+</ul>
+    <script type="text/javascript">
+
+        var li3 = document.querySelector('li:nth-child(3)');
+        var uls = document.querySelector('#uls');
+
+        // childNodes：所有子节点(换行和空格是文本节点)
+        // console.log(uls.childNodes);
+
+        // children：所有是标签类型的子节点
+        // console.log(uls.children);
+
+        // parentNode：父节点
+        // console.log(uls.parentNode);
+
+        // nextElementSibling：下一个标签兄弟节点
+        // console.log(li3.nextElementSibling);
+
+        // nextSibling(兼容ie)下一个兄弟节点(包含文本注释)
+        // console.log(li3.nextSibling);
+
+        // previousElementSibling：上一个标签兄弟节点
+        // console.log(li3.previousElementSibling);
+
+
+        // previousSibling(兼容ie)上一个兄弟节点(包含文本注释)
+        // console.log(li3.previousSibling);
+
+        // firstElementChild : 第一个子节点
+        // console.log(uls.firstElementChild);
+
+        // lastElementChild：最后一个子节点
+        // console.log(uls.lastElementChild);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Object.prototype.css = function(obj){
+        //     for(var i = 0; i < this.length; i++){
+        //         for(var key in obj){
+        //             if(key == css){
+        //                 continue;
+        //             }else{
+        //                 this[i].style[key] = obj[key];
+        //             }
+        //         }
+        //     }
+        // }
+
+        // $('li').css({
+        //     background:'red',
+        //     width:'100px',
+        //     height:'200px'
+        // })
+
+        // $('ul').css({
+        //     background:'yellow'
+        // })
+
+
+        // function $(sel){
+        //     return document.querySelectorAll(sel);
+        // }
+
+        // $.get = function(){
+        //     console.log(1);
+        // }
+
+
+
+
+
+    </script>
+</body>
+</html>

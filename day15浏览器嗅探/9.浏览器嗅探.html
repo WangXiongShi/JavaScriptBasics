@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		/*
+			userAgent属性是一个只读的字符串, 声明了浏览器用于HTTP请求的用户代理头的值, 语法: navigator.nuserAgent
+
+		*/
+
+		if(navigator.userAgent.indexOf('Chrome') != -1){
+			console.log('Chrome浏览器');
+		}else if(navigator.userAgent.indexOf('Firefox') != -1){
+			console.log('火狐浏览器');
+		}
+
+		sum(1,2,3,4)
+		function sum(){
+			var num = 0;
+			for (var i = 0; i < arguments.length; i++) {
+				num += arguments[i];
+			}
+			console.log(num);
+		}
+	</script>
+</body>
+</html>

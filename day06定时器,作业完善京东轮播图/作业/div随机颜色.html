@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		 p{
+            text-align: center;
+            margin: 20px;
+        }
+        p a{
+            font-size: 20px;
+            font-weight: 300;
+            color: #e4393c;
+            text-decoration: none;
+            padding: 6px 10px;
+            border: 1px solid currentColor;
+        }
+		 .bg_color{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #aa00aa;
+        }
+         .main{
+            width: 400px;
+            margin:30px auto;
+        }
+		
+		.bg_color{
+			  width: 400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="main"> 
+	 <p><a href="javascript:;" id="btn-one">RandomColor-rgb</a></p>
+	 <div class="bg_color"></div>
+	 </div>
+	
+	<script type="text/javascript">
+	(function(){
+        //1、随机色的函数-rgb
+        function getRandomColor(){
+            var rgb='rgb('+Math.floor(Math.random()*255)+','
+                     +Math.floor(Math.random()*255)+','
+                     +Math.floor(Math.random()*255)+')';
+            console.log(rgb);
+            return rgb;
+        }
+		//    获取按钮
+        var btn_one=document.querySelector("#btn-one");
+        var Divs=document.querySelector(".bg_color");
+        btn_one.onclick=function(){
+            // for(var i=0;i<Divs.length;i++){
+                Divs.style.backgroundColor = getRandomColor();
+            // }
+        };
+    })();
+	</script>
+</body>
+</html>

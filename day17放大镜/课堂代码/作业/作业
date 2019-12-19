@@ -1,0 +1,21 @@
+//1:封装滚轮事件
+
+function addWheelFn(obj,fn){
+
+}
+
+addWheelFn(document,function(down){
+    if(down){
+        console.log('向上');
+    }else{
+        console.log('向下');
+    }
+});
+
+//2:小汽车旋转
+
+
+
+
+
+

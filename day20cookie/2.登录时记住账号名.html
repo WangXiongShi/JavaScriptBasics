@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<label for="user">用户名:</label>
+	<input type="text" name="" id="user"><br />
+	<label for="pwd">密　码:</label>
+	<input type="password" name="" id="pwd"><br />
+	<button>登陆</button>
+	<script src='store.js'></script>
+	<script>
+		var user = document.querySelector('#user');
+		var pwd = document.querySelector('#pwd');
+		var btn = document.querySelector('button');
+		// 方法一:
+		// btn.onclick = function(){
+		// 	if(user.value != '' && pwd.value != ''){
+		// 		var a = user.value;
+		// 		var b = pwd.value;
+				
+		// 		setCookie('name',a,10);
+		// 		setCookie('password',b,10);
+		// 		alert('登陆成功');
+		// 	}
+		// }
+		// user.value = getCookie('name');
+		// pwd.value = getCookie('password');
+
+
+		// 方法二:
+		user.value = getCookie('user') || '';
+		pwd.value = getCookie('pwd') || '';
+		btn.onclick = function(){
+			if(user.value == '' && pwd.value == ''){
+				return;
+			}
+			setCookie('user',user.value,10);
+			setCookie('pwd',pwd.value,10);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box{
+			width:200px;
+			height:200px;
+			background: #f99;
+		}
+
+		section{
+			width:200px;
+			height:200px;
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<div class="box"></div>
+	<section></section>
+	<script src="jquery.js"></script>
+	<script type="text/javascript">
+		function $(a){
+			if(a.indexOf('.') != undefined){
+				return document.querySelectorAll(a);
+			}else if(a.indexOf('#') != undefined){ 
+				return document.querySelector(a);
+			}else if(a.indexOf('') != undefined){
+				return document.querySelectorAll(a);
+			}
+		}
+		HTMLElement.prototype.css = function(){
+			if(arguments.length > 1){
+				this.style[arguments[0]] = arguments[1];
+				return this;
+			}else{
+				var obj = arguments[0];
+				for(var key in obj){
+					this.style[key] = obj[key];
+				}
+				return this;
+			}
+		}
+
+		$('section')[0].css({
+		'width':'400px',
+		'height':'400px',
+		'background':'#000',
+		'marginTop':'100px',
+		});
+	</script>
+</body>
+</html>

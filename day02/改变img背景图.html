@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{
+            width: 1000px;
+            height: 600px;
+            background: url('img/01.jpg');
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+    <button id="btn1">上一页</button>
+    <button id="btn2">下一页</button>
+    <!--
+        作业:
+        未知宽高的元素,设置上下左右居中(最少两种方法)
+     -->
+    <script type="text/javascript">
+    var wrap = document.getElementById('wrap');
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2');
+    var imgSrc = ['img/01.jpg','img/02.jpg','img/03.jpg','img/04.jpg'];
+
+    var index = 0;
+    btn2.onclick = function(){
+    	index++;
+    	if(index > 3){
+    		index = 0;
+    	}
+    	wrap.style.background = 'url('+ imgSrc[index] +')';
+    }
+    btn1.onclick = function(){
+    	index--;
+    	if(index < 0){
+    		index = 3;
+    	}
+    	wrap.style.background = 'url('+ imgSrc[index] +')';
+    	
+    }
+    </script>
+</body>
+</html>

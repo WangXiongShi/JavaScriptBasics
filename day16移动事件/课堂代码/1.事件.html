@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{
+            width: 400px;
+            height: 400px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap"></div>
+    <script type="text/javascript">
+        // onclick:点击事件
+        // onmouseenter、onmouseover:鼠标移入事件
+        // onmouseleave、onmouseout:鼠标移出事件
+        // onscroll:滚动条事件
+        // onload:加载完毕
+
+        var wrap = document.querySelector("#wrap");
+        // onmousedown:鼠标按下
+        wrap.onmousedown = function(){
+            this.style.background = 'yellow';
+        }
+        // onmouseup:鼠标抬起
+        wrap.onmouseup = function(){
+            this.style.background = 'pink';
+        }
+        // oncontextmenu:鼠标右键
+        wrap.oncontextmenu = function(){
+            this.style.background = 'black';
+        }
+        // ondblclick:鼠标双击
+        wrap.ondblclick = function(){
+            this.style.background = 'orange';
+        }
+
+        // onmousemove:鼠标移动事件
+        wrap.onmousemove = function(){
+            console.log('鼠标移动事件');
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

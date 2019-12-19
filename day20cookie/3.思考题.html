@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<label for="user">用户名:</label>
+	<input type="text" name="" id="user"><br />
+	<label for="pwd">密　码:</label>
+	<input type="password" name="" id="pwd"><br />
+	<button>登陆</button>
+	<div id="box"></div>
+	<script src='store.js'></script>
+	<script>
+		// 需求:
+		// 1:将对象转换为字符串存入到cookie
+		var arr = [{user:'lishijie'},{user:'shiwei'},{user:'danny'}];
+		// 把对象转换成json类型的字符串
+		var listStr = JSON.stringify(arr);
+		setCookie('list',listStr,10);
+
+		// 2:将json字符串取出来并转换为对象
+		var str = getCookie('list');
+		var jsonArr = JSON.parse(str);
+		for (var i = 0; i < jsonArr.length; i++) {
+			console.log(jsonArr[i].user);
+		}
+	</script>
+</body>
+</html>

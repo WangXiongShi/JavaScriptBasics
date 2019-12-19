@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <script type="text/javascript" src="index.js">
+		// 在外部引入的标签里面写代码, 将不会执行
+	</script> -->
+	<script type="text/javascript">
+		/*javascript的简介
+		JS的核心组成
+		1.核心(ECMAScript)
+		ECMAScript是一个标准
+		因为网景开发了JavaScript,为了让JavaScript称为全球标准,几个公司联合ECMA组织定制了Javascript语言标准,被称为ECMAScript标准.
+		2.DOM(文档对象模型)
+		Document Object Model. 文档对象模型, 后边我们会有专门的课程来讲解DOM操作
+		3.BOM(浏览器对象模型)
+		Browser ObjectModel. 浏览器对象模型, 后边我们会有专门的课程来讲解BOM操作*/
+
+		// js中的变量:
+		// 是用来存放数据的容器
+		// 声明变量var , 变量的名字是a , 等于号用来赋值= , 赋的值100
+		// 等号两边加空格,结尾加分号(命名规范)
+
+		// js里的基本数据类型
+		// 数字类型(sumber)
+		// 字符串类型(string)
+		// 空类型(null)
+		// 未定义类型(undefined)
+		// 布尔类型(boolean)
+		// 对象类型(object)
+		// typeof(判断数据类型)
+
+		// var a;
+		// console.log(a); //undefined(未定义类型)
+
+		// var b = null;
+		// console.log(typeof b); //对象类型(object)	typeof (判断数值类型)
+
+		// var a = 0;
+		// console.log(a);
+		// var b = null;
+		// console.log(b);	//打印null
+		// var c = 'helo';
+		// console.log(c);
+		// var d;
+		// console.log(d);	//打印undefined
+
+
+
+		// 运算符
+		// var a = 100;
+		// var b = 300;
+		// var sum = a = b; //b赋值给a,a是300,a赋值给sum,sum是300
+		// console.log(sum);
+		// // 双等,只判断值是否相等,不判断数据类型
+		// // 三等,既判断值又判断数据类型
+
+		// var sum = 100,m = 200,o = 300;
+		// console.log(sum,m,o);	//打印100,200,300
+
+		// var e = 'abc';
+		// var f = 'abbb';
+		// console.log(e<f);// 字符/字母比较的时候是按照ASCII码表比较
+
+		// 逻辑运算符
+		// &&	与	条件有一个为假则结果为假
+		// ||	或	条件有一个为真则结果为真
+		// !	非	对条件的结果取反
+		// var a = false;
+		// var b = true;
+		// var bol = (a && b);
+		// console.log(bol);
+		// &:单个的话是念取地址符
+		// ^:脱字符
+
+		// ++在前在后运算符
+		// var a = 100;
+		// var sum = a--;
+		// console.log(sum);
+		// 如果加加在前赋新值,加加在后赋旧值
+
+		// var a = 100;
+		// var b = a++;	
+		// ++a;
+		// console.log(a);
+
+
+		// +:运算和字符串拼接
+		// var a = 'hello';
+		// var b = 'world';
+		// // var sum = a + b;
+		// console.log(a,b);
+		// 一个字符串加一个数字结果是字符串拼接
+		// 一个字符串减一个数字结果是运算(两个数字相减)
+
+
+		// 在数字型字符串的变量前面加一个加号代表隐式转换为数字类型
+		// var a = 100;
+		// var b = '200';
+		// var sum = +b + a;
+		// console.log(sum); 
+
+
+		// 11,条件语句
+		// var money = 500;
+		// if(money >= 500){
+		// 	console.log('结婚');
+		// }else{
+		// 	console.log('找不到老婆');
+		// }
+
+		// 小于60不及格
+		// 60~80良好
+		// 80~100优秀
+		// var score = 80;
+		// if(score < 60){
+		// 	console.log('不及格');
+		// }else if(score <= 80 && score >= 60){
+		// 	console.log('良好');
+		// }else{
+		// 	console.log('优秀');
+		// }
+	</script>
+</body>
+</html>

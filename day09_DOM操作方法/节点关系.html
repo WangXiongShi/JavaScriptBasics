@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul>
+		<li>我是li1</li>
+		<li>我是li2</li>
+		<li>我是li3</li>
+		<li>我是li4</li>
+		<li>我是li5</li>
+		<li>我是li6</li>
+	</ul>
+	<p></p>
+	<script>
+		var uls = document.querySelector('ul');
+		var lis = document.querySelectorAll('li');
+		var ps = document.querySelector('p');
+		var li3 = document.querySelector('li:nth-child(3)');
+
+		// 空格和换行是文本节点
+
+
+		// childNodes:所有子节点
+		console.log(uls.childNodes);//(13) [text, li, text , li, text, li, text, li, text, li, text, li, text]
+		// children:所有是标签类型的子节点
+
+		console.log(uls.children);//(6) [li, li, li, li, li, li]  //uls.children[0]可以写下标
+
+		// parentNode:父节点
+		console.log(ps.parentNode);//<body></body>
+
+		// nextElementSibling:下一个兄弟节点
+		console.log(uls.nextElementSibling);//<p></p>
+
+		// nextSibling(兼容ie)下一个兄弟节点 包含文本节点和注释
+		console.log(li3.nextSibling);//#text 包含文本节点和注释
+
+		// previousElementSibling:上一个兄弟节点
+		console.log(ps.previousElementSibling);//<ul></ul>
+
+		// previousSibling(兼容ie)上一个兄弟节点 包含文本节点和注释
+		console.log(li3.previousSibling);//#text 包含文本节点和注释
+
+		// firstElementChild:第一个子节点
+		console.log(uls.firstElementChild);//<li>我是li1</li>
+
+		// lastElementChild:最后一个子节点
+		console.log(uls.lastElementChild);//<li>我是li6</li>
+	</script>
+</body>
+</html>

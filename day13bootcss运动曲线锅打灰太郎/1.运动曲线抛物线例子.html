@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 50px;
+			height: 50px;
+			background-color: #000;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script>
+		var box = document.querySelector('#box');
+		var i = 0;
+		var timer = setInterval(function(){
+			i++;
+			if(i == 360){
+				clearInterval(timer);
+				return;
+			}
+			box.style.left = i + 'px';
+			console.log(Math.sin(Math.PI / 180 * i));
+			box.style.top = 300 * Math.abs(Math.sin(Math.PI / 180 * i)) + 'px';
+			/* 
+				sin 0deg = 0 
+				sin 90deg = 1
+				sin 180deg = 0 
+				sin 270deg = 1
+				以此类推每次加90deg
+			*/
+
+		},2)
+	</script>
+</body>
+</html>

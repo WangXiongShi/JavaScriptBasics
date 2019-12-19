@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        img{
+            position: absolute;
+
+        }
+    </style>
+</head>
+<body>
+    <img src="img/bird0.png">
+    <script type="text/javascript">
+    var speed = 0;
+    var bird = document.querySelector("img");
+    setInterval(function(){
+        speed+=1;
+        bird.style.top = speed + bird.offsetTop + 'px';
+    },30);
+
+    document.onmousedown = function(){
+        speed = -15;
+    }
+
+
+
+
+
+    </script>
+</body>
+</html>

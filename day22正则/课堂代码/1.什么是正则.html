@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+
+        // 正则表达式:是一套匹配规则,主要用来匹配文本是否按照规则
+        //  用于规定在文本中检索的内容
+
+        // RegExp 是正则表达式的缩写
+
+        // 找出字符串中所有的数字
+        var str = '21ashd21daf1wf23dsc23sd';
+        var arr = [];
+        for(var i = 0; i < str.length;  i++){
+            if(str.charAt(i) >= 0 && str.charAt(i) <= 9){
+                arr.push(str.charAt(i));
+            }
+        }
+        console.log(arr);//[21,21,1,23,23];
+
+
+        // console.log(str.match(/\d+/g));
+
+
+
+
+
+
+    </script>
+</body>
+</html>

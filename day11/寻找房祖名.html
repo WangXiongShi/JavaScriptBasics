@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>寻找小越越</title>
+	<style>
+		#wrap{
+			width: 600px;
+			height: 600px;
+			border:1px dotted red;
+			position: relative;
+			margin:0px auto;
+			/*position: absolute;
+			top: 50%;
+			left: 50%;
+			transform:rotate(-50%,-50%);*/
+		}
+		#wrap div{
+			/*background-color: orange;*/
+			position: absolute;
+			background-size: 100% 100%;
+			/*box-shadow:0 0 10px black;*/
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+
+	<script>
+		var wrap = document.querySelector('#wrap');
+
+		var index = 2;
+
+		function creatFn(num){//传入形参
+			for(var i=0; i<num; i++){
+				for(var j=0; j<num; j++){
+					// console.log('hello');
+					var div = document.createElement('div');//创建一个div元素
+					div.style.width = 600 / num + 'px';
+					div.style.height = 600 / num +'px';
+					div.style.top = i * 600 / num +'px';
+					div.style.left = j * 600 / num +'px';
+					div.style.backgroundImage = 'url(img/2.jpg)';
+					// div.style.background = 'red';
+					wrap.appendChild(div);	//给wrap插入节点div
+					// console.log(div);
+				}
+			}
+			var divImg = document.querySelectorAll('#wrap div');
+			var rand = randFn(0,divImg.length - 1);
+			divImg[rand].style.backgroundImage = 'url(img/1.jpg)';
+			// for(var i = 0; i < divImg.length; i++){
+				divImg[rand].onclick = function(){
+					// 删除所有的图片
+					while(wrap.children.length != 0){
+						wrap.removeChild(wrap.children[0]);
+					}
+					index++;
+					creatFn(index);//传入实参
+				}
+			// }
+		}
+
+		creatFn(2);
+
+		function randFn(min,max){//随机函数
+			return parseInt(Math.random() * (max - min + 1) + min);
+		}
+	</script>
+</body>
+</html>

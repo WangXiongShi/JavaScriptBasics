@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #fbWrap{
+        width: 350px;
+        height: 480px;
+        background: url("img/bg.jpg");
+        background-size: 100% 100%;
+        position: relative;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+    #head{
+        position: absolute;
+        left: 50px;
+        top: 150px;
+    }
+    #head span{
+        background: url("img/bird0.png");
+        position: absolute;
+        right: 0;
+        top: 20px;
+        width: 40px;
+        height: 26px;
+        background-size: 100% 100%;
+    }
+    #scoring{
+        position: absolute;
+        left: 50%;
+        top: 40px;
+        z-index: 2;
+        font-size:  50px;
+    }
+    #menu{
+        position: absolute;
+        left: 40%;
+        top: 60%;
+    }
+    #bird{
+        position: absolute;
+        left: 30px;
+        top: 10%;
+        display: none;
+        z-index: 10;
+    }
+    .die{
+        transition: 0.5s;
+        top: 393px !important;
+        z-index: 99;
+    }
+    #ductWrap li{
+        position: absolute;
+        top: 0;
+        left: 350px;
+        width: 62px;
+        height: 423px;
+        list-style: none;
+
+    }
+    .duct_up{
+        background: url("img/up_mod.png") repeat-y;
+        height: 120px;
+        position: relative;
+    }
+    .duct_up img{
+        position: absolute;
+        bottom: 0;
+    }
+    .duct_down{
+        background: url("img/down_mod.png") repeat-y;
+        height: 203px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+    .duct_down img{
+        position: absolute;
+        top: 0;
+    }
+    #banner{
+        width: 1000px;
+        height: 15px;
+        background-image: url('img/banner.jpg');
+        position: absolute;
+        bottom: 42px;
+        animation-name: move;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+    @keyframes move{
+        0%{
+            left: 0px;
+        }
+        100%{
+            left: -300px;
+        }
+    }
+    </style>
+</head>
+<body>
+
+<audio autoplay="autoplay"  preload="auto"
+            src="game_music.mp3">
+      你的浏览器不支持audio标签
+</audio>
+
+    <div id="fbWrap">
+        <div id="head" class="animated slideOutUp">
+            <img src="img/head.jpg" alt="">
+            <span></span>
+        </div>
+        <div id="scoring">
+            0
+        </div>
+        <div id="menu">
+            <img id="start" src="img/start.jpg" alt="">
+        </div>
+        <div id="bird">
+            <img src="img/down_bird1.png" alt="">
+        </div>
+        <ul id="ductWrap">
+        </ul>
+        <!-- 草地滚动 -->
+        <p id="banner"></p>
+    </div>
+</body>
+<script type="text/javascript" src='collide.js'></script>
+<script type="text/javascript">
+    var fbWrap = document.querySelector("#fbWrap");
+
+    // 开始按钮
+    var startBtn = document.querySelector("#start");
+
+    // head
+    var head = document.querySelector("#head");
+
+    // bird
+    var bird = document.querySelector("#bird");
+
+    // audio
+    var audio = document.querySelector("audio");
+
+    // 获取存放管道的div
+    var ductWrap = document.querySelector("#ductWrap");
+
+    // 获取存放分数的div
+    var score = document.querySelector("#scoring");
+    // 创建管道定时器
+    var createTimer = null;
+
+    // 清除管道移动开关
+    var clearBol = false;
+
+    // 给开始按钮添加点击事件
+    startBtn.onclick = function(){
+        // 隐藏按钮和菜单
+        this.parentNode.style.display = 'none';
+        head.style.display = 'none';
+        // 小鸟出现
+        bird.style.display = 'block';
+        // 小鸟移动
+        // 小鸟移动的速度
+        bird.speed = 0;
+        bird.timer = setInterval(function(){
+            bird.speed += 0.5;
+            if(bird.offsetTop <= 0){
+                bird.style.top = '0px';
+            }else if(bird.offsetTop >= 375){
+                bird.style.top = '375px';
+                // 小鸟死亡,清除小鸟死亡的定时器
+                clearInterval(bird.timer);
+                audio.src = 'game_over.mp3';
+                // 清除创建管道定时器
+                clearInterval(createTimer);
+                // 小鸟死亡,清除管道移动的定时器
+                clearBol = true;
+                banner.style.animation = 'none';
+            }
+            // 判断小鸟向上移动还是向下移动
+            if(bird.speed >= 0){
+                bird.children[0].src = 'img/down_bird0.png';
+            }else{
+                bird.children[0].src = 'img/up_bird0.png';
+            }
+            // 检测是否碰撞
+            var pipes = document.querySelectorAll('.duct_row');
+            for (var i = 0; i < pipes.length; i++) {
+                var bol = crashFn(bird,pipes[i]);
+                if(bol){
+                    // 清除小鸟移动定时器
+                    clearInterval(bird.timer);
+                    // 清除管道创建定时器
+                    clearInterval(createTimer);
+                    // 清除管道移动定时器
+                    clearBol = true;
+                    // 死亡音乐
+                    audio.src = 'game_over.mp3';
+                    // 小鸟落地
+                    bird.className = 'die';
+                }
+            }
+            bird.style.top = bird.offsetTop + bird.speed + 'px';
+        },30);
+
+        // 创建管道
+        createTimer = setInterval(function(){
+            var pipe = document.createElement('li');
+            var upHeight = randFn(60,262);
+            var downHeight = 422 - upHeight - 100;
+            // 总高度:422
+            // 最低:60
+            // 中间距离:100
+            // 求一根管道最大值 422 - 60 - 100 = 262;
+            // 60~262
+            pipe.innerHTML = '<div class="duct_up duct_row" style="height:'+upHeight+'px"><img src="img/up_pipe.png"></div><div class="duct_down duct_row" style="height: ' + downHeight + 'px"><img src="img/down_pipe.png"></div>';
+            // 管道移动
+            pipe.l = 350;
+            // 加分开关
+            pipe.bol = true;
+            pipe.timer = setInterval(function(){
+                if(clearBol){
+                    clearInterval(pipe.timer);
+                }
+                pipe.l -= 2;
+                // 当管道离开屏幕,删除
+                if(pipe.l <= -62){
+                    ductWrap.removeChild(pipe);
+                    clearInterval(pipe.timer);
+                }else if(pipe.l <= -31){
+                    if(pipe.bol){
+                        // 小鸟通过,并加分
+                        score.innerHTML = parseInt(score.innerHTML) + 10;
+                        pipe.bol = false;
+                    }
+                }
+                pipe.style.left = pipe.l + 'px';
+            },30);
+            ductWrap.appendChild(pipe);
+        },3000);
+    }
+
+    fbWrap.onmousedown = function(){
+        bird.speed = -7;
+        // 点击屏幕切换音乐
+        audio.src = 'bullet.mp3';
+    }
+
+    document.onmousedown = function(e){
+        var ev = window.event || e;
+        ev.preventDefault();
+    }
+    document.onkeydown = function(e){
+        var ev = window.event || ev;
+        if(ev.keyCode == 32){
+            bird.speed = -7;
+        }
+    }
+    function randFn(min,max){
+        return parseInt(Math.random()*(max-min+1)+min);
+    }
+
+
+</script>
+</html>

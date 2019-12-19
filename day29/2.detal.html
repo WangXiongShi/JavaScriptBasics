@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		h2{transition: .3s;cursor: pointer;}
+		h2:hover{margin-left: 20px;color: red;}
+	</style>
+</head>
+<body>
+	<h1>接受的页面</h1>
+	<h2 id="user"></h2>
+	<h2 id="pwd"></h2>
+	<script>
+		var param = window.location.search;
+		// console.log(param.substr('6'));
+		// console.log(param.split('=')[1]);
+		var obj = fn(param);
+		// document.write(obj.name);
+		// document.write(obj.pwd);
+		user.innerHTML = obj.name;
+		pwd.innerHTML = obj.pwd;
+
+		// 用来获取地址栏中的参数
+		function fn(str){
+			var obj = {};
+			var arr = str.split('?')[1].split('&');
+			arr.forEach(function(val,index){
+				// decodeURIComponent:解决url参数中文乱码
+				// decodeURI:解决url参数中文乱码
+				obj[val.split('=')[0]] = decodeURIComponent(val.split('=')[1]);
+			});
+			return obj;
+		}
+	</script>
+</body>
+</html>

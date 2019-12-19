@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 声明式函数
+        // function add(){
+
+        // }
+
+        // 表达式函数
+        // var addFn = function(){
+        //     console.log(1);
+        // }
+        // addFn();
+
+        // IIFE立即执行函数
+        // (function(){
+        //     console.log(1);
+        // })();
+        // js(ES5)里面,只有函数作用域
+        // 函数作用域分为全局作用域,局部作用域
+        // 全局环境下定义的变量,叫做全局变量
+        // 局部环境下定义的变量,叫做局部变量
+        var a = 100;
+        function addFn(){
+            function foo(){
+                console.log(a);
+            }
+            foo();
+        }
+        addFn();
+        // 在全局定义的变量属于window
+        var a = 100;
+        var b = 200;
+        console.log(window);
+
+
+
+
+
+    </script>
+</body>
+</html>

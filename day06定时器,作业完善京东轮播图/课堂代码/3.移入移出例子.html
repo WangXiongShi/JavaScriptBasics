@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        button{
+            margin: 100px 200px;
+            width: 80px;
+            height: 40px;
+
+        }
+        #list{
+            position: absolute;
+            width: 120px;
+            left: 180px;
+            top: 150px;
+            background: pink;
+            text-align: center;
+            display: none;
+            cursor: pointer;
+        }
+        #list::after{
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom-color: #01bf8e;
+            position: absolute;
+            top: -20px;
+            left: 55px;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="btn">设置</button>
+    <ul id="list">
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+    </ul>
+
+    <script type="text/javascript">
+        // 获取按钮
+        var btn = document.getElementById('btn');
+
+        // 获取ul
+        var list = document.getElementById('list');
+
+        // 存放定时器的变量
+        var timer = null;
+
+        // 获取所有的li
+        var lis = list.getElementsByTagName('li');
+
+        // 给按钮添加鼠标移入事件
+        btn.onmouseenter = function(){
+            clearTimeout(timer);
+            // 让ul显示出来
+            list.style.display = 'block';
+        }
+
+        // 按钮添加鼠标移出事件
+        btn.onmouseleave = function(){
+            // console.log(1);
+            // 让ul隐藏,给一个延迟的时间,方便鼠标移入到ul
+            timer = setTimeout(function(){
+                list.style.display = 'none';
+            },300);
+
+        }
+
+        // 给ul添加鼠标移入事件
+        list.onmouseenter = function(){
+            this.style.display = 'block';
+            clearTimeout(timer);
+        }
+
+        // 给ul添加鼠标移出事件
+        list.onmouseleave = function(){
+            this.style.display = 'none';
+        }
+
+        // 给所有li添加鼠标移入、移出事件
+        for(var i = 0; i < lis.length; i++){
+            lis[i].onmouseenter = function(){
+                this.style.background = 'blue';
+            }
+            lis[i].onmouseleave = function(){
+                this.style.background = '';
+            }
+
+            // 给所有的li添加点击事件
+            lis[i].onclick = function(){
+                btn.innerHTML = this.innerHTML;
+                list.style.display = 'none';
+            }
+        }
+
+
+
+
+    </script>
+</body>
+</html>

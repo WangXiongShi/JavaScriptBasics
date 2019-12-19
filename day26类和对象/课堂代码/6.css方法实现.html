@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <script type="text/javascript">
+    // 如何使用js模拟jquery里面css方法,请编写代码
+    HTMLElement.prototype.css = function(a,b){
+        this.style[a] = b;//this.style.width = 100px
+    }
+    var  div1 = document.querySelector('#div1');
+    // 链式语法
+    // div1.css('width','100px');
+    // div1.css('height','100px');
+    // div1.css('backgroundColor','black');
+    div1.css({
+        width:'100px',
+        fontSize:'100px',
+        color:'blue',
+        borderRadius: '10px'
+    });//1:for in
+
+
+
+
+
+    // var obj = {
+    //     name:'lishijie'
+    // }
+
+    // var str = 'name';
+    // obj.'name';
+
+
+
+    // var obj = {
+    //     name:'lishijie',
+    //     age:18
+    // }
+
+    // for(var key in obj){
+    //     console.log(key);
+    // }
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // 事件绑定
+    document.addEventListener('click',fn);
+
+    function fn(){
+        alert(1);
+    }
+
+    setTimeout(function(){
+        // 移除事件
+        document.removeEventListener('click',fn);
+
+    },2000);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            list-style:none;
+        }
+        p{
+            text-align: center;
+        }
+        li{
+            width: 300px;
+            background-color: #e8e8e8;
+            float: left;
+            width: 20%;
+        }
+        img{
+            width: 180px;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <ul id="uls"></ul>
+    <a href="list.html">去结算页面</a>
+
+    <script type="text/javascript">
+        var dataArr = [
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_14966625823457_RclIL.png',title:'红米4X',content:'4100mAh超长续航，8 核处理器',price:'699元起',id:1000,num:1},
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_14894013451119_CiBVP.png',title:'红米Note 4X',content:'4100mAh超长续航，多彩金属',price:'999元起',id:1001,num:1},
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_15030636163238_WTzlt.png',title:'小米Note 2',content:'最高减600元',price:'2499元起',id:1002,num:1},
+            {imgSrc:'https://i1.mifile.cn/a4/xmad_14938805670516_eryYQ.png',title:'小米电视4A 43英寸',content:'全高清HDR，智能语音',price:'1999元',id:1003,num:1},
+            {imgSrc:'https://i1.mifile.cn/a4/073b5ddc-9117-4668-adbe-878c928a79da',title:'小米笔记本',content:'更轻更薄，像杂志一样随身携带',price:'3599元起',id:1004,num:1},
+        ];
+        // 定义一个数组,用来存放加入购物车的数据
+        var listArr = localStorage.shop_list ? JSON.parse(localStorage.shop_list) : [];
+        var uls = document.querySelector("#uls");
+        for(var i = 0; i < dataArr.length; i++){
+            var li = document.createElement('li');
+            li.innerHTML = '<div><img src="'+dataArr[i].imgSrc+'"></div><p>'+dataArr[i].title+'</p><p>'+dataArr[i].content+'</p><p>'+dataArr[i].price+'</p>';
+            // 给li添加点击事件,当点击时将物品加入到购物车(加入到localStorage)
+            li.index = i;//该下标与数据数组下标一一对应
+            li.onclick = function(){
+                // 加入购物车前,需要判断该物品是否在localStroage里面
+                for(var j = 0; j < listArr.length; j++){
+                    if(dataArr[this.index].id == listArr[j].id){
+                        alert('重复添加');
+                        // 把localStroage中对应的对象num值加一
+                        listArr[j].num++;
+                        // 把数组重新存入localStroage
+                        var str = JSON.stringify(listArr);
+                        localStorage.shop_list = str;
+                        return;
+                    }
+                }
+
+
+                alert('成功加入购物车')
+                // 将商品对应的信息存入到新的数组中,
+                listArr.push(dataArr[this.index]);
+                // 把新数组转换为字符串,存入到localStorage里面
+                var str = JSON.stringify(listArr);
+                localStorage.shop_list = str;
+
+            }
+
+
+
+
+
+            uls.appendChild(li);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 节点类型
+        // 1: 标签 --->1
+        // 2：文本 --->3
+        // 3：注释 --->8
+
+
+        // 创建节点
+        // 查看节点类型:nodeType
+        // 查看节点名字:nodeName
+        // 1：创建标签节点
+        var h = document.createElement('h1');
+        console.log(h.nodeType,h.nodeName);
+
+        // 2：创建文本节点(#text)
+        var txt = document.createTextNode('hello 东时教育');
+        console.log(txt.nodeType,txt.nodeName);
+
+        // 3：创建注释节点(#comment)
+        var com = document.createComment('这行是注释');
+        console.log(com.nodeType,com.nodeName);
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

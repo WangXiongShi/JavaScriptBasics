@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			border:10px solid black;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script>
+		// offsetWidth:获取元素的宽度(包含border)
+		// offsetHeight:获取元素的高度(包含border)
+		// clientWidth:获取元素的宽度(不包含border)
+		// clientHeight:获取元素的高度(不包含border)
+		// offsetTop:获取元素距离父级上边的距离
+		// offsetLeft:获取元素距离父级左边的距离
+
+		console.log(box.offsetWidth); //120
+		console.log(box.offsetHeight); //120
+		console.log(box.clientWidth); //100
+		console.log(box.clientHeight); //100
+		console.log(box.offsetTop); //8
+		console.log(box.offsetLeft); //8
+	</script>
+</body>
+</html>

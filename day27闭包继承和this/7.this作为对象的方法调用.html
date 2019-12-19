@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// this作为对象的方法调用时,this指向该对象
+		// 代码如下:
+		var obj = {
+			name:'lishijie',
+			age:'18',
+			sayHi:function(){
+				console.log(this);
+			}
+		}
+		obj.sayHi();//{name: "lishijie", age: "18", sayHi: ƒ}
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript">
+        window.onload = function(){
+            var $ = function(args){
+                return document.getElementById(args);
+            };
+            var add = $("add");
+            var rep = $("replace");
+            var rem = $("remove");
+            var dom, h;
+            add.onclick = function(){
+                //新增
+                dom = document.createElement("p");
+                dom.innerHTML="<span style='color:red'> 这是一个被p标记包含的 span 标签</span>";
+                document.body.appendChild(dom);
+            };
+            rep.onclick = function(){
+                //替换
+                 h = document.createElement("h1");
+                h.innerHTML="<span style='color:green'> 这是一个被h1标记包含的 span 标签</span>";
+                document.body.replaceChild(h,dom);
+                dom = null;
+            };
+            rem.onclick = function(){
+                //删除
+                if(dom){
+                    document.body.removeChild(dom);
+                }else if(h){
+                    document.body.removeChild(h);
+                }
+            };
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="新增" id="add"/>
+<input type="button" value="替换" id="replace"/>
+<input type="button" value="删除" id="remove"/>
+</body>
+</html>

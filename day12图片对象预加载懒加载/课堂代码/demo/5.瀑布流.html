@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        ul{
+            list-style: none;
+            width: 25%;
+            float: left;
+        }
+        ul li{
+            width: 96%;
+            margin: 3% 2%;
+        }
+        ul li img{
+            width: 100%;
+            /*解决图片空隙*/
+            display: block;
+        }
+        .clearFix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap" class="clearFix">
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+        <ul></ul>
+    </div>
+    <script type="text/javascript">
+        var uls = document.querySelectorAll('#wrap ul');
+        for(var i = 1; i < 39; i++){
+            // 创建li
+            var li = document.createElement('li');
+            // 给li添加图片
+            li.innerHTML = '<img  src="imgs/'+i+'.jpg"/>';
+
+            li.children[0].onload = function(){
+                // 判断ul的高度,用来存放ul的高度
+                var ulHeightArr = [];
+                for(var j = 0; j < uls.length; j++){
+                    ulHeightArr.push(uls[j].offsetHeight);
+                }
+                var minHeight = ulHeightArr[0];
+                var minIndex = 0;
+                for(var k = 0; k < ulHeightArr.length; k++){
+                    if(minHeight > ulHeightArr[k]){
+                        minHeight = ulHeightArr[k];
+                        minIndex = k;
+                    }
+                }
+                uls[minIndex].appendChild(this.parentNode);
+            }
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

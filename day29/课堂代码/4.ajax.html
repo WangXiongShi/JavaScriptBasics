@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // http://127.0.0.1/day29/data/1.json
+
+        // 请求数据的方式:
+        // 1:GET(常用)
+        // 2:POST(常用)
+        // 3:put
+        // 4:delete
+
+        // 与 POST 相比，GET 更简单也更快，并且在大部分情况下都能用。
+        // 然而，在以下情况中，请使用 POST 请求：
+        // 无法使用缓存文件（更新服务器上的文件或数据库）
+        // 向服务器发送大量数据（POST 没有数据量限制）
+        // 发送包含未知字符的用户输入时，POST 比 GET 更稳定也更可靠
+
+
+        // 拨打电话
+        // 1:首先要有一个手机
+        // XMLHttpRequest:ajax核心对象
+        // 兼容ie的对象ActiveXObject
+        // var ajax = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        // 兼容ie
+        var ajax;
+        if(window.XMLHttpRequest){
+            ajax = new XMLHttpRequest();
+        }else{
+            ajax = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+
+        // 2:输入号码
+        // open:三个参数
+        // 1:请求的方式(GET/POST/PUT/DELETE)
+        // 2:请求的服务器地址(http://127.0.0.1/)
+        // 3:是否异步(true/false)
+        ajax.open('GET','http://127.0.0.1:5500/javascript/day29/datas/1.json',true);
+
+        // 3:拨号
+        ajax.send();
+
+
+        // 4:检测状态
+        ajax.onreadystatechange = function(){
+        // readyState状态码:
+        // 0 － （未初始化）还没有调用send()方法
+        // 1 － （载入）已调用send()方法，正在发送请求
+        // 2 － （载入完成）send()方法执行完成，已经接收到全部响应内容
+        // 3 － （交互）正在解析响应内容
+        // 4 － （完成）响应内容解析完成，可以在客户端调用了
+        // 判断数据是否准备好了
+        if(ajax.readyState == 4){
+            if(ajax.status >= 200 && ajax.status <= 207){
+                console.log(ajax.responseText);
+                // 后台返回的是json类型的字符串(json串)
+                // console.log(ajax.responseText);
+                var data = JSON.parse(ajax.responseText);
+                console.log(data);
+
+                // 需求:打印数据中的图片、地址、主营业务
+            }else{
+                console.log('获取数据失败');
+            }
+        }
+
+            // http状态码
+            // 200 404 500
+            // ajax.responseText:数据返回到该属性
+            // console.log(ajax.responseText);
+        }
+
+        var obj = {
+            a:1,
+            b:2
+        }
+        var obj2 = {}
+        for( i in obj){
+            obj2[i] = obj[i];
+            console.log(i);
+        }
+        console.log(obj2);
+        console.log(obj);
+
+
+
+
+
+    </script>
+</body>
+</html>

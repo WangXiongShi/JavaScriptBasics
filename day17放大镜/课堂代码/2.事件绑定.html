@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #box{
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+// 事件绑定一个方法可以使用 addEventListener 来给标签 对应的事件添加方法,使用on的方式绑定,只能给事件绑定一个方法
+    // document.onclick = function(){
+    //     alert(1);
+    // }
+
+    // document.onclick = function(){
+    //     alert(2);
+    // }
+    // addEventListener与on的方式区别:
+    // 1:可以对元素添加多个相同的事件
+    // 2:可以改变事件传递的方式(冒泡,捕获)(向上传递,向下传递)
+
+    // 高阶函数
+    // document.addEventListener('click',function(){
+    //     alert(1);
+    // });
+    // document.addEventListener('click',function(){});
+
+
+    // function addEvent(obj,type,callBack){
+    //     obj.addEventListener(type,callBack);
+    // }
+
+    // addEvent(document,'click',function(){
+    //     alert(1);
+    // });
+
+
+    // var arr = [41,23,12,35,13,5,23,29];
+
+    // arr.forEach(function(a,b){
+    //     console.log(a,b);
+    // });
+
+
+
+
+    // function forEachFn(a,callBack){
+    //     for(var i = 0; i < a.length; i++){
+    //         callBack(a[i],i);
+    //     }
+    // }
+
+    // var arr = [41,23,12,35,13,5,23,29];
+
+    // forEachFn(arr,function(a,b){
+    //     console.log(a,b);
+    // });
+
+
+
+
+
+    // var arr = [41,23,12,35,13,5,23,29];
+
+    // for(var i = 0; i < arr.length; i++){
+    //     console.log(arr[i],i);
+    // }
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://www.baidu.com" method="GET" id="form1">
+        <input type="submit" name="" value="登陆">
+    </form>
+
+    <script type="text/javascript">
+        // 1:表单事件:onsubmit
+        // 2:阻止默认事件 1:return false 2: ev.preventDefault()
+        var form1 = document.querySelector('#form1');
+        form1.onsubmit = function(e){
+            var ev = window.event || e;
+            // alert(1);
+            if(true){
+                alert('账号密码不正确');
+                // 阻止默认事件
+                // return false;
+                // 阻止默认事件
+                ev.preventDefault();
+            }
+        }
+
+    </script>
+</body>
+</html>

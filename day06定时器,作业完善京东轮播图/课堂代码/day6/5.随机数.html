@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            /*background-color: rgba(0~255,0~255,0~255,0~1);*/
+        }
+    </style>
+</head>
+<body>
+    <button>开始</button>
+    <div id='wrap'></div>
+    <script type="text/javascript">
+
+
+    // Math.random();
+    // var f = 3.9415926;
+
+    // console.log(parseInt(f));
+
+
+
+    // for(var i = 0; i < 100; i++){
+    //     console.log(Math.random() * 10);
+    // }
+
+
+    // 求随机数的公式
+    // Math.random() * (最大数 - 最小数 + 1) + 最小数
+
+    // parseInt对小数取整
+
+    // 10~15的随机数
+    var num = Math.random() * (15 - 10 + 1) + 10;
+    // console.log(parseInt(num));
+
+
+    randFn(10,15);
+
+    function randFn(min,max){
+
+        return parseInt(Math.random() * (max - min + 1) + min);
+    }
+
+
+
+
+
+
+
+    // 随机10个0~20之间的随机数,并存放到数组中
+    // var arr = [];
+    // for(var i = 0; i < 10; i++){
+    //     var num = randFn(0,20);//10 11
+    //     arr.push(num);//arr = [10,11]
+    // }
+    // console.log(arr);
+
+
+    // 随机23个 13~27之间的随机数,存放到数组中,并且元素从小到大排序
+    // var arr = [];
+    // for(var i = 0; i < 23; i++){
+    //     var num = randFn(13, 27);
+    //     arr.push(num);
+    // }
+    // arr.sort(function(a,b){
+    //     return a - b
+    // });
+    // console.log(arr);
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

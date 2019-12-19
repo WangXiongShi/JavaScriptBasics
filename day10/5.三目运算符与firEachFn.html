@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 条件成立执行冒号前面的语句, 条件不成立执行冒号后面的语句
+		var bol = true;
+		// if(bol){
+		// 	alert(1);
+		// }else{
+		// 	alert(2);
+		// }
+
+		// bol == true ? alert(1) : alert(2); //1
+
+		// var a = 10;
+		// var b = 20;
+		// a > b ? alert(a) : alert(b); //20
+
+		// var a = 11; 
+		// a = a < 10? '0' + a : a ;
+		// alert(a);	//11
+
+
+		var arr = [1,2,3,4,5,6,7];
+		// arr.forEach(function(val,key){
+		// 	console.log(key,val); //key是下标 , val是遍历arr的值
+		// });
+
+		// 封装模拟forEach..
+		function forEachFn(obj,fn){
+			for(var i = 0; i < obj.length; i++){
+				fn(obj[i],i);
+			}
+		}	
+
+		forEachFn(arr,function(val,key){
+			console.log(val,key); // val是遍历arr的值 key是arr值对应的下标
+		});	
+	</script>
+</body>
+</html>

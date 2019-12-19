@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// call 和 apply 都是为了改变某个函数运行时的context, 即上下文而存在的, 换句话说, 就是为了改变函数体内部 this的指向.
+
+		// call和apply二者的作用完全一样, 只是接受参数的方式不太一样.
+
+		// 方法定义:
+		// apply
+		// Function.apply(obj,args)方法能接收两个参数:
+		// obj: 将function中的this换成obj, 这个对象将代替Function类里this对象,
+		// args: 函数传参, 这个是数组或类数组, apply方法把这个集合中的元素作为参数传递给被调用的函数,
+		// 例如: 两个对象obj1 , obj2 . obj1中有一个方法, obj2想借用, 需要用到call/apply
+
+		/*
+		// call语法
+		var obj1 = {
+			name:'lishijie',
+			sayHi:function(){
+				console.log(this.name);
+			}
+		}
+		var obj2 = {
+			name:'wangxionghsi'
+		}
+		// obj1.sayHi();
+		obj1.sayHi.call(obj2); //wangxionghsi
+		obj1.sayHi.apply(obj2); //wangxionghsi
+		*/
+
+
+
+		// call/apply: 两个参数
+		// 第一个参数: 传入改变this的对象
+		// 第二个参数: 函数传参
+		var obj1 = {
+			name:'shiwei',
+			age:'28',
+			getInfo:function(a,b,c){
+				console.log(this.name,a,b,c);
+			}
+		}
+		var obj2 = {
+			name:'zhengyu',
+			age:32
+		}
+		obj1.getInfo.call(obj2,'吃饭','小月月','喝酒'); //call传参的方法
+		obj1.getInfo.apply(obj2,['吃饭','小月月','喝酒']); //apply传参的方法
+		// zhengyu 吃饭 小月月 喝酒
+	</script>
+</body>
+</html>

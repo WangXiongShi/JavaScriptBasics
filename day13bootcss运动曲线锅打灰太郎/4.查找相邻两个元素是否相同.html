@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    var a = -1;
+    setInterval(function(){
+        var rand = randFn(0, 8);
+        if(a == rand){
+        	// console.log('相同');
+        	return;
+        }
+       	a = rand;
+       	console.log(rand);
+        // 判断这一次随机的数与上一次随机的数是否相同
+        // 如果相同打印该数字
+     	var arr = [];
+	    while(arr.length < 10){
+	        var num = randFn(1, 10);
+	        if(arr.indexOf(num) == -1){
+	            arr.push(num);
+	        }
+	    }
+	    console.log(arr);
+
+    },500);
+
+
+
+    function randFn(min,max){
+        return parseInt(Math.random() * (max - min + 1) + min);
+    }
+
+
+    </script>
+</body>
+</html>

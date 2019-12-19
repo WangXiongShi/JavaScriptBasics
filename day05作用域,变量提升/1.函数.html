@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		/*//1.无参无返回值函数
+		function fn(){	//声明一个无参无返回值的函数. 作用:包裹相同的代码
+			console.log('adbg absjd');
+		}
+		fn();	//调用函数,执行函数(调用几次打印几次)*/
+
+		/*//2.有参无返回值的函数
+		function foo(a){	//形参是a
+			console.log(a);	//打印123
+		}
+		foo(123);	//实参*/
+
+		/*//3.无参有返回值的函数
+		function fn(){
+			return 100;
+		}
+		var a = fn();
+		console.log(a);	//打印100*/
+
+		/*//4.有参有返回值
+		// function fn(a){
+		// 	return
+		// }
+		function addFn(a,b){
+			return a + b;
+			console.log('saiuhdaius h')	// return:下面的的所有代码不会执行
+		}
+		var sum = addFn(10,20);
+		console.log(sum);	//求和*/
+		// arguments: 伪数组, arguments存放是一组参数(实参)
+		// function fn(){
+		// 	//arguments: 	 [1,2,3,4,5,6,7,111]
+		// 	var sum = 0;
+		// 	for(var i = 0; i < arguments.length; i++){
+		// 		sum += arguments[i];
+		// 	}
+		// 	return sum;
+		// }
+		// console.log(fn(1,2,3,4,5,6,7,111));	//求fn内的和
+
+
+		// 12.5	该函数用来对传进来的数字乘以10返回
+		
+		// function transFn(a){
+		// 	return a * 10;
+		// }
+		// var res = transFn(12.5);
+		// console.log(res);
+
+		// console.log(111);	//1
+		// console.log(222);	//2
+
+		// function fn(){
+		// 	console.log(333);	//5
+		// }
+		// for(var i = 0; i < 3 ; i++){	//3
+		// 	fn();	//4		(执行三次打印三个333)
+		// }
+		// console.log(444444);	//最后一步
+
+		// var arr = [121,3,21,4124,21,451,12,321];
+		// var sum = 0;
+		// for(var i = 0; i < arr.length; i++){
+		// 	sum += arr[i];
+		// }
+		// console.log(sum);
+
+		// 需求: 调用sumFn函数, 传入一个数组, 返回一个数组元素之间的和
+		// var arr = [1,3,2,3,4,5,6,7];
+		// function sumFn(a){
+		// 	var sum = 0;
+		// 	for(var i = 0; i < a.length; i++){
+		// 		sum += a[i];
+		// 	}
+		// 	return sum;
+		// }
+		// var res = sumFn(arr);
+		// console.log(res);
+
+		// 伪数组arguments:存放参数的数组
+
+		function fn(){
+			console.log(arguments);
+		}	
+		fn(1,2,3);
+
+
+		//立即执行函数  (英文名字:iife)
+		// (function(){	//匿名函数(没有名字的函数), 函数声明和调用在一起执行
+		//      alert(1);
+		// })();
+ 		//(function(){
+ 		//	alert(2);
+ 		//})();
+
+ 		function add(a){	//形参
+ 			console.log(a);
+ 		}
+ 		add(123);	//实参
+
+ 		(function(a){	//形参
+ 			console.log(a);	//匿名函数传参
+ 		})(123);	//实参	传多个参数用逗号连接
+	</script>
+</body>
+</html>

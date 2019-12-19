@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width: 300px;
+			height: 300px;
+			background-color: #000;
+			border-radius: 50%;
+			transition:all 1s;
+		}
+	</style>
+</head>
+<body>
+	<select>
+		<option>宽度</option>
+		<option>高度</option>
+		<option>颜色</option>
+	</select>
+	<input type="text" name="" id="btn">
+	<input type="button" name="" value="按钮" id="inp">
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		var select = document.querySelector('select');
+		var btn = document.querySelector('#btn');
+		var inp = document.querySelector('#inp');
+		var box = document.querySelector('#box');
+		inp.onclick = function(){
+			// console.log(select.value,btn.value);
+			// var val = btn.value;
+			switch (select.value){
+				case '宽度':
+					box.style.width = btn.value + 'px';
+					break;
+				case '高度':
+					box.style.height = btn.value + 'px';
+					break;
+				case '颜色':
+					box.style.background = btn.value;
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

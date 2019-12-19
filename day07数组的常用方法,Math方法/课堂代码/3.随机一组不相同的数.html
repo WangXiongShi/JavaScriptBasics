@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // 随机10个不相同的数(数值范围11~25之间的)并且存放到数组中
+    var arr = [];
+    while (arr.length < 10) {
+        var randNum = randFn(11, 25);
+        var bol = true;
+        for(var i = 0; i < arr.length; i++){
+            if(randNum == arr[i]){
+                bol = false;
+            }
+        }
+
+        if(bol){
+            arr.push(randNum);
+        }
+
+    }
+    console.log(arr);
+
+
+    function randFn(min,max){
+        return parseInt(Math.random() * (max - min + 1) + min);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

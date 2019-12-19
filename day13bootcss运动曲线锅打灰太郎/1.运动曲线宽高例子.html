@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			/*transition:.5s all;*/
+			cursor:pointer;
+			/*position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);*/
+			/*border-radius:50%;*/
+		}
+		/*#box:hover{
+			width: 300px;
+			height: 700px;
+		}*/
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script>
+		var box = document.querySelector('#box');
+		var box2 = document.querySelector('#box2');
+		var i = 0;
+		var is = 0;
+		var timer = setInterval(function(){
+			i++;
+			if(i == 180){
+				clearInterval(timer);
+				return;
+			}
+			box.style.width = 300 * Math.abs(Math.sin(Math.PI / 180 * i)) + 'px';
+			// console.log(Math.sin(Math.PI / 180 * i));
+			box.style.height = 700 * Math.abs(Math.sin(Math.PI / 180 * i)) + 'px';
+			/* 
+				sin 0deg = 0 
+				sin 90deg = 1
+				sin 180deg = 0 
+				sin 270deg = 1
+				以此类推每次加90deg
+			*/
+
+		},2)
+	</script>
+</body>
+</html>

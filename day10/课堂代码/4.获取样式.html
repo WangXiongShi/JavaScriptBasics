@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #box{
+            width: 300px;
+            height: 300px;
+            color: red;
+            border: 1px solid #ccc;
+         /*   background-color: red;
+            color: yellow;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="font-size: 100px;"></div>
+    <script type="text/javascript">
+    var box = document.querySelector("#box");
+    box.style.color = 'red';
+    box.style.backgroundColor = 'blue';
+    // console.log(box.style.fontSize);
+    // style:只能获取行内样式属性
+    // getComputedStyle:获取非行内样式
+    var a = window.getComputedStyle(box,null);
+    console.log(a.width);
+    // currentStyle:ie里面获取非行内样式的方法ie6~8
+    // console.log(box.currentStyle.fontSize);
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

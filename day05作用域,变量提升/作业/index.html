@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">2017 一起加油吧!!</div>
+
+	<script>
+	//  获取到元素 id
+	var box = document.getElementById('box');
+	// 调用css样式函数设置样式
+	setStyle(box,'color','blue');
+	setStyle(box,'fontSize','50px');
+	setStyle(box,'width','500px');
+	setStyle(box,'height','500px');
+	setStyle(box,'background','red');
+
+
+	// 封装一个   css 基础简单样式的函数
+	// 第一个参数表示需要设置样式的元素，第二个参数为元素的属性，第三个参数为 属性值
+	function setStyle(dom,key,value) {
+	    // dom 可能是一个数组，也可能是一个DOM 对象
+	    if (dom.length){
+	        for (var i=0,len=dom.length;i<len;i++){
+	            dom[i].style['key'] = value;
+	        }
+	        // 此处使用了 return 就不需要再使用 else 
+	        return;
+	    }
+	    dom.style[key] = value;
+	}
+
+
+	</script>
+</body>
+</html>

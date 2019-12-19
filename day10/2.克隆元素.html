@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">复制</button>
+	<ul class="uls">
+		<li>我是li</li>
+		<li>我是li</li>
+		<li>我是li</li>
+		<li>我是li</li>
+		<li>我是li</li>
+		<li>我是li</li>
+	</ul>
+	<script>
+		var btn = document.querySelector('#btn');
+		var uls = document.querySelector('.uls');
+		var bd = document.querySelector('body');
+		// cloneNode(boolean) : 复制一个节点
+			// true: 深复制, 复制节点及其整个子节点树
+			// false: 浅复制, 只复制节点本身
+		btn.onclick = function(){
+			var res = uls.cloneNode(true);
+			console.log(res);
+			bd.appendChild(res);
+		}
+	</script>
+</body>
+</html>

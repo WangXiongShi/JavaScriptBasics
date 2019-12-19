@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        var arr = [13,23,56,12,12,52,24,12,3,12];
+        // 假设是最小数
+        var min = arr[0];
+        var index = 0;
+        // 获取数组中最小值,并返回下标
+        for(var i = 0; i < arr.length; i++){
+            if(min > arr[i]){
+                min = arr[i];
+                index = i;
+            }
+        }
+
+
+
+
+
+        function minItem(arr,fn){
+            var min = arr[0];
+            var index = 0;
+            // 获取数组中最小值,并返回下标
+            for(var i = 0; i < arr.length; i++){
+                if(min > arr[i]){
+                    min = arr[i];
+                    index = i;
+                }
+            }
+            fn(min,index);
+        }
+
+        minItem(arr, function(min,index){
+            console.log(min,index);
+        });
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

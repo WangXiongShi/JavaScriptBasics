@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>接受值的页面</h1>
+    <h1 id="user"></h1>
+    <h1 id="pwd"></h1>
+    <script type="text/javascript">
+        // BOM获取地址栏信息,地址参数?
+        // console.log(window.location.search);
+        // ?name=3245&pwd=dsf&a=100&b=200
+        var param = window.location.search;
+        var obj = getParam(param);
+        document.querySelector('#user').innerHTML = obj.name;
+        document.querySelector('#pwd').innerHTML = obj.pwd;
+
+        // 用来获取地址栏中的参数
+        function getParam(str){
+            var obj = {};
+            var arr = str.split('?')[1].split('&');
+            arr.forEach(function(val,index){
+                // decodeURI:解决url参数中文乱码
+                obj[val.split('=')[0]] = decodeURI(val.split('=')[1]);
+            });
+            return obj;
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>

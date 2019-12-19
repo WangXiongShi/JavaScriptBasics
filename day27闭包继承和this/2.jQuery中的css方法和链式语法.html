@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<div id="box"></div>
+	<script>
+		var box = document.querySelector('#box');
+		HTMLElement.prototype.css = function(){
+			// console.log(arguments);
+			if(arguments.length == 1){
+				for(var key in arguments[0]){
+					this.style[key] = arguments[0][key];
+				}
+				return this;
+			}else if(arguments.length == 2){
+				this.style[arguments[0]] = arguments[1];
+				return this;
+			}
+		}
+		box.css('width','100px').css('height','500px').css('background','blue');
+		// box.css({
+		// 	width:'100px',
+		// 	height:'100px',
+		// 	background:'red'
+		// });
+	</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul li {
+            width: 100%;
+            height: 20px;
+            border: 1px solid black;
+        }
+        div.a{
+            color: red;
+        }
+        div.b{
+            color: pink;
+        }
+        .c{
+            color: blue;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            padding: 0 20px;
+            background: #ccc;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a b c">
+        <div class="box">
+            <p>sss</p>
+        </div>
+    </div>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var box = document.querySelector('.c');
+        console.log(box.clientWidth);
+        
+        // $(document).ready(function(){
+        //     alert('1');
+        // })
+        // $(document).ready(function(){
+        //     alert('1');
+        // })
+            
+            console.log(String.fromCharCode(99));
+            
+            var arr = [];
+            var arrs = [];
+            while(arr.length < 11){
+                var a = randFn(0,99)
+                if(arr.indexOf(a) == -1){
+                    arr.push(a);
+                }
+            }
+            function randFn(max,min){
+                return parseInt(Math.random() * (max - min + 1) +min)
+            }
+            var str = arr.join('');
+            console.log(arr);
+            for (let index = 0; index < arr.length; index++) {
+                const element = arr[index];
+                console.log(element);
+                console.log(String.fromCharCode(element));
+                arrs.push(String.fromCharCode(element));
+            }
+            console.log(str);
+            console.log(arrs);
+
+            
+        var lis = document.querySelectorAll('li');
+        for (var i = 0; i < lis.length; i++) {
+            const element = lis[i];
+            (function (a) {
+                element.onclick = function () {
+                    console.log(a);
+                }
+            })(i)
+        }
+
+        var obj = {}
+        function foo(a, b, c) {
+            console.log(typeof b);
+        }
+        foo.apply(obj, [1, 2, 3])
+    </script>
+</body>
+
+</html>

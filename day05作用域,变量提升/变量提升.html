@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// // 变量提升
+		// 如果先使用变量后声明的变量, 会将变量提升到最前方, 打印结果为undefined
+		// console.log(a);	//有var(声明)打印undefined  没有var(声明) 是报错
+		// a = 100;
+
+		// var a = 100;
+		// function fn(){
+		// 	a = 400;
+		// 	console.log(a);	//打印400
+		// }
+		// fn();
+		// console.log(a);	//对原来的变量去改值了 打印400
+		// 由内向外找, 不会由外向内找
+
+		// var b = 200;	//1	//11
+		// function foo(){	//2
+		// 	console.log(b);//5	//7变量提升(undefined)
+		// 	var b = 300;	//6	//8
+		// 	console.log(b);	//9(300)
+		// }	//3
+		// foo();	//4
+		// console.log(b);	//10	//12(200)
+
+
+		// var b = 200;	//考试题
+		// function foo(b){
+		// 	console.log(b);	//传进来的实参200 ,  打印200
+		// 	b = 300;
+		// 	console.log(b);	//更改了传进来的是参200 , 更改为300 ,  打印300
+		// }
+		// foo(b);
+		// console.log(b);	//在自己的作用域找, 最外层的=b , 	打印200
+
+		// function foo(){
+		// n = 999;
+		// }
+		// foo();
+		// alert(n);	//如果对一个变量直接赋值(没有var声明),那么该变量是全局变量
+
+		// 在函数内的函数,必须去执行(调用)才会打印
+		// 如果函数里面没有return关键字, 该函数会返回undefined
+		// return的时候一定要加一个空格(规范), 如果没有的话就是没有return所以是undefined
+
+		//拓展
+		var a = 100;
+		var b = '200';
+		var c = a + +b;	//强制转换b, 100		字符串前面加一个加号,代表把字符串隐式转换为number类型
+		alert(c);
+
+
+		// 1.当对变量直接赋值(没有使用var声明), 该变量为全局变量
+		// 2.函数中没有return(换行也不行)关键字, 将返回undefined
+		// 3.对字符串类型的数字, 前面加(+/-)可以把该字符串转换为数字
+		// 4.在计算机中非0即真(true代表1, false代表0)
+	</script>
+</body>
+</html>

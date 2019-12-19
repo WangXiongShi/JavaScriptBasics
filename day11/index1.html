@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		#wrap{
+			width: 600px;
+			height: 600px;
+			border:1px solid #ccc;
+			position: absolute;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+		}
+		#wrap div{
+			position: absolute;
+			box-sizing: border-box;
+			background-size: 100%;
+		}
+		section{
+			width: 600px;
+			height: 20px;
+			margin:0 auto;
+		}
+		#box{
+			width: 600px;
+			height: 20px;
+			background-color: pink;
+			position: relative;
+		}
+		#countDiv{
+			width: 600px;
+			height: 20px;
+			background-color:#ff6666;
+			position: absolute;
+			top:0px;
+			left:0px;
+		}
+		.im,.im1{
+			width: 600px;
+			height: 600px;
+			position: absolute;
+			top:50%;
+			left:50%;
+			transform: translate(-50%,-50%);
+			z-index: 10;
+		}
+		.im .play,.im1 .play1{
+			width: 280px;
+			height: 50px;
+			/*border:1px solid #ccc;*/
+			position: absolute;
+			top:425px;
+			left: 165px;
+		}
+		.im1 .play1{
+			width: 260px;
+			height: 50px;
+			/*border:1px solid #ccc;*/
+			position: absolute;
+			top:390px;
+			left: 180px;
+		}
+		.im img,.im1 img{
+			width: 600px;
+			height: 600px;
+			background-size: 100% 100%;
+		}
+		.im1{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="im">
+		<div class="play"></div>
+		<img src="img/start1.png">
+	</div>
+	<div class="im1">
+	<div class="play1"></div>
+		<img src="img/end2.png">
+	</div>
+	<div id="wrap"></div>
+	<section>
+		<div id="box">
+			<div id="countDiv"></div>
+		</div>
+	</section>
+	<script type="text/javascript">
+		// 动态创建四个div
+		// 每个div的面积平分
+		// 知识点(双层for循环、)
+		var wrap = document.querySelector('#wrap');
+		var index = 2;
+		var box = document.querySelector('#box');
+		var countDiv = document.querySelector('#countDiv');
+		var w = countDiv.offsetWidth;
+		var im = document.querySelector('.im');
+		var play = document.querySelector('.play');
+		var im1 = document.querySelector('.im1');
+		var play1 = document.querySelector('.play1');
+
+		play.onclick = function(){
+			im.style.display = 'none';
+			setFn();
+		}
+		play1.onclick = function(){
+			im1.style.display = 'none';
+			// im.style.display = 'block';
+			box.style.backgroundColor = '';
+			w = 600;
+			countDiv.style.width = w + 'px';
+			setFn();
+			index = 2;
+			while(wrap.children.length != 0){
+				wrap.removeChild(wrap.children[0]);
+			}
+			creatFn(2);
+		}
+		function creatFn(num){
+			for (var i = 0; i < num; i++) {
+				for (var j = 0; j < num; j++) {
+					// 创建div
+					var div = document.createElement('div');
+					// 设置宽高
+					div.style.width = 600 / num + 'px';
+					div.style.height = 600 / num + 'px';                   
+					// 设置位置(top,left)
+					div.style.top = j * 600 / num + 'px';
+					div.style.left = i * 600 / num + 'px';
+					// 插入图片 
+					div.style.backgroundImage = 'url(img/1.png)';
+					// 插入wrap
+					wrap.appendChild(div);
+				}
+			}
+			// 获取所有图片
+			var divs = document.querySelectorAll('#wrap div');
+			var rand = randFn(0,divs.length - 1);
+			divs[rand].style.backgroundImage = 'url(img/2.png)';
+			// for (var i = 0; i < divs.length; i++) {
+				divs[rand].onclick = function(){
+					// 删除所有图片
+					while(wrap.children.length != 0){
+						wrap.removeChild(wrap.children[0]);
+					}
+					index++;
+					w += 10;
+					if (w >= 600) {
+						w = 600;
+					}
+					countDiv.style.width = w + 'px';
+					creatFn(index);
+				}
+			// }
+		}
+		creatFn(2);
+
+		function randFn(min,max){
+			return parseInt(Math.random() * (max - min + 1) + min);
+		}
+
+		function setFn(){
+			var timer = setInterval(function(){
+				w--;
+				countDiv.style.width = w + 'px';
+				if (w <= 0) {
+					// alert('辣鸡');
+					clearInterval(timer);
+					im1.style.display = 'block';
+					box.style.backgroundColor = '#ff6666';
+				}
+			},10)
+		}
+	</script>
+</body>
+</html>

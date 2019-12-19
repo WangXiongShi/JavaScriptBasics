@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body,html{
+            height: 100%;
+        }
+        #wrap{
+            height: 100%;
+        }
+        #loading{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 9999;
+            width: 100%;
+            height: 100%;
+            background-color: red;
+            text-align: center;
+        }
+        h1{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div id='wrap'>
+        <div id='loading'><h1>0%</h1></div>
+        <div id="imgs">
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var arrImage = ["http://pic.pp3.cn/uploads/allimg/111116/11021321R-4.jpg","http://img1.imgtn.bdimg.com/it/u=1521482949,816209794&fm=206&gp=0.jpg","https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=602396125,1905492147&fm=116&gp=0.jpg","http://pic5.nipic.com/20100121/4183722_103138000079_2.jpg"];
+        var imgs = document.querySelector('#imgs');
+        var h1 = document.querySelector("h1");
+        var loading = document.querySelector("#loading");
+        var count = 0;
+        var press = 0;
+        for(var i = 0; i < arrImage.length; i++){
+            var img = new Image();
+            img.src = arrImage[i];
+            img.onload = function(){
+                count++;
+                press = parseInt(count / arrImage.length * 100) + '%';
+
+                h1.innerHTML = press;
+                if(count >= arrImage.length){
+                    loading.style.display = 'none';
+                }
+            }
+            imgs.appendChild(img);
+        }
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

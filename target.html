@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            #main {
+                width: 200px;
+                height: 100px;
+                background: red;
+            }
+        </style>
+        <script type="text/javascript">
+            window.onload = function() {
+                document.getElementById("main").onclick = function(e) {
+                    // target事件属性可返回事件的目标节点(触发该事件的节点),如生成事件的元素,文档或窗口
+                    // 获得触发事件的元素
+                    console.log(e.target);
+                    console.log(e.target.id);
+                    console.log(e.target.tagName);
+                    console.log(e.target.nodeName);
+                    console.log(e.target.classList);
+                    console.log(e.target.className);
+                    console.log(e.target.innerHTML);
+                    console.log(e.target.innerText);
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="main" class="sb js node"><span>我爱JavaScript</span></div>
+    </body>
+
+</html>

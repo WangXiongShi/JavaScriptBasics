@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 事件绑定移除事件方法
+		// document.adEventListener('click',function(){
+		// 	alert(1);
+		// })
+		document.addEventListener('click',fn)
+
+		function fn(){
+			alert(1);
+		}
+
+		setTimeout(function(){
+			// 移除事件
+			document.removeEventListener('click',fn);
+		},2000)
+	</script>
+</body>
+</html>

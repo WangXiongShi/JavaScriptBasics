@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="inp">
+    <script type="text/javascript">
+        var inp = document.querySelector("#inp");
+
+        // onfocus  当输入框聚焦的时候触发
+        // inp.onfocus = function(){
+        //     console.log(1);
+        // }
+        // onblur 当输入框失焦的时候触发
+        // inp.onblur = function(){
+        //     console.log(2);
+        // }
+        // oninput  当输入的时候实时触发
+        // inp.oninput = function(){
+        //     console.log(this.value);
+        // }
+        // onchange 当输入框内容修改并且失去焦点时触发
+        // inp.onchange = function(){
+        //     console.log(4);
+        // }
+
+        function fn(){
+            var a = 1;
+            setTimeout(function(){
+                console.log(a);
+                a = 3;
+            },1000);
+            a = 2;
+            setTimeout(function(){
+                console.log(a);
+                a = 4;
+            },3000);
+        }
+        fn();
+        console.log(a); 
+
+    </script>
+</body>
+</html>

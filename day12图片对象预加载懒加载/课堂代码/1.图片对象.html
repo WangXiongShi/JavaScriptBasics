@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap"></div>
+    <script type="text/javascript">
+    // 对象
+    // js对象 string,number,boolean,null,undefined,array,{},function.....
+
+    // html/dom 对象 HTMLElementP,HTMLElementA,HTMLElementImage,HTMLElementDiv
+
+        // 图片
+        // var img = new Image();
+        var img = document.createElement('img');
+
+    // 区别:当使用少量图片时createElement('img')效率比较高
+    // 当使用大量图片时new Image()效率比较高
+        img.src = 'img/1.png';
+
+        // 当图片加载完毕
+        img.onload = function(){
+            // 获取宽高一定要等到图片加载完毕
+            console.log(img.width,img.height);
+        }
+
+        wrap.appendChild(img);
+
+
+
+    </script>
+</body>
+</html>

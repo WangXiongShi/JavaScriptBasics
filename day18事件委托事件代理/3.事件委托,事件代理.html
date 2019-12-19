@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>添加li</button>
+	<ul>
+		<li>我是li1</li>
+		<li>我是li2</li>
+		<li>我是li3</li>
+		<li>我是li4</li>
+		<li>我是li5</li>
+	</ul>
+	<script>
+		/*
+			事件委托,事件代理
+			事件委托,是利用事件冒泡的原理,子级的事件由父级代理完成
+			优点:提高性能
+		*/
+		var ul = document.querySelector('ul');
+		var lis = document.querySelectorAll('ul li');
+		var btn = document.querySelector('button');
+		var i = 5;
+		btn.onclick = function(){
+			var li = document.createElement('li');
+			i++;
+			li.innerHTML = '我是li' + i;
+			ul.appendChild(li);
+		}
+		for(var i = 0; i < lis.length; i++){
+			lis[i].onclick = function(){
+				alert(this.innerHTML);
+			}
+		}
+	</script>
+</body>
+</html>

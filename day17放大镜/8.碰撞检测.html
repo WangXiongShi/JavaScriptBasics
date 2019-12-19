@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+        #box2{
+            width: 100px;
+            height: 300px;
+            background-color: blue;
+            position: absolute;
+            left: 400px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+
+    <script type="text/javascript">
+        var box1 = document.querySelector("#box1");
+        var box2 = document.querySelector("#box2");
+        // 检测两个矩形是否发生了碰撞,就是检测矩形的上下左右四个边是否发生重叠交叉。 以下是发生碰撞的条件:
+        // 左侧碰撞:碰撞物体的右边距 > 被碰撞物体左边距
+        // 右侧碰撞:碰撞物体的左边距 < 被碰撞物体的右边距
+        // 顶部碰撞:碰撞物体的底部 > 被碰撞物体的顶部
+        // 底部碰撞:碰撞物体的顶部 < 被碰撞物体的底部
+        box1.onmousedown = function(){
+            document.onmousemove = function(e){
+                var ev = window.event || e;
+                box1.style.left = ev.clientX - box1.offsetWidth / 2 + 'px';
+                box1.style.top = ev.clientY - box1.offsetHeight / 2 + 'px';
+
+                var box1Right = box1.offsetLeft + box1.offsetWidth;
+                var box1Left = box1.offsetLeft;
+                var box1Top = box1.offsetHeight + box1.offsetTop;
+                var box1Bottom = box1.offsetTop;
+
+               	var box2Right = box2.offsetLeft + box2.offsetWidth;
+                var box2Left = box2.offsetLeft;
+                var box2Top = box2.offsetHeight + box2.offsetTop;
+                var box2Bottom = box2.offsetTop;
+
+                if(box1Right >= box2Left && box1Left <= box2Right && box1Bottom <= box2Top && box1Top >= box2Bottom){
+                	box2.style.background = 'black';
+                }else{
+                	box2.style.background = 'blue';
+                }
+            }
+        }
+
+        box1.onmouseup = function(){
+            document.onmousemove = null;
+        }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

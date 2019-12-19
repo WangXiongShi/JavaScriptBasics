@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #pipes{
+            width: 500px;
+            height: 600px;
+            border: 3px solid #ccc;
+            position: absolute;
+            left: 100px;
+            top: 10px;
+            list-style:none;
+        }
+        ul>li{
+            position: absolute;
+            top: 0px;
+            left: 500px;
+            width: 60px;
+            height: 100%;
+            border: 1px solid red;
+        }
+        #up{
+            width: 100%;
+            background-image: url('img/up_mod.png');
+            position: relative;
+
+        }
+        #up img{
+            position: absolute;
+            bottom: 0px;
+        }
+        #down{
+            width: 100%;
+            background-image: url('img/down_mod.png');
+            position: absolute;
+            bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="pipes">
+        <!-- <li>
+            <div id="up" style="height: 300px"><img src="img/up_pipe.png"></div><div id="down" style="height: 200px"><img src="img/down_pipe.png"></div>
+        </li> -->
+    </ul>
+
+    <script type="text/javascript">
+    var uls = document.querySelector("#pipes");
+    var suipian = document.createDocumentFragment();
+    setInterval(function(){
+        var li = document.createElement('li');
+
+        li.l = 500;
+        li.style.left = li.l + 'px';
+        var upPipeH = randomFn(60, 440);
+        var downPipeH = 600 - 100 - upPipeH;
+        li.innerHTML = '<div id="up" style="height: '+upPipeH+'px"><img src="img/up_pipe.png"></div><div id="down" style="height: '+downPipeH+'px"><img src="img/down_pipe.png"></div>';
+
+        li.timer = setInterval(function(){
+            li.l--;
+            li.style.left = li.l + 'px';
+        },10);
+        suipian.append(li);
+        uls.appendChild(suipian);
+    },2000);
+
+    // 总长度:600
+
+    // 最低不能低于60 * 2 = 120;
+    // 管道中间间距100
+
+    // 求一个管道最小高度和最大高度
+    // 最小值60，最大值：600 - 60 - 100 = 440px
+
+    function randomFn(min,max){
+        return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    </script>
+</body>
+</html>

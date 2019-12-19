@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+    // 有参有返回值的函数
+    // function fn(a){
+
+    //     return
+    // }
+
+    // function foo(a,c,f){
+
+    // }
+    // foo(10,20,1000)
+
+
+    // 求和运算
+    // function addFn(a,b){
+
+    //     return a + b;
+    // }
+
+    // var sum = addFn(100,250);
+
+    // console.log(sum);
+
+
+    // 拓展:
+    function addFn(){
+        // arguments:伪数组,arguments存放一组参数(实参)
+        console.log(arguments);
+        var sum = 0;
+        for(var i = 0; i < arguments.length; i++){
+            sum = sum + arguments[i];
+        }
+        return sum;
+    }
+    addFn(1,2,3,4,5);
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

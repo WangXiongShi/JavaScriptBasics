@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="wrap"></div>
+	<script>
+	/* 
+		对象
+			js对象 string,null,undefined,number,array,{},function.....
+			html/dom对象 HTMLElementP ,HTMLElementA, HTMLElementImage, HTMLElementDiv
+	*/
+
+
+		//创建一个图片怎去创建
+		// var img = new Image(); 
+		var img = document.createElement('img'); 
+		// 区别:当使用[少量]图片是createElement('img')效率比较高
+		// 当使用[大量]图片时new Image()效率比较高
+		// console.log(img);
+		img.src = 'img/3.png';
+		img.onload = function(){	//当图片加载完毕之后会有这个事件
+			// alert(1);
+			console.log(img.width,img.height); 
+			//[想要获取图片的宽高要在加载完毕里面获取]打印图片的宽高1010 1681
+		}
+		wrap.appendChild(img);
+	</script>
+</body>
+</html>

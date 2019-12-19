@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		var arr = [4,23,21,312,31,43,62,3,23,1];
+		// 对数组进行从小到大排序
+		// 方法一:选择排序(选择最小的排序)
+		var tempArr = [];
+		var leg = arr.length;
+		while(tempArr.length < leg){
+			var arr1 = arr[0];
+			var index = 0;
+			for (var i = 0; i < arr.length; i++) {
+				// console.log(arr[i]);
+				if(arr1 > arr[i]){
+					arr1 = arr[i];
+					index = i;
+				}
+			}
+			tempArr.push(arr[index]);
+			arr.splice(index,1);
+		}
+		console.log(tempArr);
+
+
+
+		// 方法二:冒泡排序
+		// 1: 我们需要执行多少轮才能把数组中的数交换完
+		// 2: 两个值如何交换
+		// 3: 每执行一轮
+		
+		for (var i = 0; i < arr.length - 1; i++) {
+			for (var j = 0; j < arr.length - 1 - i; j++) {
+				if(arr[j] > arr[j + 1]){
+					var tmp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = tmp;
+				}
+			}
+		}
+		console.log(arr);
+	</script>
+</body>
+</html>

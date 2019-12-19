@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// Cookie容量较小,只有5KB,而且在IE6中只支持每个域名20个cookie. 优势就是没有兼容,各个浏览器都支持. 
+		// 到H5时代,localStorage称为本地存储的新宠,他可以存储5M的资源,并且使用方便,缺点不兼容IE8以下浏览器.并且localStorage不用在服务器环境下运行
+		// 要使用localStorage,首先自然是检测浏览器是否支持本地存储. 在HTML5中, 本地存储是一个window的属性,包括localStorage和sessionStorage, 从名字应该可以很清楚的辨认二者的区别, 前者是一直存在本地的, 后者只是伴随这session, 窗口一旦关闭数据清空. 二者用法完全相同.
+
+		localStorage.name = 'wangxiongshi';
+		localStorage.age = 18;
+
+		// alert(localStorage.name);
+		// alert(localStorage.age);
+
+		// var obj = {
+		// 	name:'wangxiongshi',
+		// 	age:'18',
+		// 	hobby:'nv'
+		// }
+		// for(var key in obj){
+		// 	// var key = 'name';
+		// 	// var key = 'age';
+		// 	// var key = 'hobby';
+		// 	console.log(obj[key]);
+		// }
+		// 遍历对象获取值使用方式分为两种
+		// 1:对象使用点语法 例如: obj.name;
+		// 2:对象使用[]语法 例如: obj['name'];
+		// 中括号方式取值,中括号里面的值必须是字符串,或者字符串变量
+
+		// 设置localStorage (想像成一个对象存储过程)
+
+		// 第一种方式: 
+		localStorage.name = 'wangxiongshi';
+		// 第二种方式: 
+		localStorage['name'] = 'wangxiongshi';
+		// 第三种方式: 
+		localStorage.setItem('name','wangxiongshi');
+
+		// 获取localStorage中的值
+		// 第一种方式: 
+		localStorage.name
+		// 第二种方式: 
+		localStorage['name']
+		// 第三种方式: 
+		localStorage.getItem('name');
+
+		// 删除localStorage中的值
+		// 第一种方式: 
+		localStorage.removeItem('name');
+	</script>
+</body>
+</html>

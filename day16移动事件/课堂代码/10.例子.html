@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        ul{
+            display: none;
+        }
+        li:hover{
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="" id="inp">
+    <ul id="uls">
+        <li>小米</li>
+        <li>大米</li>
+        <li>中米</li>
+        <li>红米</li>
+        <li>黑米</li>
+    </ul>
+    <script type="text/javascript">
+    var inp = document.querySelector('#inp');
+    var uls = document.querySelector("#uls");
+
+    inp.onfocus = function(){
+        uls.style.display = 'block';
+    }
+
+    for(var i = 0; i < uls.children.length; i++){
+        uls.children[i].onclick = function(){
+            inp.value = this.innerHTML;
+            uls.style.display = 'none';
+        }
+    }
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

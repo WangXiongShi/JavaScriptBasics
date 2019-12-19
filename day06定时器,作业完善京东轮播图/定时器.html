@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 300px;
+			height: 300px;
+			background-color: red;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform:translate(-50%,-50%);
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<h1>10</h1>
+	<script type="text/javascript">
+		/*// 一次性定时器
+		// setTimeout(function(){	//一次性定时器
+		// 	// alert(1);
+		// },2000);	//2000毫秒=1秒
+		var obox = document.getElementById('box');
+		setTimeout(function(){	//一次性定时器
+			obox.style.display = 'block';
+		},5000);	//5秒之后显示box
+		obox.onclick = function(){
+			obox.style.display = 'none';
+		}	//点击box隐藏*/
+
+
+		// 循环定时器
+		// setInterval(function(){	//重复性定时器
+		// 	alert(2);
+		// },2000);	//每两秒重复执行一次
+
+		// 需求:写一个倒计时10到0
+		var h1 = document.getElementsByTagName('h1')[0];
+		var a = 11;
+		var timer = setInterval(function(){
+			a--;	//console.log++或--的时候也是相当于去赋值了
+			h1.innerHTML = a;
+			if (a <= 0) {
+				h1.style.color = 'red';
+				clearInterval(timer);
+			}
+			// console.log(a);
+		},1000);
+	</script>
+</body>
+</html>

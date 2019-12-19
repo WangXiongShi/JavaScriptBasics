@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+		// // 随机10个不相同的数(数值范围11`25之间的)并且存放到数组中
+		// var arr = [];
+		// while( arr.length < 5){
+		// 	var a = randFn(11, 25);
+		// 	//indexOf()如果要检索的字符串值没有出现，则该方法返回 -1。
+		// 	if (arr.indexOf(a) == -1) {	//不存在就返回-1, 就往里面添加
+		// 		arr.push(a);
+		// 	}
+		// }
+		// console.log(arr);
+
+		// function randFn(min,max){
+		// 	return parseInt(Math.random() * (max - min + 1) + min);
+		// }
+
+		// // 随机一组(5个数)不相同的数
+	 //    var arr = [];
+	 //    while (arr.length < 5) {
+	 //        var rand = randFn(20, 26);
+	 //        // 定义开关
+	 //        var bol = true;
+	 //        // 随机数和数组中所有的数进行对比，查看是否相同
+	 //        for(var i = 0; i < arr.length; i++){
+	 //            // 如果相同就把开关改成false，不让往数组中添加数
+	 //            if(arr[i] == rand){
+	 //                bol = false;
+	 //            }
+	 //        }
+	 //        // 判断，如果开关为true代表随机出来的数跟数组中的数对比发现没有重复
+	 //        if(bol == true){
+	 //            // 随机数在数组中没有重复就添加到数组中
+	 //            arr.push(rand);
+	 //        }
+
+	 //    }
+	 //    console.log(arr);
+	 //    // 随机函数
+	 //    function randFn(min,max){
+	 //        return parseInt(Math.random() * (max - min + 1) + min);
+	 //    }
+
+
+
+
+	    // var arr = [];	//定义一个空数组
+	    // while(arr.length < 10){	//数组的长度小于10就一直循环
+	    // 	var randNum = randFn(11,25);	//声明一组随机数
+	    // 	var bol = true;	//开关等于true判断下面的条件
+	    // 	for(var i = 0; i < arr.length; i++){	//取出数组里面的每个数来判断是否重复
+	    // 		if(randNum == arr[i]){	//如果这组随机数中的数与arr数组中的数重复了,就把开关关掉
+	    // 			bol = false;
+	    // 		}
+	    // 	}
+	    // 	if(bol){	//此时bol等于true, 会执行下面的在数组末未添加
+	    // 		arr.push(randNum);	//在arr数组的末尾添加不重复的数
+	    // 	}
+	    // }
+	    // console.log(arr);	//打印arr
+
+	   	// function randFn(min,max){
+	   	// 	return parseInt(Math.random() * (max - min + 1) + min);
+	   	// }
+
+
+
+	   	// var arr = [];
+	   	// while(arr.length < 10){
+	   	// 	var randsum = randFn(10,25);
+	   	// 	var bol = true;
+	   	// 	for(var i = 0; i < arr.length; i++){
+	   	// 		if(randsum == arr[i]){
+	   	// 			bol = false;
+	   	// 		}
+	   	// 	}
+	   	// 	if(bol){
+	   	// 		arr.push(randsum);
+	   	// 	}
+	   	// }
+	   	// document.write(arr);
+
+	   	// function randFn(min,max){
+	   	// 	return parseInt(Math.random() * (max - min + 1) + min);
+	   	// }
+
+
+
+	   	// // 去除数组中重复的元素
+	   	// var arr = [21,31,4,41,12,14,24,4,13,13,1,42,52,35,34,65,68,4,4,12];
+	   	// var a = [];
+	   	// for(var i = 0; i < arr.length; i++){
+	   	// 	// if(a.indexOf(arr[i]) != -1){
+	   	// 	// 	continue;
+	   	// 	// }
+	   	// 	// a.push(arr[i]);
+	   	// 	if(a.indexOf(arr[i]) == -1){
+	   	// 		a.push(arr[i]);
+	   	// 	}
+	   	// }
+	   	// console.log(a);
+
+	   	// 找出数组中最小的数,并返回其下标
+	   	var arr = [34,52,1,32,2,14,5,];
+	   	var num = arr[0];
+	   	var index = 0;
+	   	for (var i = 0; i < arr.length; i++) {
+	   		if(num > arr[i]){
+	   			num = arr[i];
+	   			index = i;
+	   		}
+	   	}
+	   	console.log(num,index);
+	</script>
+</body>
+</html>

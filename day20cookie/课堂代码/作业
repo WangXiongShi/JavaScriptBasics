@@ -1,0 +1,52 @@
+//让数组中的对象按照某一个属性值(年龄)升序排序
+compareFn(arr,'age');
+
+
+
+//例如以下数组
+var arr = [{
+            name:'石威',
+            age:'30'
+            },
+            {
+                name:'卢楷锐',
+                age:'20'
+            },
+            {
+                name:'赵育博',
+                age:'45'
+            },
+            {
+                name:'杨丹妮',
+                age:'18'
+            },
+            {
+                name:'aminy',
+                age:'8'
+            }
+            ,{
+                name:'marrysia',
+                age:19
+            }
+        ];
+
+
+//封装函数如下：
+function compareFn(obj,key){
+    var arr2 = [];
+    var len = obj.length;
+    while (arr2.length < len) {
+        var minNum = obj[0][key];
+        var minIndex = 0;
+        for(var i = 0; i <  obj.length; i++){
+            if(minNum > obj[i][key]){
+                minNum = obj[i][key];
+                minIndex = i;
+            }
+        }
+        arr2.push(obj[minIndex]);
+        obj.splice(minIndex,1);
+
+    }
+    return arr2;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+
+    </ul>
+
+    <script type="text/javascript">
+    var arr = [
+                {sales:1200,score:9,name:'小米',pirce:2999},
+                {sales:2000,score:39,name:'苹果',pirce:3999},
+                {sales:1300,score:69,name:'三星',pirce:5999},
+                {sales:1060,score:22,name:'oppo',pirce:1999},
+                {sales:4000,score:41,name:'华为',pirce:999},
+                {sales:1900,score:82,name:'魅族',pirce:15}
+            ];
+
+        var list = document.querySelector("#list");
+        arr = compareFn(arr, 'name');
+        for(var i = 0; i < arr.length; i++){
+            // console.log(arr[i].name);
+            var li = document.createElement(
+                'li');
+
+            li.innerHTML = '产品名字:'+arr[i].name + '产品价格:' + arr[i].pirce + '产品销量:' + arr[i].sales + '评分:' + arr[i].score;
+
+            list.appendChild(li);
+        }
+
+//封装函数如下：
+function compareFn(obj,key){
+
+    var arr2 = [];
+    var len = obj.length;
+    while (arr2.length < len) {
+        var minNum = obj[0][key];
+        var minIndex = 0;
+        for(var i = 0; i <  obj.length; i++){
+                if(minNum > obj[i][key]){
+                    minNum = obj[i][key];
+                    minIndex = i;
+                }
+
+        }
+        arr2.push(obj[minIndex]);
+        obj.splice(minIndex,1);
+
+    }
+    return arr2;
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #bigBox{width: 500px;height: 500px;background: red;}
+        #middleBox{width: 300px;height: 300px;background: yellow;}
+        #smallBox{width: 100px;height: 100px;background: pink;}
+    </style>
+</head>
+<body>
+    <div id="bigBox">
+        <div id="middleBox">
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var bigBox = document.querySelector("#bigBox");
+        var middleBox = document.querySelector("#middleBox");
+        var smallBox = document.querySelector("#smallBox");
+        // addEventListener三个参数
+        // 1:事件名字
+        // 2:回调函数(callBack)
+        // 3:是否开启捕获(事件向下传递),默认值为false
+        bigBox.addEventListener('click',function(){
+            alert(1);
+        },true);
+        middleBox.addEventListener('click',function(){
+            alert(2);
+        },true);
+        smallBox.addEventListener('click',function(){
+            alert(3);
+        },true);
+
+    </script>
+</body>
+</html>

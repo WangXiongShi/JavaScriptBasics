@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// // this作为普通函数调用
+		// // 代码如下:
+		// function fn(){
+		// 	console.log(this);
+		// }
+		// fn(); //Window {stop: ƒ, open: ƒ, alert: ƒ, confirm: ƒ, prompt: ƒ, …}
+
+		var name = '石威';
+		var myObj = {
+			name:'carry',
+			age:36,
+			getName:function(){
+				return this.name;
+			}
+		}
+		console.log(myObj.getName());
+		var a = myObj.getName;
+		console.log(a());
+	</script>
+</body>
+</html>

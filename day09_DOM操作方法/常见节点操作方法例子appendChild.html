@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">添加</button>
+	<ul id="uls"></ul>
+
+	<script>
+		var btn = document.querySelector('#btn');
+		var uls = document.querySelector('#uls');
+
+		var i = 0;
+		btn.onclick = function(){
+			lis = document.createElement('li');
+			i++;
+			lis.innerHTML = '我是li' + i;
+			uls.insertBefore(lis,uls.children[0]);
+		}
+		// appendChild(node):向节点末尾插入一个节点
+		// insertBefore(新节点,目标节点):向目标之前插入节点
+		// replaceChild(newNode,oldNode):newNode替换节点oldNode
+		// removeChild(node):移除父节点的某个子节点
+	</script>
+</body>
+</html>

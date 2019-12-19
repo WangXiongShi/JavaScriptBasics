@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		声明式函数
+		function add(){
+
+		}
+		add();
+
+
+		表达式函数
+		var addFn = function(){
+			console.log(1);
+		}
+		addFn();
+
+		//iife立即执行函数
+		(function(a){ //形参
+			console.log(a);//123
+		})(123); //实参
+
+		// js(ES5)里面, 没有块级作用域, 只有函数作用域, 就是在函数花括号内区域生效与不成效的
+		// 函数作用域分为全局作用域, 局部作用域
+		// 没有使用任何或括号包裹的就是全局作用域
+		// 全局(执行)环境下定义的变量, 就叫做全局变量(在全局的环境下定义的变量都是属于window)
+		// 局部(执行)环境下(花括号里面定义的)定义的变量, 叫做局部变量
+		// 作用域链是从内向外去找的(向上一步一步找的)
+		
+		function fn(){
+			var a = 10;
+			function cn(){
+				console.log(a); //10
+			}
+			cn();
+		}
+		fn();
+	</script>
+</body>
+</html>

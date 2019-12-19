@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #h{
+            height: 10000px;
+
+        }
+        #box{
+            position: fixed;
+            top: 300px;
+            right: 50px;
+            display: none;
+            background: red;
+
+        }
+    </style>
+</head>
+<body>
+    <div id="h"></div>
+    <div id="box">返回顶部</div>
+    <script type="text/javascript">
+    // scrollLeft:滚动条距离元素左边的距离
+    // scrollTop:滚动条距离元素上边的距离
+
+    // chrome获取scrollTop值
+    // document.body.scrollTop  -->0
+
+    // 非chrome获取scrollTop值
+    // document.documentElement.scrollTop -->0
+
+    // 需求:
+    // 1:判断scrollTop值，如果大于500px让返回顶部出现,小于500px让返回顶部隐藏
+
+    // 2:点击返回顶部,scrollTop值为0;
+    var box = document.querySelector("#box");
+    window.onscroll = function(){
+        var scroll = document.documentElement.scrollTop + document.body.scrollTop;
+        if(scroll >= 500){
+            box.style.display = 'block';
+        }else{
+            box.style.display = 'none';
+        }
+    }
+    box.onclick = function(){
+        document.documentElement.scrollTop = '0';
+        document.body.scrollTop = '0';
+    }
+
+    </script>
+</body>
+</html>

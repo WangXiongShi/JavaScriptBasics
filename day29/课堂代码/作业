@@ -1,0 +1,27 @@
+1：把GET和POST请求 敲20遍
+
+2：封装AJAX
+ ajaxFn({
+    url:"login.php",
+    type:"post",
+    data:{
+        user:user.value,
+        password:pass.value,
+        act:"register",
+    },
+    successFn:function(data){
+        // console.log(data);
+        alert(data);
+    },
+    errorFn:function(error){
+        console.log(error);
+    }
+});
+
+function ajaxFn(obj){
+    //URL:必须传
+    //type:默认是GET请求
+    //data：请求时拼接的参数
+    //successFn：代表的是成功 ，successFn参数代表是服务端返回的数据
+    //errorFn：代表请求失败
+}

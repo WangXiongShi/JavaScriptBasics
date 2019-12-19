@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#box{
+			width: 1000px;height: 1000px;background-color: #000;display: none;
+		}
+		/*b{
+			font-size: 100px;
+		}*/
+		.redDiv{
+			width: 300px;
+			height: 300px;
+			background-color: #888;
+		}
+	</style>
+</head>
+<body>
+	<!-- <button id="btn1">隐藏</button>
+	<button id="btn2">显示</button> -->
+	<!-- <button id="btn">显示</button> -->
+	<!-- <div id="box"></div> -->
+	<!-- <h1 style="font-size: 110px;">1</h1> -->
+	<!-- <ins style="font-size:100px;">1</ins> -->
+	<!-- <div class="redDiv"></div>
+	<div class="redDiv"></div>
+	<div class="redDiv"></div>
+	<div class="redDiv"></div>
+	<div class="redDiv"></div> -->
+	<script type="text/javascript">
+		/*var socre = 110; 	条件满足才会走里面的语句	范围大的用if判断语句
+		if(socre >= 0 && socre < 60){
+			console.log('不及格');
+		}else if(socre >= 60 && socre < 70 ){
+			console.log('及格');
+		}else if(socre >= 70 && socre < 80){
+			console.log('良好');
+		}else if(socre >= 80 && socre < 90){
+			console.log('优秀');
+		}else if(socre >= 90 && socre <= 100){
+			console.log('极好');
+		}else{	当所有条件都不成立,就会执行else语句
+			console.log('成绩有误');
+		}*/
+
+
+		/*switch:条件分支语句
+		switch(){	//结构
+			case :
+				break;
+		}
+		var str = '11';
+		switch(str) {
+			case '春':
+				alert('春天');
+				break;
+			case '夏':
+				alert('夏天');
+				break;
+			case '秋':
+				alert('秋天');
+				break;
+			case '冬':
+				alert('冬天');
+				break;
+			default: 	//当所有条件都不成立的时候, 执行default语句
+				alert('输入有误');
+		}*/
+
+
+		// 获取元素添加点击事件
+		// 通过id获取元素
+		// get: 获取
+		// Element: 元素
+		// By: 通过
+		// var box = document.getElementById('box');
+		// var btn1 = document.getElementById('btn1');
+		// var btn2 = document.getElementById('btn2');
+		// var btn = document.getElementById('btn');
+		// // console.log(box);	//<div id="box"></div>
+		// btn1.onclick = function(){
+		// 	box.style.display = 'none';
+		// }
+		// btn2.onclick = function(){
+		// 	box.style.display = 'block';
+		// }
+		// var bol = true;
+		// btn.onclick = function(){
+		// 	if(bol){
+		// 		box.style.display = 'block';
+		// 		btn.innerHTML = '隐藏';
+		// 		// bol = !bol;
+		// 	}else{
+		// 		box.style.display = 'none';
+		// 		btn.innerHTML = '显示';
+		// 		// bol = !bol;
+		// 	}
+		// 	bol = !bol;
+		// }
+
+
+		// for循环
+		// for(循环变量;循环条件;循环增量){		for循环的结构
+				//循环语句...
+		// }
+
+		// for(var i = 0; i <= 100; i++){
+		// 	console.log(i) // 0到100
+		// }
+		// console.log(i); //101
+		// var i=1 只执行一次
+		// 123423423423
+		// 条件不成立终止循环
+
+
+		// for(var j=0; j<=12; j++){
+		// 	console.log(j+16);
+		// }
+		// var sum = 0;
+		// for(var i = 1; i <= 100; i++){
+		// 	sum += i;
+		// }
+		// console.log(sum);
+
+		// for(var i = 0; i<=100; i++){
+		// 	if(i>30 && i<70){
+		// 		console.log(i);
+		// 	}
+		// }
+
+		// var a = 0;
+		// for(var i=0; i<=100; i++){
+		// 	if(i % 2 != 0){
+		// 		a += i;
+		// 	}
+		// }
+		// console.log(a);
+
+
+
+		break和continue
+		break和continue语句用于在循环中精确的控制代码的执行
+		break语句会立即退出循环. 强制继续执行循环后面的语句.
+		continue语句终止/跳出本次循环
+		for(var i = 0; i < 10; i++){
+			if(i == 5){
+				continue; //阻断当前循环,跳出当前循环
+			}
+			console.log(i);	//打印0-9 ,但是不会有5
+		}
+
+		for(var i = 0; i < 10; i++){
+			if(i > 5){
+				break;	//立即退出循环. 强制继续执行循环后面的语句
+			}
+			console.log(i);	//打印0-5 
+		}
+
+
+		while条件成立后一直在循环不会停止
+		var num = 0;
+		while (num < 5){
+			console.log(num);	//下方有num++ 所以打印1-4
+			// num++;	//如果没有num++ 会打印0一直不会停止
+		}
+		var bol = true;
+		if(bol){	//此时的bol是true	执行内部条件 	
+			console.log(1);	//打印1
+		}
+
+		var num = 0;
+		while (num <= 100){
+			console.log(num);	//打印0-100之间的值
+			num++;
+		}
+
+		var num = 0;
+		while (num <= 100){
+			if(num % 2 == 0){
+				console.log(num);	//打印0-100之间所有的偶数
+			}
+			num++;
+		}
+
+		var num = 0;
+		var sum = 0;
+		while (num <= 100){
+			if(num % 2 != 0){
+				sum += num;
+			}
+			num++;
+		}
+		document.write('<b style="color:red;font-size: 210px;">' + sum + '</b>');	//打印2500
+
+		1for循环99乘法表
+		for(var i=1; i<=9; i++){
+			for(var j=1; j<=i; j++){
+				document.write(j + '*' + i + '=' + (i*j) + '　　' );
+			}
+			document.write("　　" + '<br />')
+		}
+
+
+		获取元素的方法
+		document.getElementsByClassName:通过class名获取一组元素
+		var divs = document.getElementsByClassName('redDiv');	//打印一组div是一组数组
+		console.log(divs[0]);
+		获取一组中其中一个元素,是根据下标来获取的
+
+
+
+		数组(存放元素的集合(容器),一个容器能存放很多元素)
+		var arr = [1,2,'字',3,4,5,6,7];
+		console.log(arr.indexOf('字'));	//打印2(下标)
+		console.log(arr[2]);
+		console.log(arr.length);
+		arr[2] = 'hello';	//修改字符串'字',更改为字符串'hello';
+		console.log(arr);	//打印:[1, 2, "hello", 3, 4, 5, 6, 7]
+
+		// push(元素):想数组的末尾添加一个或者更多元素, 并返回新的长度
+		arr.push('e');
+		console.log(arr);
+		// unshift():在数组的最前端添加一个元素
+		arr.unshift('a');
+		console.log(arr);
+		// pop():删除数组的最后一个元素并返回删除的元素
+		console.log(arr.pop());
+		// shift():从头部删除元素
+		console.log(arr.shift());
+		// splice():从数组中添加或者删除元素
+		arr.splice(2,1,'splice');	//第三个参数可选可不选
+		console.log(arr);
+		// arr.sort();
+		console.log(arr);
+
+		var arr = [34,56,8,6,12,5,1];
+			arr.sort(function(a,b){
+			     return a-b;
+			});
+			console.log(arr);
+
+		var arr = [4,56,8,6,12,5,1];
+		arr.sort(function(a,b){
+			return a-b;
+		});
+		console.log(arr);
+	</script>
+</body>
+</html>

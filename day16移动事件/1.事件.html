@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 400px;
+			height: 400px;
+			background-color: red;
+			transition:.3s all;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<script>
+		/*
+			鼠标按下:onmousedown
+			鼠标抬起:onmouseup
+			鼠标右键:oncontextmenu
+			鼠标双击:ondblclick
+			鼠标移动:onmousemove
+		*/
+		wrap.onmousedown = function(){
+			this.style.background = '#000';
+		}
+		wrap.onmouseup = function(){
+			this.style.background = 'blue';
+		}
+		wrap.ondblclick = function(){
+			this.style.width = 100 + 'px';
+		}
+		wrap.oncontextmenu = function(){
+			this.style.width = 400 + 'px';
+		}
+		wrap.onmousemove = function(){
+			console.log(1);
+		}
+	</script>
+</body>
+</html>

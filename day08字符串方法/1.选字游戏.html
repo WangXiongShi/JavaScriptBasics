@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>随机文字游戏</title>
+	<style type="text/css">
+		   *{margin: 0;padding: 0;}
+    html,body{height: 100%;}
+    .fl{float: left;}
+    .fr{float: right;}
+    .clearfix:after{content: '';display: block;clear:both;}
+    .wrap{position: relative;width: 500px;height: 98%;box-shadow:0 0 70px #E7F0D2; margin:0 auto;}
+    .countdown,.score{width: 50%;padding: 10px 0 30px;text-align: left;text-indent: 1em;font-size: 30px;}
+    .txt{font-size: 60px;line-height: 180px;text-align: center;}
+    .tip{text-align: center;font-size: 32px;margin-top: 60px;}
+    .btns{width: 510px;height: 100px;position: absolute;left: 0;bottom: 30px;line-height: 100px;margin-left: -10px;}
+    ul.btns li{float: left;width:92px;list-style: none;text-align: center;font-size: 42px;background: #ccc;border-radius: 5px;margin-left: 10px;cursor: pointer;}
+    </style>
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+    <div class="header clearfix">
+        <div class="countdown fl">倒计时:10</div>
+        <div class="score fr">得分:0</div>
+    </div>
+    <div class="main">
+        <p class="txt">黄</p>
+        <p class="tip">根据字体的颜色选出与其颜色对应的中文描述</p>
+    </div>
+
+    <ul class="btns">
+        <li>红</li>
+        <li>黄</li>
+        <li>蓝</li>
+        <li>绿</li>
+        <li>黑</li>
+    </ul>
+</div>
+
+	<script type="text/javascript">
+	var txtArr = ['红','黄','蓝','绿','黑'];// 存放颜色的数组
+
+    var colorArr = ['red','yellow','blue','green','black'];// 存放颜色的数组
+    	
+    var txtBtn = document.getElementsByClassName('txt')[0];// 获取文字按钮
+
+    var btns = document.getElementsByTagName('li');//获取所有按钮
+
+    var score = document.getElementsByClassName('score')[0];//获取分数
+
+    var countdown = document.getElementsByClassName('countdown')[0];//获取倒计时
+
+    var num = 0;
+
+    var count = 10;	//定义一个倒计时时间
+
+    var timer = null;//定义一个定时器对象
+
+    var bol = true;
+
+    randTxtChange();//随机上边文字和颜色调用函数
+
+    randBtnChange();//随机按钮文字和颜色调用函数
+if(bol){
+    for(var j = 0; j < btns.length; j++){//这个for给按钮添加点击事件
+    	
+    		btns[j].onclick = function(){//对所有的按钮添加点击事件
+    		// console.log(txtArr.indexOf(this.innerHTML));
+    		// console.log(colorArr.indexOf(txtBtn.style.color));
+	    		if(txtArr.indexOf(this.innerHTML) == colorArr.indexOf(txtBtn.style.color)){
+	    			randTxtChange();
+	    			randBtnChange();
+	    			num += 10;
+	    			score.innerHTML = '得分:'+ num;
+	    		}else{
+	    			randTxtChange();
+	    			randBtnChange();
+	    			num -= 10;
+	    			score.innerHTML = '得分:'+ num;
+	    		}
+	    	}
+	    	
+    	}
+    	bol = !bol;
+    }
+
+    function randBtnChange(){// 随即改变按钮文字和颜色
+    	 var colorRandArr = randArr(0,4);// 随机一组文字的下标
+	    var txtRandArr = randArr(0,4);// 随机一组颜色的下标
+	    for (var i = 0; i < btns.length; i++) {
+	    	btns[i].style.color = colorArr[colorRandArr[i]];
+	    	btns[i].innerHTML = txtArr[txtRandArr[i]];
+	    }
+    }
+
+
+
+
+    // 测试是否能打印
+    // var arr = randArr(0,4);
+    // console.log(arr);
+
+
+    // 随机一组不相同的数
+    function randArr(min,max){
+    var arr = [];
+    while(arr.length < 5){
+        var num = randFn(min,max);
+        if(arr.indexOf(num) == -1){
+            arr.push(num);
+        }
+    }
+    	return arr;
+    }
+
+   
+    function randTxtChange(){ // 随机改变上边文字和颜色
+    	// 文字的随机
+	    txtBtn.style.color = colorArr[randFn(0,4)];
+
+	    // 颜色的随机
+	    txtBtn.innerHTML = txtArr[randFn(0,4)];
+    }
+
+    // 随机函数
+   function randFn(min,max) {
+        return parseInt(Math.random() * (max - min + 1) + min);
+    }
+
+
+    timer = setInterval(function(){
+    	count--;
+    	countdown.innerHTML = '倒计时:'+count;
+    	if(count <= 0){//当count为0时,清除定时器,并弹框游戏结束
+    		clearInterval(timer);
+    		alert('GAME OVER');
+    		 for(var i = 0; i < btns.length; i++){
+    		 	btns[i].onclick = null;
+    		 }
+    	}
+    },1000)
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #wrap{
+            width: 320px;
+            height: 480px;
+            background : url(images/game_bg.jpg);
+        }
+        #wrap img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+
+    </div>
+
+    <script type="text/javascript">
+        var locationArr = [{left:"98px",top:"115px"},
+                    {left:"17px",top:"160px"},
+                    {left:"15px",top:"220px"},
+                    {left:"30px",top:"293px"},
+                    {left:"122px",top:"273px"},
+                    {left:"207px",top:"295px"},
+                    {left:"200px",top:"211px"},
+                    {left:"187px",top:"141px"},
+                    {left:"100px",top:"185px"}
+                    ];
+
+        var wrap = document.querySelector("#wrap");
+
+        setInterval(function(){
+            var wolf = new Image();
+            wolf.src = 'images/h0.png';
+            var rand = randFn(0, locationArr.length - 1);
+            wolf.style.top = locationArr[rand].top;
+            wolf.style.left = locationArr[rand].left;
+            wrap.appendChild(wolf);
+            wolf.index = 0;
+            wolf.timer = setInterval(function(){
+                wolf.index++;
+                wolf.src = 'images/h' + wolf.index + '.png';
+            },200);
+
+        },1000);
+
+
+
+        function randFn(min,max){
+            return parseInt(Math.random() * (max - min + 1) + min);
+        }
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

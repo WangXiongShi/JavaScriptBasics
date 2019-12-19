@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // 去除数组中重复的元素
+    var arr = [21,31,4,41,12,14,24,4,13,13,1,42,52,35,34,65,68];
+    // indexOf();
+    // 再定义一个数组用来接收不重复的数
+
+    // 用来存放不重复的元素
+    var tempArr = [];
+
+    for(var i = 0; i < arr.length; i++){
+        if(tempArr.indexOf(arr[i]) == -1){
+           tempArr.push(arr[i]);
+        }
+    }
+    console.log(tempArr);
+
+    </script>
+</body>
+</html>

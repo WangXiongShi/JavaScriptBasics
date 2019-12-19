@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        .redDiv{
+            width: 300px;
+            height: 300px;
+            margin: 10px 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+    <div class="redDiv"></div>
+
+
+    <script type="text/javascript">
+    // getElementsByClassName:通过class名获取一组元素
+    // var divs = document.getElementsByClassName('redDiv');
+
+    // 获取一组中其中一个元素,是根据下标来获取
+
+
+    // 对所有redDiv添加一个颜色为red
+    // divs[0].style.backgroundColor = 'red';
+    // divs[1].style.backgroundColor = 'red';
+    // divs[2].style.backgroundColor = 'red';
+    // divs[3].style.backgroundColor = 'red';
+    // divs[4].style.backgroundColor = 'red';
+
+    // // 对所有redDiv添加一个点击事件,点击的时候alert(1)
+    // divs[0].onclick = function(){
+    //     alert(1);
+    // }
+    // divs[1].onclick = function(){
+    //     alert(1);
+    // }
+    // divs[2].onclick = function(){
+    //     alert(1);
+    // }
+    // divs[3].onclick = function(){
+    //     alert(1);
+    // }
+    // divs[4].onclick = function(){
+    //     alert(1);
+    // }
+
+    // 使用for循环来完成,对所有div添加颜色和点击事件
+
+    var divs = document.getElementsByClassName('redDiv');
+
+    // console.log(divs.length);
+    // length:获取元素的长度
+    for(var i = 0; i < divs.length; i++){
+        divs[i].style.backgroundColor = 'red';
+        divs[i].onclick = function(){
+            alert(1);
+        }
+    }
+
+
+
+
+    </script>
+</body>
+</html>

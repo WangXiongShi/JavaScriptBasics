@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        #div1,#div2,#h1{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2">撒打算打算的</div>
+    <h1 id="h1"></h1>
+
+    <script type="text/javascript">
+        // 有一个方法,redDiv();
+        // 当dom元素调用redDiv时,该dom元素变为红色
+        // HTMLElement.prototype.redDiv = function(){
+        //     this.style.backgroundColor = 'red';
+        // }
+
+        // var a = document.querySelector("#div1");
+        // a.redDiv();
+
+
+
+
+
+        // document.querySelector("#div2").redDiv();
+        // document.querySelector("#h1").redDiv();
+
+        // css
+
+
+
+
+
+        // HTMLElement.prototype.css = function(obj){
+        //     // console.log(obj);
+        // }
+        // a.css({
+        //     backgroundColor:'red',
+        //     width:'100px',
+        //     height:'200px'
+        // });
+
+
+        Object.prototype.sayHi = function(){
+            console.log('sssss');
+        }
+        var arr = [1,2,3];
+        arr.sayHi();
+        // 寻找方法/属性的过程:
+        // 1: --> Array构造函数
+        // 2: --> Array原型(prototype)
+        // 3: --> Object原型(prototype)
+        // 4: null
+        // 5: 报错
+
+
+
+    </script>
+</body>
+</html>

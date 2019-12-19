@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 50px;
+			height: 50px;
+			background-color: #000;
+			position: absolute;
+			top: 0;
+			left: 10px;
+			border-radius:50%;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<script src='tween.js'></script>
+	<script>
+		var box = document.querySelector('#box');
+
+		/*
+			运动方式(运动轨迹)
+			开始的位置
+			结束的位置			变化量 = 结束的位置 - 开始的位置
+			开始的步数
+			结束的步数
+			var timer = setInterval(function(){
+				开始的步数++
+				if(开始的步数 >= 结束的步数){
+					clearInterval(timer);
+				}
+				Tween.Bounce.easeOut(开始的步数,开始的距离,变化量,结束的步数);
+			},30)
+		*/
+
+		var startL = 0;
+		var endL = 550;
+		var changeL = endL - startL;
+		var startStep = 0;
+		var endStep = 100;
+		var timer = setInterval(function(){
+			startStep++;
+			if(startStep >= endStep){
+				clearInterval(timer);
+			}
+			box.style.top = Tween.Quad.easeInOut(startStep,startL,changeL,endStep) + 'px';
+			box.style.left = Tween.Elastic.easeInOut(startStep,startL,changeL,endStep) + 'px';
+		},30);
+	</script>
+</body>
+</html>

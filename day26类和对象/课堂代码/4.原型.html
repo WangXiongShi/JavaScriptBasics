@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 原型:构造函数的一个属性,prototype
+
+        // console.log(Array.prototype);
+
+
+        // 定义一个人类,在类里面定义一个name和age
+        // 在类的原型里面定义一个sayHi方法
+
+        // 每一个构造函数都有一个属性prototype,
+        // prototype就是原型对象, 构造函数构建出来的对象具备构造函数本身的属性和方法并且也具备该构造函数原型里面的属性和方法
+
+            Object.prototype.sayHello = function(){
+                console.log('hahahaha');
+            }
+            function Person(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            Person.prototype.sayHi = function(){
+                console.log('111111111');
+            }
+
+            var p1 = new Person('张浩楠', 18);
+            p1.sayHello();
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

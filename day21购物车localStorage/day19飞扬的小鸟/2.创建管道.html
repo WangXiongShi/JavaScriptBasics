@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{margin:0;padding:0;}
+		ul{list-style: none;}
+		#pipes{
+			width: 500px;
+			height: 600px;
+			border: 1px solid #ccc;
+			position: absolute;
+			left: 100px;
+			top: 0px;
+			overflow: hidden;
+		}
+		ul>li{
+			position: absolute;
+			top: 0;
+			left: 500px;
+			width: 60px;
+			height: 100%;
+			border:1px solid red;
+		}
+		#up{
+			width: 100%;
+			background-image: url(img/up_mod.png);
+			position: relative;
+		}
+		#up img{
+			position: absolute;
+			bottom: 0;
+		}
+		#down{
+			width: 100%;
+			background-image: url(img/down_mod.png);
+			position: absolute;
+			bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<ul id="pipes">
+		<!-- <li>
+			<div id="up" style="height: 300px"><img src="img/up_pipe.png" alt=""></div><div id="down" style="height: 200px"><img src="img/down_pipe.png" alt=""></div>
+		</li> -->
+	</ul>
+
+	<script>
+		setInterval(function(){
+			var lis = document.createElement('li');
+			lis.l = 500;
+			lis.style.left = lis.l + 'px';
+			var upPipeH = randFn(60,440);
+			var downPipeH = 600 - 100 - upPipeH;
+			pipes.appendChild(lis);
+			lis.innerHTML = '<div id="up" style="height: '+upPipeH+'px"><img src="img/up_pipe.png" alt=""></div><div id="down" style="height: '+downPipeH+'px"><img src="img/down_pipe.png" alt=""></div>';
+			lis.timer = setInterval(function(){
+				lis.l--;
+				// if(lis.l <= 0){
+				// 	 pipes.removeChild(lis);
+				// }
+				lis.style.left = lis.l + 'px';
+			},10);
+		},1000);
+
+		function randFn(min,max){
+			return ~~(Math.random()*(max-min+1)+min);
+		}
+	</script>
+</body>
+</html>

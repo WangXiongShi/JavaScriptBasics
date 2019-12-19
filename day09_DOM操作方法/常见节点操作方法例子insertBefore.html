@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="uls">
+		<li>1</li>
+		<li id="li2">2</li>
+		<li>3</li>
+	</ul>
+
+	<script>
+		// insertBefore(新节点,目标节点):向目标之前插入节点
+		var uls = document.querySelector('#uls');
+		var li2 = document.querySelector('#li2');
+		var li = document.createElement('li');
+		li.innerHTML = '新添加的元素';
+		uls.insertBefore(li,uls.firstElementChild);//添加到ul下面第一个li的上面
+	</script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        li:nth-child(odd){
+            background-color: pink;
+        }
+        .l{
+            float: left;
+        }
+        .r{
+            float: right;
+        }
+        .clearFix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        img{
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="list">
+        <!-- <li class="clearFix">
+            <div class="l"><img src="http://p7.qhimg.com/t01ac02fad9b0458ec4.jpg"></div>
+            <div class="l">
+                <p>1</p>
+                <p>2</p>
+                <p>3</p>
+            </div>
+        </li> -->
+    </ul>
+    <script type="text/javascript">
+        // http://127.0.0.1/day29/data/1.json;
+        // GET
+        var list = document.querySelector('#list');
+        var ajax = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        ajax.open('GET','http://127.0.0.1/day29/data/1.json',true);
+        ajax.send();
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState == 4){
+                if(ajax.status >= 200 && ajax.status <= 207){
+                    // 后台返回的是json类型的字符串(json串)
+                    // console.log(ajax.responseText);
+                    var data = JSON.parse(ajax.responseText);
+                    succesFn(data);
+                }
+            }
+        }
+
+        function succesFn(data){
+            var htmlStr = '';
+            for(var i = 0; i < data.shop_data.length; i++){
+                var shop_name = data.shop_data[i].shop_name;
+                var addr = data.shop_data[i].addr;
+                var shop_icon = data.shop_data[i].shop_ico;
+                var main = data.shop_data[i].main;
+
+                htmlStr += '<li class="clearFix"><div class="l"><img src="'+shop_icon+'"></div><div class="l"><p>'+shop_name+'</p><p>'+addr+'</p><p>'+main+'</p></div></li>';
+            }
+            list.innerHTML = htmlStr;
+        }
+
+    </script>
+</body>
+</html>
