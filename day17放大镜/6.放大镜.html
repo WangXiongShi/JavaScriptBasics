@@ -10,7 +10,7 @@
         }
         #minDiv{
             width: 300px;
-            height: 300px;
+            /* height: 300px; */
             border: 1px solid #ccc;
             position: relative;
             top: 100px;
@@ -51,13 +51,13 @@
 <body>
     <div id="minDiv">
 
-        <img src="max.jpg" id="minImg">
+        <img src="min.jpg" id="minImg">
         <div id="slider"></div>
 
     </div>
 
     <div id="maxDiv">
-        <img src="max.jpg" id="maxImg">
+        <img src="min.jpg" id="maxImg">
     </div>
     <script type="text/javascript">
         var minDiv = document.querySelector("#minDiv");
@@ -74,16 +74,35 @@
 
         // 4:slider跟随鼠标滑动时,不能超出minDiv的边界,如果超出则slider隐藏
 
-        // 5:求大图与小图的宽度和高度比例
+        // 5:求大图与小图的宽度和高度比例(放大镜的核心部分)
 
         // 6:slider移动的时候,让大图片跟随移动
 
+        // 我们可以通过事件对象e来拿到鼠标事件, 键盘事件所携带的信息. 获取事件对象可以直接通过 window.event. 拿到这个对象,但是由于火狐浏览器并不支持这个方法, 所有我们一般需要在触发事件的函数传入 event 参数, 以适配火狐
+        //clientX:document文档对象,也就是整个浏览器页面中,鼠标的left值
+        //clientY:document文档对象,也就是整个浏览器页面中,鼠标的top值
+		document.onclick = function(e){
+			var ev = window.event || e;
+			console.log(ev.clientX,ev.clientY);
+        }
+
+        //1:
         minDiv.onmousemove = function(e){
             var ev = window.event || e;
             slider.style.display = 'block';
             maxDiv.style.display = 'block';
+
+
+            //x:滑块内鼠标的left值 水平位置的值  
+            //y:滑块内鼠标的top值  垂直位置的值
+            // 获取鼠标在盒子内部的坐标 :计算出slider在minDiv中的top值和left值位置   
             var x = ev.clientX - 100 - slider.offsetWidth / 2;
             var y = ev.clientY - 100 - slider.offsetHeight / 2;
+            // console.log(x,y);
+
+            // 增加限制条件,控制鼠标始终在滑块内部
+            // offsetWidth:获取元素的宽度(包含border)
+            // offsetHeight:获取元素的高度(包含border)
             if(x <= 0){
                 x = 0;
             }else if(x >= minDiv.offsetWidth - slider.offsetWidth){
@@ -95,15 +114,20 @@
                 y = minDiv.offsetHeight - slider.offsetHeight;
             }
 
+            // 计算出 两张图片的比例 scaleX:宽比  scaleY:高比
             var scaleX = maxImg.offsetWidth / minImg.offsetWidth;
             var scaleY = maxImg.offsetHeight / minImg.offsetHeight;
+
+            // slider向左移动时 放大镜在向右移动  否则则相反
             maxImg.style.left = -x * scaleX + 'px';
             maxImg.style.top = -y * scaleY + 'px';
+
+            // slider移动位置
             slider.style.left = x + 'px';
             slider.style.top = y + 'px';
 
         }
-
+        //2:
         minDiv.onmouseleave = function(){
             slider.style.display = 'none';
             maxDiv.style.display = 'none';
